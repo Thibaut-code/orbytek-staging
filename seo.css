@@ -1,0 +1,21 @@
+/* Small content additions reuse the existing colours, typography and breakpoints. */
+.card .text-link { display:inline-block; margin-top:18px; }
+.support-price a { display:block; }
+.support-actions { align-items:flex-start; gap:12px; }
+.support-actions .support-tariff { display:inline-flex; align-items:center; gap:14px; padding:10px 16px; border:1px solid var(--line); border-radius:10px; font-size:15px; font-weight:600; line-height:1.4; text-decoration:none; transition:background .2s,border-color .2s; }
+.support-actions .support-tariff:hover { background:var(--line); border-color:currentColor; }
+.seo-content { padding-top:24px; }
+.breadcrumbs { min-height:0; display:block; padding:0; font-size:14px; }
+.breadcrumbs a,.seo-related a,.seo-faq a { text-decoration:underline; text-underline-offset:4px; }
+.seo-section { max-width:850px; }
+.seo-section p { max-width:760px; }
+.seo-faq details { border-bottom:1px solid var(--line); padding:18px 0; }
+.seo-faq summary { cursor:pointer; font-weight:600; }
+.seo-faq p { max-width:800px; }
+.seo-faq summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+.seo-related li { margin:10px 0; }
+.seo-project-image { display:block; max-width:100%; height:auto; border-radius:12px; }
+.seo-section figure { margin:24px 0; }
+.seo-section figcaption { font-size:14px; margin-top:10px; }
+.page-intro .button { margin-top:24px; }
+@media(max-width:800px) { .seo-content { padding-top:18px; } }

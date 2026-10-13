@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoPrime – Gestion du stock</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="admin-page">
+<main class="admin-wrap">
+<header class="admin-header"><div><h1>Gestion du stock</h1><p>Vos voitures et vos photos, au même endroit.</p></div><a href="index.html" class="admin-back">Voir le site ↗</a></header>
+<p id="adminMessage" class="admin-alert info" role="status" aria-live="polite" hidden></p>
+<section id="loginPanel" class="admin-card" hidden>
+<h2>Connexion</h2><p class="admin-help">Connectez-vous avec votre compte de gestion du garage.</p>
+<form id="loginForm"><fieldset id="loginFields" class="admin-fields">
+<label>Email<input name="email" type="email" autocomplete="username" required/></label>
+<label>Mot de passe<input name="password" type="password" autocomplete="current-password" required/></label>
+<button class="admin-btn" type="submit">Se connecter</button>
+</fieldset></form>
+</section>
+<section id="managePanel" hidden>
+<div class="admin-toolbar"><span id="accountEmail"></span><button type="button" class="admin-btn secondary" id="logoutBtn">Se déconnecter</button></div>
+<div class="admin-card"><div class="admin-toolbar"><h2>Vos voitures</h2><button type="button" class="admin-btn" id="newCarBtn">+ Ajouter une voiture</button></div>
+<p id="carsSummary" class="admin-help"></p><div id="adminCars" class="admin-car-list"></div>
+<button type="button" class="admin-btn secondary" id="moreAdminCars" hidden>Afficher plus</button></div>
+<section id="editorPanel" class="admin-card" hidden>
+<h2 id="editorTitle">Ajouter une voiture</h2>
+<form id="vehicleForm"><fieldset id="vehicleFields" class="admin-fields">
+<div class="admin-form-grid">
+<label>Marque *<input name="marque" maxlength="80" required/></label>
+<label>Modèle *<input name="modele" maxlength="160" required/></label>
+<label>Année *<input name="annee" type="number" min="1900" max="2100" step="1" required/></label>
+<label>Kilométrage *<input name="km" type="number" min="0" max="10000000" step="1" required/></label>
+<label>Prix (€) *<input name="prix" type="number" min="0" max="100000000" step="1" required/></label>
+<label>Catégorie<select name="categorie"><option>Berline</option><option>SUV</option><option>Citadine</option><option>Premium</option><option>Autre</option></select></label>
+<label>Carburant<select name="carburant"><option>Essence</option><option>Diesel</option><option>Hybride</option><option>Électrique</option><option>GPL</option><option>Autre</option></select></label>
+<label>Boîte<select name="boite"><option>Manuelle</option><option>Automatique</option></select></label>
+<label>Étiquette<select name="badge"><option value="">Aucune</option><option>Nouveau</option><option>Promo</option><option>Hybride</option><option>Électrique</option></select></label>
+<label>Statut<select name="dispo"><option value="true">Disponible</option><option value="false">Vendue</option></select></label>
+</div>
+<div class="admin-photo-section"><h3>Photos</h3><p class="admin-help">Jusqu’à 10 photos JPG, PNG ou WebP. Elles sont automatiquement allégées. La première sera la photo principale.</p>
+<label class="photo-picker">Ajouter des photos<input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" multiple/></label>
+<p id="photoProgress" role="status" aria-live="polite"></p><div id="photoPreviews" class="photo-previews"></div></div>
+<div class="admin-toolbar"><button type="submit" class="admin-btn green" id="saveCarBtn">Enregistrer</button><button type="button" class="admin-btn secondary" id="cancelEditBtn">Annuler</button></div>
+</fieldset></form>
+</section>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script><script src="data.js"></script><script src="photos.js"></script><script src="admin.js"></script>
+</body></html>

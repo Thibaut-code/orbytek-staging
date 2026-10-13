@@ -1,0 +1,11 @@
+{
+  "name": "autoprime-stock",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "preview": "node tests/server.cjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  }
+}

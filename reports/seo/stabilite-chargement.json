@@ -1,0 +1,19 @@
+{
+  "method": "Local browser PerformanceObserver on layout-shift entries, session-window CLS excluding recent input; not a Lighthouse run, no network throttling.",
+  "desktop": {
+    "cls": "0",
+    "controls": 1,
+    "height": 768,
+    "logo": "orbytek-logo-light.webp",
+    "overflow": false,
+    "theme": "light",
+    "width": 1365
+  },
+  "mobile": {
+    "cls": "0",
+    "height": 844,
+    "overflow": false,
+    "theme": "light",
+    "width": 391
+  }
+}

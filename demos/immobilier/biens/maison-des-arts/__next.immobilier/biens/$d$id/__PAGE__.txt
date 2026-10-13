@@ -1,0 +1,25 @@
+1:"$Sreact.fragment"
+2:I[3420,["252","static/chunks/252-6d75dbbcff0c31cb.js","726","static/chunks/726-e9f234a5cfd98a77.js","286","static/chunks/app/immobilier/biens/%5Bid%5D/page-932ff9a952cba35b.js"],"default"]
+3:I[484,[],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[484,[],"ViewportBoundary"]
+9:I[484,[],"MetadataBoundary"]
+a:I[6869,[],"IconMark"]
+c:I[7121,[],""]
+d:I[4581,[],""]
+:HL["/demos/_next/static/css/f0dfbce61ec17dc8.css","style"]
+7:X
+f:X
+f:C
+0:{"buildId":"UEsKoYCJ8bg2h-vFy2Lib","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"property":{"id":"maison-des-arts","title":"Maison des Arts","city":"Waterloo","type":"Maison","price":875000,"area":230,"beds":4,"image":"estate-house","tag":"COUP DE CŒUR","address":"À proximité du centre","description":"Une adresse familiale avec du caractère. De belles pièces de réception, quatre chambres et un jardin intime composent un quotidien à votre rythme.","energy":"B","land":650,"features":["Jardin privatif","Cheminée","Quatre chambres","Proche des écoles"],"lat":50.715,"lon":4.399}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Maison des Arts à Waterloo — Aurelia"}],["$","meta","1",{"name":"description","content":"Une adresse familiale avec du caractère. De belles pièces de réception, quatre chambres et un jardin intime composent un quotidien à votre rythme."}],["$","meta","2",{"name":"robots","content":"noindex, follow"}],["$","link","3",{"rel":"icon","href":"/demos/icon.svg"}],["$","$La","4",{}]]}]}]}],null]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@e","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@10","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@11","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/demos/_next/static/css/f0dfbce61ec17dc8.css","precedence":"next"}]],["$","html",null,{"lang":"fr-BE","children":["$","body",null,{"children":["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]]}],"isPartial":"$@12","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+5:null
+7:300
+14:true
+7:C
+13:0
+b:"$undefined"
+e:"$undefined"
+10:"$undefined"
+11:"$undefined"
+12:"$undefined"
+6:"$undefined"

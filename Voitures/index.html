@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoPrime – Achat &amp; Vente de Véhicules Premium</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav">
+<div class="nav-wrap">
+<a class="brand" href="#">
+<span class="brand-icon">A</span>
+<span class="brand-name">Auto<strong>Prime</strong></span>
+</a>
+<ul class="nav-menu" id="navMenu">
+<li><a href="#stock">Notre stock</a></li>
+<li><a href="#racheter">On rachète votre voiture</a></li>
+<li><a href="#pourquoi">Pourquoi nous</a></li>
+<li><a href="#avis">Avis</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="nav-actions">
+<a class="nav-tel" href="tel:+33123456789"><i class="fas fa-phone"></i> 01 23 45 67 89</a>
+<a class="nav-btn" href="#contact">Prendre RDV</a>
+</div>
+<button class="burger" id="burger"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+<div class="hero-bg">
+<img alt="Voiture premium" class="hero-img" id="heroBg" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&amp;q=90"/>
+</div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-tag">🏆 Spécialiste achat / vente depuis 2008</div>
+<h1 class="hero-h1">Trouvez Votre<br/><span class="gradient-text">Voiture Idéale.</span><br/>Vendez la Vôtre.</h1>
+<p class="hero-p">Des centaines de véhicules sélectionnés, des prix transparents et une reprise immédiate. L'achat et la vente de voitures, réinventés.</p>
+<div class="hero-ctas">
+<a class="cta-main" href="#stock"><i class="fas fa-car"></i> Voir le stock</a>
+<a class="cta-ghost" href="#racheter"><i class="fas fa-euro-sign"></i> Estimer ma voiture</a>
+</div>
+<div class="hero-numbers">
+<div class="hn-item"><span class="hn-val" data-target="320">0</span><span class="hn-label">Véhicules en stock</span></div>
+<div class="hn-sep"></div>
+<div class="hn-item"><span class="hn-val" data-target="16">0</span><span class="hn-label">Ans d'expérience</span></div>
+<div class="hn-sep"></div>
+<div class="hn-item"><span class="hn-val" data-target="4800">0</span><span class="hn-label">Clients satisfaits</span></div>
+<div class="hn-sep"></div>
+<div class="hn-item"><span class="hn-val" data-target="98">0</span><span class="hn-label">% avis positifs</span></div>
+</div>
+</div>
+<div class="hero-scroll-hint">
+<span>Défiler</span>
+<div class="scroll-bar"></div>
+</div>
+</section>
+<!-- ========== SEARCH BAR ========== -->
+<div class="search-section">
+<div class="search-card">
+<h2 class="search-title">Rechercher un véhicule</h2>
+<div class="search-form">
+<div class="sf-group">
+<label for="filterMarque"><i class="fas fa-tag"></i> Marque</label>
+<select class="sf-input" id="filterMarque">
+<option value="">Toutes les marques</option>
+</select>
+</div>
+<div class="sf-group">
+<label for="filterCarburant"><i class="fas fa-gas-pump"></i> Carburant</label>
+<select class="sf-input" id="filterCarburant">
+<option value="">Tous</option>
+<option>Essence</option>
+<option>Diesel</option>
+<option>Hybride</option>
+<option>Électrique</option>
+<option>GPL</option>
+</select>
+</div>
+<div class="sf-group">
+<label for="filterBudget"><i class="fas fa-euro-sign"></i> Budget max</label>
+<select class="sf-input" id="filterBudget">
+<option value="">Sans limite</option>
+<option value="5000">5 000 €</option>
+<option value="10000">10 000 €</option>
+<option value="15000">15 000 €</option>
+<option value="20000">20 000 €</option>
+<option value="30000">30 000 €</option>
+<option value="50000">50 000 €</option>
+</select>
+</div>
+<div class="sf-group">
+<label for="filterAnnee"><i class="fas fa-calendar"></i> Année min</label>
+<select class="sf-input" id="filterAnnee">
+<option value="">Toutes</option>
+<option value="2022">2022</option>
+<option value="2020">2020</option>
+<option value="2018">2018</option>
+<option value="2015">2015</option>
+<option value="2010">2010</option>
+</select>
+</div>
+<button class="sf-btn" id="searchBtn"><i class="fas fa-search"></i> Rechercher</button>
+</div>
+</div>
+</div>
+<!-- ========== STOCK ========== -->
+<section class="stock" id="stock">
+<div class="wrap">
+<div class="section-head">
+<div>
+<p class="stag">Notre Stock</p>
+<h2 class="sh2">Véhicules <span class="accent">Disponibles</span></h2>
+</div>
+<div class="stock-filters">
+<button class="sf-tag active" data-f="all">Tous</button>
+<button class="sf-tag" data-f="Berline">Berlines</button>
+<button class="sf-tag" data-f="SUV">SUV</button>
+<button class="sf-tag" data-f="Citadine">Citadines</button>
+<button class="sf-tag" data-f="Premium">Premium</button>
+</div>
+</div>
+<!-- ÉTAT DE CHARGEMENT -->
+<div class="cars-loading" id="carsLoading">
+<div class="loading-spinner"></div>
+<p>Chargement du stock en cours…</p>
+</div>
+<!-- ERREUR -->
+<div class="cars-error" id="carsError" style="display:none">
+<i class="fas fa-exclamation-triangle"></i>
+<h3>Impossible de charger le stock</h3>
+<p><span id="stockErrorText">Le stock est temporairement indisponible.</span></p>
+<button type="button" class="cta-main" id="retryStock">Réessayer</button>
+</div>
+<!-- GRILLE VOITURES (remplie dynamiquement) -->
+<div class="cars-grid" id="carsGrid" style="display:none"></div>
+<!-- AUCUN RÉSULTAT -->
+<div class="cars-empty" id="carsEmpty" style="display:none">
+<i class="fas fa-car-side"></i>
+<h3>Aucun véhicule trouvé</h3>
+<p>Essayez de modifier vos critères de recherche.</p>
+<button class="cta-main" onclick="resetFilters()">Réinitialiser les filtres</button>
+</div>
+<div class="stock-more" id="stockMore" style="display:none">
+<button type="button" class="cta-main" id="loadMoreCars" hidden>Afficher plus de voitures</button>
+<p>Vous ne trouvez pas votre bonheur ? Contactez-nous pour plus de choix.</p>
+<a class="cta-main" href="#contact">Nous contacter</a>
+</div>
+</div>
+</section>
+<!-- ========== RACHETER ========== -->
+<section class="racheter" id="racheter">
+<div class="racheter-bg"></div>
+<div class="wrap">
+<div class="racheter-grid">
+<div class="racheter-left">
+<p class="stag light">Rachat de véhicule</p>
+<h2 class="sh2 light">On Rachète<br/><span class="accent-light">Votre Voiture</span><br/>Au Meilleur Prix</h2>
+<p class="racheter-desc">Peu importe la marque, l'année ou le kilométrage — nous vous faisons une offre ferme et immédiate. Pas de négociation interminable, pas de mauvaises surprises.</p>
+<div class="racheter-steps">
+<div class="rs-step">
+<div class="rs-num">01</div>
+<div><h4>Remplissez le formulaire</h4><p>Décrivez votre véhicule en 2 minutes</p></div>
+</div>
+<div class="rs-step">
+<div class="rs-num">02</div>
+<div><h4>Recevez une offre</h4><p>Estimation gratuite sous 24h</p></div>
+</div>
+<div class="rs-step">
+<div class="rs-num">03</div>
+<div><h4>Venez avec votre voiture</h4><p>Inspection rapide sur place</p></div>
+</div>
+<div class="rs-step">
+<div class="rs-num">04</div>
+<div><h4>Payé immédiatement</h4><p>Virement bancaire le jour même</p></div>
+</div>
+</div>
+<div class="racheter-garanties">
+<span><i class="fas fa-check"></i> Offre ferme &amp; sans engagement</span>
+<span><i class="fas fa-check"></i> Paiement immédiat</span>
+<span><i class="fas fa-check"></i> Toutes marques acceptées</span>
+<span><i class="fas fa-check"></i> Même avec crédit en cours</span>
+</div>
+</div>
+<div class="racheter-right">
+<form class="estim-form" id="estimForm">
+<div class="ef-header">
+<i class="fas fa-calculator"></i>
+<h3>Estimation gratuite</h3>
+</div>
+<div class="ef-row">
+<div class="ef-group"><label>Marque *</label><input class="ef-input" placeholder="Ex: Volkswagen" required="" type="text"/></div>
+<div class="ef-group"><label>Modèle *</label><input class="ef-input" placeholder="Ex: Golf" required="" type="text"/></div>
+</div>
+<div class="ef-row">
+<div class="ef-group"><label>Année *</label><input class="ef-input" max="2025" min="1990" placeholder="Ex: 2019" required="" type="number"/></div>
+<div class="ef-group"><label>Kilométrage *</label><input class="ef-input" placeholder="Ex: 85000" required="" type="number"/></div>
+</div>
+<div class="ef-row">
+<div class="ef-group"><label>Carburant</label><select class="ef-input"><option>Essence</option><option>Diesel</option><option>Hybride</option><option>Électrique</option><option>GPL</option></select></div>
+<div class="ef-group"><label>Boîte</label><select class="ef-input"><option>Manuelle</option><option>Automatique</option></select></div>
+</div>
+<div class="ef-group">
+<label>État général</label>
+<div class="etat-btns">
+<button class="etat-btn active" type="button">Excellent</button>
+<button class="etat-btn" type="button">Bon</button>
+<button class="etat-btn" type="button">Correct</button>
+<button class="etat-btn" type="button">Abîmé</button>
+</div>
+</div>
+<div class="ef-row">
+<div class="ef-group"><label>Votre prénom *</label><input class="ef-input" placeholder="Jean" required="" type="text"/></div>
+<div class="ef-group"><label>Téléphone *</label><input class="ef-input" placeholder="+33 6 12 34 56 78" required="" type="tel"/></div>
+</div>
+<button class="ef-submit" type="submit"><i class="fas fa-paper-plane"></i> Recevoir mon estimation gratuite</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== POURQUOI ========== -->
+<section class="pourquoi" id="pourquoi">
+<div class="wrap">
+<div class="section-head centered">
+<p class="stag">Pourquoi AutoPrime</p>
+<h2 class="sh2">Une Expérience <span class="accent">Différente</span></h2>
+<p class="sdesc">Nous avons repensé l'achat et la vente de voitures pour que vous soyez toujours gagnant.</p>
+</div>
+<div class="why-grid">
+<div class="why-card"><div class="why-icon"><i class="fas fa-shield-alt"></i></div><h3>Véhicules contrôlés</h3><p>Chaque voiture passe un contrôle technique complet de 150 points avant d'être mise en vente. Zéro mauvaise surprise.</p></div>
+<div class="why-card"><div class="why-icon"><i class="fas fa-file-contract"></i></div><h3>Prix transparents</h3><p>Nos prix sont affichés clairement, sans frais cachés. Ce que vous voyez est ce que vous payez. Toujours.</p></div>
+<div class="why-card"><div class="why-icon"><i class="fas fa-history"></i></div><h3>Historique complet</h3><p>Rapport Carfax ou Histovec fourni pour chaque véhicule. Nombre de propriétaires, entretiens, accidents : tout est transparent.</p></div>
+<div class="why-card"><div class="why-icon"><i class="fas fa-handshake"></i></div><h3>Garantie 6 mois</h3><p>Tous nos véhicules sont vendus avec une garantie mécanique de 6 mois. Votre tranquillité d'esprit est notre priorité.</p></div>
+<div class="why-card"><div class="why-icon"><i class="fas fa-credit-card"></i></div><h3>Financement sur mesure</h3><p>Nos partenaires bancaires vous proposent des solutions de financement adaptées à votre budget, avec réponse rapide.</p></div>
+<div class="why-card"><div class="why-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Livraison possible</h3><p>Vous ne pouvez pas vous déplacer ? Nous livrons votre véhicule à domicile dans un rayon de 200 km.</p></div>
+</div>
+<div class="why-visual">
+<div class="wv-img">
+<img alt="Showroom AutoPrime" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=900&amp;q=80"/>
+<div class="wv-badge"><i class="fas fa-award"></i><div><strong>Meilleur vendeur</strong><span>Région 2023 &amp; 2024</span></div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== MARQUES ========== -->
+<div class="marques">
+<div class="wrap">
+<p class="marques-label">Toutes les marques disponibles</p>
+<div class="marques-scroll">
+<div class="marques-track">
+<span>AUDI</span><span>BMW</span><span>MERCEDES</span><span>VOLKSWAGEN</span>
+<span>PEUGEOT</span><span>RENAULT</span><span>TOYOTA</span><span>FORD</span>
+<span>PORSCHE</span><span>TESLA</span><span>VOLVO</span><span>SEAT</span>
+<span>AUDI</span><span>BMW</span><span>MERCEDES</span><span>VOLKSWAGEN</span>
+<span>PEUGEOT</span><span>RENAULT</span><span>TOYOTA</span><span>FORD</span>
+<span>PORSCHE</span><span>TESLA</span><span>VOLVO</span><span>SEAT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ========== AVIS ========== -->
+<section class="avis" id="avis">
+<div class="wrap">
+<div class="section-head centered">
+<p class="stag">Témoignages</p>
+<h2 class="sh2">Ils Ont Choisi <span class="accent">AutoPrime</span></h2>
+</div>
+<div class="avis-score-bar">
+<div class="asb-score"><span class="asb-num">4.9</span><div class="asb-stars">★★★★★</div><span class="asb-count">Basé sur 412 avis</span></div>
+<div class="asb-bars">
+<div class="asb-bar-row"><span>5 ★</span><div class="asb-bar"><div class="asb-fill" style="width:91%"></div></div><span>91%</span></div>
+<div class="asb-bar-row"><span>4 ★</span><div class="asb-bar"><div class="asb-fill" style="width:7%"></div></div><span>7%</span></div>
+<div class="asb-bar-row"><span>3 ★</span><div class="asb-bar"><div class="asb-fill" style="width:2%"></div></div><span>2%</span></div>
+<div class="asb-bar-row"><span>2 ★</span><div class="asb-bar"><div class="asb-fill" style="width:0%"></div></div><span>0%</span></div>
+<div class="asb-bar-row"><span>1 ★</span><div class="asb-bar"><div class="asb-fill" style="width:0%"></div></div><span>0%</span></div>
+</div>
+</div>
+<div class="avis-grid">
+<div class="avis-card"><div class="ac-stars">★★★★★</div><p>"J'ai vendu ma Golf en moins de 48h. Offre sérieuse, paiement immédiat. Je recommande à 100% !"</p><div class="ac-author"><div class="ac-av">TL</div><div><strong>Thomas L.</strong><span>A vendu sa Golf VII</span></div><span class="ac-date">Il y a 1 semaine</span></div></div>
+<div class="avis-card featured-avis"><div class="ac-stars">★★★★★</div><p>"Achat d'un Audi Q5 en parfait état. Le véhicule était exactement comme décrit, avec tout l'historique. Le vendeur a pris le temps de tout expliquer. Expérience top !"</p><div class="ac-author"><div class="ac-av">SM</div><div><strong>Sophie M.</strong><span>A acheté un Audi Q5</span></div><span class="ac-date">Il y a 2 semaines</span></div></div>
+<div class="avis-card"><div class="ac-stars">★★★★★</div><p>"Prix juste, pas de pression, équipe professionnelle. J'ai trouvé ma BMW en 30 minutes de visite. Livraison à domicile nickel !"</p><div class="ac-author"><div class="ac-av">PD</div><div><strong>Pierre D.</strong><span>A acheté une BMW Série 3</span></div><span class="ac-date">Il y a 1 mois</span></div></div>
+<div class="avis-card"><div class="ac-stars">★★★★★</div><p>"Reprise de mon ancien véhicule au prix du marché + achat d'une Toyota hybride. Tout s'est fait en une journée. Parfait !"</p><div class="ac-author"><div class="ac-av">AC</div><div><strong>Anne C.</strong><span>Reprise + achat Toyota</span></div><span class="ac-date">Il y a 6 semaines</span></div></div>
+<div class="avis-card"><div class="ac-stars">★★★★★</div><p>"Financement obtenu en 2 jours, taux très compétitif. L'équipe m'a accompagné du début à la fin. Je reviendrai sans hésiter."</p><div class="ac-author"><div class="ac-av">ML</div><div><strong>Marc L.</strong><span>A acheté une Mercedes</span></div><span class="ac-date">Il y a 2 mois</span></div></div>
+<div class="avis-card"><div class="ac-stars">★★★★★</div><p>"Transparence totale sur l'état du véhicule, rapport Histovec fourni. Aucune mauvaise surprise après 6 mois. Bravo AutoPrime !"</p><div class="ac-author"><div class="ac-av">JR</div><div><strong>Julie R.</strong><span>A acheté une Peugeot 3008</span></div><span class="ac-date">Il y a 3 mois</span></div></div>
+</div>
+</div>
+</section>
+<!-- ========== CONTACT ========== -->
+<section class="contact" id="contact">
+<div class="wrap">
+<div class="contact-grid">
+<div class="contact-left">
+<p class="stag">Nous contacter</p>
+<h2 class="sh2">Parlons de<br/><span class="accent">Votre Projet</span></h2>
+<p class="contact-desc">Que vous souhaitiez acheter, vendre ou simplement obtenir des informations, notre équipe est là pour vous répondre rapidement.</p>
+<div class="contact-infos">
+<div class="ci-item"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Adresse</strong><span>12 Avenue de l'Automobile<br/>75015 Paris, France</span></div></div>
+<div class="ci-item"><div class="ci-icon"><i class="fas fa-phone"></i></div><div><strong>Téléphone</strong><span><a href="tel:+33123456789">01 23 45 67 89</a></span></div></div>
+<div class="ci-item"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><strong>Email</strong><span><a href="mailto:contact@autoprime.fr">contact@autoprime.fr</a></span></div></div>
+<div class="ci-item"><div class="ci-icon"><i class="fas fa-clock"></i></div><div><strong>Horaires</strong><span>Lun–Sam : 9h–19h<br/>Dimanche : 10h–17h</span></div></div>
+</div>
+<div class="contact-social">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<div class="contact-right">
+<form class="contact-form" id="contactForm">
+<div class="cf-tabs">
+<button class="cf-tab active" data-tab="achat" type="button">J'achète</button>
+<button class="cf-tab" data-tab="vente" type="button">Je vends</button>
+<button class="cf-tab" data-tab="info" type="button">Renseignement</button>
+</div>
+<div class="cf-row">
+<div class="cf-group"><label>Prénom *</label><input class="cf-input" placeholder="Jean" required="" type="text"/></div>
+<div class="cf-group"><label>Nom *</label><input class="cf-input" placeholder="Dupont" required="" type="text"/></div>
+</div>
+<div class="cf-group"><label>Email *</label><input class="cf-input" placeholder="jean@email.com" required="" type="email"/></div>
+<div class="cf-group"><label>Téléphone</label><input class="cf-input" placeholder="+33 6 12 34 56 78" type="tel"/></div>
+<div class="cf-group" id="vehiculeField"><label>Véhicule recherché / à vendre</label><input class="cf-input" placeholder="Ex: BMW Série 3, 2020, diesel..." type="text"/></div>
+<div class="cf-group"><label>Message</label><textarea class="cf-input" placeholder="Décrivez votre projet..." rows="4"></textarea></div>
+<div class="cf-group"><label class="cf-check"><input required="" type="checkbox"/><span>J'accepte que mes données soient utilisées pour traiter ma demande *</span></label></div>
+<button class="cta-main cf-submit" type="submit"><i class="fas fa-paper-plane"></i> Envoyer ma demande</button>
+</form>
+</div>
+</div>
+<div class="map-wrap">
+<iframe allowfullscreen="" height="100%" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625!2d2.2945!3d48.8412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDUwJzI4LjMiTiAywrAxNyc0MC4yIkU!5e0!3m2!1sfr!2sfr!4v1620000000000" style="border:0;" width="100%"></iframe>
+</div>
+</div>
+</section>
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-col brand-col">
+<a class="brand" href="#"><span class="brand-icon">A</span><span class="brand-name">Auto<strong>Prime</strong></span></a>
+<p>Spécialiste de l'achat et de la vente de véhicules d'occasion depuis 2008. Transparence, qualité et satisfaction garanties.</p>
+<div class="footer-social">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Acheter</h4>
+<ul>
+<li><a href="#stock">Voir le stock</a></li>
+<li><a href="#stock">Berlines</a></li>
+<li><a href="#stock">SUV &amp; 4x4</a></li>
+<li><a href="#stock">Citadines</a></li>
+<li><a href="#contact">Financement</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Vendre</h4>
+<ul>
+<li><a href="#racheter">Estimation gratuite</a></li>
+<li><a href="#racheter">Comment ça marche</a></li>
+<li><a href="#racheter">Rachat immédiat</a></li>
+<li><a href="#contact">Prendre RDV</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<ul>
+<li><a href="tel:+33123456789"><i class="fas fa-phone"></i> 01 23 45 67 89</a></li>
+<li><a href="mailto:contact@autoprime.fr"><i class="fas fa-envelope"></i> contact@autoprime.fr</a></li>
+<li><span><i class="fas fa-map-marker-alt"></i> 12 Av. de l'Automobile, Paris</span></li>
+<li><span><i class="fas fa-clock"></i> Lun–Sam 9h–19h</span></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 AutoPrime. Tous droits réservés.</p>
+<div class="footer-links">
+<a href="#">Mentions légales</a>
+<a href="#">CGV</a>
+<a href="#">Politique de confidentialité</a>
+<a href="admin.html">⚙️ Admin</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ========== MODAL ========== -->
+<div class="modal-bg" id="modalBg">
+<div class="modal-box">
+<div class="modal-check"><i class="fas fa-check"></i></div>
+<h3 id="modalTitle">Demande envoyée !</h3>
+<p id="modalText">Merci ! Notre équipe vous recontactera dans les plus brefs délais.</p>
+<button class="cta-main" onclick="closeModal()">Parfait !</button>
+</div>
+</div>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+<dialog id="photoGallery" class="photo-gallery" aria-labelledby="galleryTitle">
+<div class="gallery-header"><h2 id="galleryTitle"></h2><button type="button" id="closeGallery" aria-label="Fermer la galerie">✕</button></div>
+<div class="gallery-stage"><button type="button" id="prevPhoto" aria-label="Photo précédente">❮</button><img id="galleryImage" alt="" width="1600" height="1067"/><button type="button" id="nextPhoto" aria-label="Photo suivante">❯</button></div>
+<p id="galleryCounter" aria-live="polite"></p><div id="galleryThumbs" class="gallery-thumbs"></div>
+</dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script src="gallery.js"></script>
+</body>
+</html>

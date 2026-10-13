@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,follow" />
+    <title>Facture Facile · Devis et factures</title>
+    <meta
+      name="description"
+      content="Créez vos devis et factures en ligne. Gérez clients, prestations, abonnements et paiements avec Facture Facile, pour artisans et indépendants."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23194739'/%3E%3Cpath d='M10 8h13v4h-9v4h7v4h-7v6h-4z' fill='white'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..800,0..100,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=2026.10.03.1" />
+    <link id="interface-font" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="interface.css?v=2026.10.03.1" />
+    <link rel="stylesheet" href="refinement.css?v=2026.10.12.1" />
+    <link rel="stylesheet" href="peppol.css?v=2026.10.12.1" />
+    <link rel="stylesheet" href="orbytek.css?v=2026.10.03.1" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Aller au contenu</a>
+    <div class="layout">
+      <aside>
+        <a class="brand" href="#home" aria-label="Facture Facile, accueil">
+          <span class="brand-symbol" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="3" y="3" width="42" height="42" rx="12" fill="currentColor"/><path d="M16 12h18v6H22v6h10v6H22v8h-6z" fill="white"/></svg>
+          </span>
+          <span class="brand-words">Facture<br />Facile</span>
+        </a>
+        <p class="brand-tagline" id="brandtagline">
+          Votre facturation, simplement
+        </p>
+        <nav aria-label="Navigation principale">
+          <a href="#home" data-nav="home"
+            ><span class="nav-icon" aria-hidden="true">⌂</span
+            ><span>Accueil</span></a
+          >
+          <a
+            href="#docs"
+            data-nav="docs"
+            data-filter="facture"
+            onclick="
+              event.preventDefault(); openDocuments('facture');
+            "
+            ><span class="nav-icon" aria-hidden="true">▤</span
+            ><span>Factures</span></a
+          >
+          <a
+            href="#docs"
+            data-nav="docs"
+            data-filter="devis"
+            onclick="
+              event.preventDefault(); openDocuments('devis');
+            "
+            ><span class="nav-icon" aria-hidden="true">▤</span
+            ><span>Devis</span></a
+          >
+          <a href="#clients" data-nav="clients"
+            ><span class="nav-icon" aria-hidden="true">♙</span
+            ><span>Clients</span></a
+          >
+          <a href="#peppol" data-nav="peppol"><span class="nav-icon" aria-hidden="true">◇</span><span>Peppol <span data-peppol-unread hidden></span></span></a>
+          <a href="#recurring" data-nav="recurring"
+            ><span class="nav-icon" aria-hidden="true">↻</span
+            ><span>Abonnements</span></a
+          >
+          <a href="#payments" data-nav="payments"
+            ><span class="nav-icon" aria-hidden="true">▱</span
+            ><span>Paiements</span></a
+          >
+          <a href="#dashboard" data-nav="dashboard"
+            ><span class="nav-icon" aria-hidden="true">⌁</span
+            ><span>Rapports</span></a
+          >
+        </nav>
+        <div class="side-help">
+          <span class="help-icon">?</span><strong>Un pas à la fois.</strong>
+          <p>Vous pouvez revenir en arrière à chaque étape.</p>
+          <button class="link" id="help">Comment ça marche ?</button>
+          <a href="accueil.html" class="link discover-app no-print">Découvrir Facture Facile</a>
+        </div>
+        <div class="side-foot">
+          <strong>Du temps<br />pour votre métier</strong
+          ><span class="side-foot-rule" aria-hidden="true"></span
+          ><span class="side-foot-symbol" aria-hidden="true">⚒</span
+          ><span id="sidefoottrades"
+            >Clients · Documents · Paiements</span
+          >
+        </div>
+        <div class="app-version no-print">Version 2026.10.03.1</div>
+      </aside>
+      <div class="workspace">
+        <header>
+          <span id="headerdate" class="header-date"></span>
+          <div class="header-actions">
+            <button class="quiet" id="themebutton" hidden>
+              Thème
+              <span class="theme-current" id="themelabel"
+                >Bleu et blanc</span
+              >
+            </button>
+            <button class="quiet" id="textsize" aria-label="Agrandir le texte">
+              A+ <span>Agrandir le texte</span>
+            </button>
+            <a href="#company" class="company-link">Paramètres</a>
+            <span class="avatar" id="accountavatar" aria-hidden="true">?</span>
+            <span class="account-name" id="accountname">Mon compte</span>
+            <button class="quiet" id="logout" hidden>Déconnexion</button>
+          </div>
+        </header>
+        <main id="main" tabindex="-1"><h1>Facture Facile : devis et factures pour indépendants</h1><p>Créez vos devis et factures, gérez vos clients et suivez vos paiements. Douze apparences et cinq modèles personnalisables.</p><noscript>Activez JavaScript pour vous connecter à votre espace de facturation.</noscript></main>
+      </div>
+    </div>
+    <div id="toast" role="status"></div>
+    <dialog id="helpdialog">
+      <h2>Faisons simple.</h2>
+      <p>1. Choisissez « Créer une facture » ou « Créer un devis ».</p>
+      <p>2. Sélectionnez votre client, puis ajoutez les travaux.</p>
+      <p>3. Vérifiez et enregistrez votre document.</p>
+      <p>
+        Pour obtenir un PDF, ouvrez le document, puis choisissez « Imprimer /
+        PDF ».
+      </p>
+      <p class="muted">
+        Les données sont enregistrées dans votre compte. L’envoi e-mail utilise votre messagerie et demande confirmation. Le QR de virement SEPA utilise votre application bancaire compatible. Peppol test nécessite la configuration du service associé.
+      </p>
+      <button class="primary" onclick="this.closest('dialog').close()">
+        J’ai compris
+      </button>
+    </dialog>
+    <dialog id="themedialog" aria-labelledby="themeheading">
+      <h2 id="themeheading">Choisissez votre apparence</h2>
+      <p>Douze interfaces au choix. Votre métier et vos documents restent indépendants de ce choix.</p>
+      <div class="theme-options"></div>
+      <button type="button" onclick="this.closest('dialog').close()">
+        Fermer
+      </button>
+    </dialog>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="config.js"></script>
+    <script src="vendor/qrcode.js"></script>
+    <script src="vendor/qrcode_UTF8.js"></script>
+    <script src="vendor/html2pdf.bundle.min.js"></script>
+    <script src="vat.js?v=2026.10.03.1"></script>
+    <script src="team.js?v=2026.10.03.1"></script>
+    <script src="interface.js?v=2026.10.12.1"></script>
+    <script src="app.js?v=2026.10.12.1"></script>
+    <script src="peppol.js?v=2026.10.12.1"></script>
+  </body>
+</html>

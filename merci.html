@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#f6f9ff">
+<title>Message envoyé · Orbytek</title>
+<link rel="icon" href="favicon.ico?v=20261003-blue-transparent">
+<script src="appearance.js?v=20261007-stable"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="cosmos.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=optional">
+<link rel="stylesheet" href="appearance.css?v=20261011-legal">
+<link rel="stylesheet" href="merci.css">
+</head>
+<body class="thanks-page">
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header><nav class="wrap" aria-label="Navigation principale">
+<a class="brand" href="index.html" aria-label="Orbytek, accueil"><img src="orbytek-logo-light.webp" alt="Orbytek — Solutions digitales" width="2282" height="757"></a>
+<a class="thanks-home" href="index.html">Retour au site <span aria-hidden="true">↗</span></a>
+<div class="appearance-control" role="group" aria-label="Apparence du site"><button type="button" data-appearance-choice="light" aria-pressed="true"><span aria-hidden="true">☀</span> Clair</button><button type="button" data-appearance-choice="dark" aria-pressed="false"><span aria-hidden="true">☾</span> Sombre</button></div></nav></header>
+<main id="contenu" class="thanks-main">
+<section class="delivery-card" aria-labelledby="thanks-title">
+<p class="delivery-badge"><span aria-hidden="true">✓</span> Message envoyé</p>
+<h1 id="thanks-title">Votre idée a pris <em>son envol.</em></h1>
+<p class="thanks-intro">Merci pour votre message !<br>Prochaine escale : notre premier échange.</p>
+<div class="delivery-scene">
+<svg class="delivery-art" viewBox="0 0 900 310" role="img" aria-labelledby="delivery-title delivery-description">
+<title id="delivery-title">Votre message voyage jusqu’à Orbytek</title>
+<desc id="delivery-description">Une petite fusée décolle de la boîte aux lettres de votre maison et suit une orbite jusqu’à celle d’Orbytek.</desc>
+<defs>
+<linearGradient id="flight-gradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="var(--scene-accent)"/><stop offset="1" stop-color="var(--scene-secondary)"/></linearGradient>
+<linearGradient id="exhaust-gradient" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff2c9"/><stop offset=".4" stop-color="#ffc36b"/><stop offset="1" stop-color="#f58b48" stop-opacity="0"/></linearGradient>
+<g id="little-house">
+<rect x="-53" y="-76" width="106" height="80" rx="8" class="house-wall"/>
+<path d="M-65-72 0-126 65-72" class="house-roof"/>
+<path d="M30-100v-30h16v43" class="house-chimney"/>
+<rect x="-14" y="-43" width="28" height="47" rx="5" class="house-door"/>
+<circle cx="7" cy="-16" r="2" class="house-knob"/>
+<rect x="-39" y="-56" width="17" height="23" rx="4" class="house-window"/>
+<rect x="22" y="-56" width="17" height="23" rx="4" class="house-window"/>
+<path d="M-31-55v21m-7-11h15m54-10v21m-7-11h15" class="window-cross"/>
+</g>
+<g id="mailbox">
+<path d="M0 3v55" class="mailbox-post"/>
+<path d="M-22 4v-17a22 22 0 0 1 44 0V4Z" class="mailbox-body"/>
+<path d="M-13-11h26v16h-26Z" class="letter"/>
+<path d="m-13-11 13 9 13-9" class="letter-fold"/>
+</g>
+</defs>
+<ellipse cx="450" cy="256" rx="388" ry="14" class="ground-halo"/>
+<path d="M58 255H842" class="ground-line"/>
+<g class="scene-stars" fill="currentColor">
+<path d="m348 46 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/>
+<path d="m586 40 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/>
+<path d="m460 129 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/>
+<circle cx="268" cy="84" r="2"/><circle cx="639" cy="109" r="2"/><circle cx="520" cy="29" r="2"/><circle cx="385" cy="115" r="2"/>
+</g>
+<path d="M237 195C300-20 600-20 663 195" class="flight-path"/>
+<path d="M237 195C300-20 600-20 663 195" class="flight-trace"/>
+<g transform="translate(140 247)"><use href="#little-house"/></g>
+<g transform="translate(760 247)"><use href="#little-house"/></g>
+<g transform="translate(237 195)"><use href="#mailbox"/><path d="M24-5v-27h16v12H24" class="mailbox-flag"/></g>
+<g transform="translate(663 195)"><use href="#mailbox"/><path d="M24-5v-27h16v12H24" class="mailbox-flag arrival-flag"/>
+<circle cx="0" cy="-12" r="35" class="arrival-ring"/>
+<g class="arrival-check" transform="translate(32 -43)"><circle r="13"/><path d="m-5 0 3 3 7-7"/></g>
+</g>
+<g class="rocket-flight">
+<animateMotion id="rocket-motion" dur="4.8s" repeatCount="1" fill="freeze" rotate="auto" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .25 1" path="M237 195C300-20 600-20 663 195"/>
+<g transform="rotate(90)">
+<path d="M-6 17Q-14 38 0 55Q14 38 6 17Z" fill="url(#exhaust-gradient)" class="rocket-flame"/>
+<path d="M-10 0-21 17-8 14m18-14 11 17-13-3" class="rocket-fins"/>
+<path d="M0-31C-16-18-14 5-9 16H9C14 5 16-18 0-31Z" class="rocket-body"/>
+<path d="M0-31Q-9-24-11-16H11Q9-24 0-31Z" class="rocket-nose"/>
+<circle cy="-6" r="6" class="rocket-window"/>
+<path d="M-7 15H7" class="rocket-base"/>
+</g>
+</g>
+<text x="140" y="291" class="scene-label">CHEZ VOUS</text>
+<text x="760" y="291" class="scene-label">CHEZ ORBYTEK</text>
+</svg>
+<div class="delivery-caption"><span aria-hidden="true">✓</span> Votre message est en route vers ma boîte mail.</div>
+</div>
+<div class="thanks-note"><span class="note-icon" aria-hidden="true">✦</span><p>Je prendrai connaissance de votre projet et vous répondrai directement par e-mail ou téléphone.<br><strong>À très bientôt, Thibaut.</strong></p></div>
+<div class="thanks-actions"><a class="button" href="index.html">Retour à l’accueil <span aria-hidden="true">↗</span></a><a class="thanks-secondary" href="creations.html">Explorer mes créations <span aria-hidden="true">→</span></a></div>
+<button type="button" class="replay-flight" id="replay-flight">Rejouer le voyage <span aria-hidden="true">↻</span></button>
+</section>
+</main>
+<footer class="thanks-footer">Orbytek · Proximité · Contact direct · Sur mesure · <a href="mentions-legales.html">Mentions légales</a></footer>
+<script src="merci.js" defer></script>
+</body>
+</html>
