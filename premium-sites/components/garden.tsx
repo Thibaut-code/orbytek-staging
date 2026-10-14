@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { GardenHero, GardenExplorer } from "./garden-immersive";
+import "./garden-immersive.css";
 import {
   Sprout,
   Scissors,
@@ -15,7 +17,6 @@ import {
 import {
   Experience,
   Header,
-  HeroMedia,
   Reveal,
   SectionTitle,
   ArrowUpRight,
@@ -145,7 +146,7 @@ export default function Garden() {
         brand="vert & pierre"
         sub="Paysages à vivre"
         links={[
-          { label: "Notre regard", href: "#regard" },
+          { label: "Le jardin", href: "#jardin-interactif" },
           { label: "Savoir-faire", href: "#services" },
           { label: "Nos jardins", href: "#realisations" },
           { label: "Votre projet", href: "#estimation" },
@@ -154,49 +155,7 @@ export default function Garden() {
         onAction={() => setPanel("quote")}
       />
       <main id="main">
-        <section className="hero">
-          <HeroMedia name="garden-hero" />
-          <div className="wrap-premium">
-            <Reveal className="hero-content">
-              <span className="eyebrow">
-                PAYSAGISTE · BRABANT WALLON & SUD DE BRUXELLES
-              </span>
-              <h1>
-                Dehors,
-                <br />
-                la vie <em>prend racine.</em>
-              </h1>
-              <p className="hero-copy">
-                Des jardins qui vous ressemblent.
-                <br />
-                Du premier trait aux dernières plantations,
-                <br />
-                nous donnons forme à votre vie dehors.
-              </p>
-              <div className="hero-actions">
-                <button className="button" onClick={() => setPanel("quote")}>
-                  Imaginons votre jardin
-                  <ArrowUpRight size={16} />
-                </button>
-                <a className="text-link" href="#realisations">
-                  Voir nos jardins
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </Reveal>
-          </div>
-          <span className="vertical-caption">
-            LE VÉGÉTAL. LA MATIÈRE. LA VIE.
-          </span>
-          <div className="hero-bottom">
-            <span>
-              <Sprout size={14} />
-              DES ESPACES POUR SE SENTIR BIEN
-            </span>
-            <span>CONCEPTION · AMÉNAGEMENT · ENTRETIEN</span>
-            <a href="#regard">LAISSEZ-VOUS INSPIRER ↓</a>
-          </div>
-        </section>
+        <GardenHero onProject={() => setPanel("quote")} />
         <div className="wrap-premium">
           <div className="stats-strip">
             {[
@@ -211,6 +170,9 @@ export default function Garden() {
               </div>
             ))}
           </div>
+        </div>
+        <GardenExplorer onProject={() => setPanel("quote")} />
+        <div className="wrap-premium">
           <section className="section split-section" id="regard">
             <Reveal className="split-copy">
               <span className="eyebrow">NOTRE REGARD</span>
@@ -295,19 +257,19 @@ export default function Garden() {
             </div>
           </section>
         </div>
-        <section className="section contrast-section">
+        <section className="section contrast-section" id="avant-apres">
           <div className="wrap-premium">
             <div className="section-heading">
               <SectionTitle
-                eyebrow="CHANGER DE PERSPECTIVE"
+                eyebrow="PROJECTION D’AMÉNAGEMENT"
                 title={
                   <>
-                    Le même espace.
+                    Un potentiel caché.
                     <br />
-                    <em>Une autre vie.</em>
+                    <em>Un jardin révélé.</em>
                   </>
                 }
-                body="Faites glisser le curseur pour explorer deux ambiances de jardin."
+                body="Faites glisser le curseur : d’un terrain délaissé à un lieu de vie, avec terrasse, pergola et miroir d’eau."
               />
               <span className="text-link">
                 <MoveHorizontal size={16} />
@@ -315,27 +277,27 @@ export default function Garden() {
               </span>
             </div>
             <div
-              className="before-after"
+              className="before-after garden-projection-comparison"
               style={{ "--position": `${position}%` } as React.CSSProperties}
             >
               <img
-                src={image("garden-after")}
-                alt="Inspiration après : jardin paysager aux lignes structurées"
+                src={image("garden-vision")}
+                alt="Projection après aménagement : pergola, terrasse en pierre, bassin et massifs autour des arbres conservés"
                 loading="lazy"
               />
               <img
                 className="before-layer"
-                src={image("garden-before")}
-                alt="Inspiration avant : espace de jardin à aménager"
+                src={image("garden-projection-before")}
+                alt="État initial simulé du même jardin : sol délaissé, allée en terre et dalle usée, avec les mêmes arbres et le même cadrage"
                 loading="lazy"
               />
               <div className="slider-rule" />
               <span className="slider-knob">↔</span>
               <span className="before-after-label before">
-                AVANT · INSPIRATION
+                AVANT · SIMULATION
               </span>
               <span className="before-after-label after">
-                APRÈS · INSPIRATION
+                APRÈS · PROJECTION
               </span>
               <input
                 type="range"
@@ -348,8 +310,7 @@ export default function Garden() {
               />
             </div>
             <p className="fine-print">
-              Deux photos d’inspiration pour démontrer le comparateur. Elles ne
-              représentent pas la transformation réelle d’un même terrain.
+              Projection d’aménagement : deux visuels générés par IA à partir d’une même scène, avec un cadrage et des arbres repères conservés. Cette simulation illustre un potentiel, pas un chantier réalisé.
             </p>
           </div>
         </section>
@@ -397,11 +358,20 @@ export default function Garden() {
                 <MapPanel kind="garden" />
               </div>
             )}
-            <div className="project-grid-premium">
+            <div
+              className={`garden-editorial ${category !== "Tous" ? "is-filtered" : ""}`}
+            >
               {projects
                 .filter((p) => category === "Tous" || p.category === category)
                 .map((p) => (
-                  <Reveal key={p.id}>
+                  <Reveal
+                    key={p.id}
+                    className={`garden-story ${p.id === 2 ? "garden-story-terrace" : ""}`}
+                  >
+                    <div className="garden-story-number">
+                      <span>0{p.id} / COLLECTION</span>
+                      <span>{p.id === 1 ? "À LA UNE" : "INSPIRATION"}</span>
+                    </div>
                     <button
                       className="project-photo"
                       onClick={() => setProject(p)}
@@ -409,7 +379,7 @@ export default function Garden() {
                     >
                       <img src={image(p.image)} alt={p.title} loading="lazy" />
                       <span>
-                        <ArrowUpRight size={18} />
+                        Découvrir le jardin <ArrowUpRight size={18} />
                       </span>
                     </button>
                     <div className="project-info">
@@ -421,9 +391,14 @@ export default function Garden() {
                       </div>
                       <span>{p.area}</span>
                     </div>
+                    <p className="garden-story-caption">{p.text}</p>
                   </Reveal>
                 ))}
             </div>
+            <p className="garden-collection-note">
+              Collection d’inspiration : projets illustratifs, photographies
+              d’ambiance et compositions générées par IA.
+            </p>
           </section>
         </div>
         <section className="section contrast-section" id="estimation">

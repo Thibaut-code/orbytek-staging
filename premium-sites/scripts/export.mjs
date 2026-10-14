@@ -1,11 +1,4 @@
-import {
-  cp,
-  mkdir,
-  readFile,
-  writeFile,
-  readdir,
-  rm,
-} from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile, readdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 const root = fileURLToPath(new URL("../../", import.meta.url));
@@ -59,20 +52,12 @@ const entries = [
   },
 ];
 for (const p of entries) {
-  const css = await readFile(
-    path.join(
-      source,
-      "_next",
-      "static",
-      "css",
-      (await readdir(path.join(source, "_next", "static", "css"))).find((x) =>
-        x.endsWith(".css"),
-      ),
-    ),
-    "utf8",
-  );
   const start = await readFile(path.join(source, p.id, "index.html"), "utf8");
-  const hero = start.match(/<section class="hero">[\s\S]*?<\/section>/)?.[0];
+  const styles = [...start.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match => match[1]);
+  const css = (await Promise.all(styles.map(url => readFile(path.join(source, url.replace(/^\/demos\//, "")), "utf8")))).join("\n");
+  const hero = start.match(
+    /<section class="hero"[^>]*>[\s\S]*?<\/section>/,
+  )?.[0];
   if (!hero) throw new Error(`Hero absent : ${p.id}`);
   await writeFile(
     path.join(root, `creation-preview-${p.n}.html`),

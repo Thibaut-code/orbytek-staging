@@ -3,6 +3,8 @@ const PEPPOL_STATES={draft:'En préparation',sending:'En cours d’envoi',sent:'
 const PEPPOL_RESPONSES={AB:'Réception confirmée',IP:'En traitement',UQ:'Informations demandées',CA:'Acceptée sous conditions',RE:'Rejetée',AP:'Acceptée',PD:'Paiement signalé'};
 let peppolState={scope:'',phase:'idle',rows:[],events:[],company:null,environment:'playground',error:'',isOwner:false};
 let peppolTab='outgoing',peppolQuery='',peppolFilter='',peppolPage=1,peppolBusy=false;
+const peppolSorts={outgoing:{key:'date',ascending:false},incoming:{key:'date',ascending:false}};
+const peppolCollator=new Intl.Collator('fr-BE',{numeric:true,sensitivity:'base'});
 const peppolScope=()=>account?`${account.id}:${companyOwner()}:${sessionGeneration}`:'';
 const peppolText=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr');
 const peppolDate=s=>s?new Date(s.length===10?s+'T12:00:00':s).toLocaleString('fr-BE',s.length===10?{dateStyle:'short'}:{dateStyle:'short',timeStyle:'short'}):'—';
@@ -49,7 +51,39 @@ function peppolRows() {
   if(peppolTab==='outgoing') for(const doc of docs.filter(d=>d.type==='facture')) {
     if(!rows.some(r=>r.source_id===doc.dbId&&r.kind==='invoice'))rows.push({id:'',source_id:doc.dbId,number:doc.id,party_name:client(doc).name,kind:'invoice',direction:'outgoing',amount:totals(doc).total,currency:'EUR',due_date:doc.due,status:'draft',created_at:doc.date});
   }
-  return rows.filter(r=>peppolText([r.number,r.party_name,r.party_vat].join(' ')).includes(peppolText(peppolQuery))&&(!peppolFilter||r.status===peppolFilter||(peppolFilter==='unread'&&!r.read_at)||(peppolFilter==='unpaid'&&!r.paid_at)||(peppolFilter===r.review_state)));
+  const filtered=rows.filter(r=>peppolText([r.number,r.party_name,r.party_vat].join(' ')).includes(peppolText(peppolQuery))&&(!peppolFilter||r.status===peppolFilter||(peppolFilter==='unread'&&!r.read_at)||(peppolFilter==='unpaid'&&!r.paid_at)||(peppolFilter===r.review_state)));
+  const sort=peppolSorts[peppolTab];
+  if(!sort)return filtered;
+  return filtered.sort((a,b)=>{
+    const av=peppolSortValue(a,sort.key),bv=peppolSortValue(b,sort.key);
+    // Missing dates and amounts stay at the end in either direction.
+    if(av==null||bv==null)return av==null?(bv==null?0:1):-1;
+    const compared=typeof av==='number'?av-bv:peppolCollator.compare(av,bv);
+    return sort.ascending?compared:-compared;
+  });
+}
+function peppolSortValue(row,key){
+  if(key==='date'||key==='due'){
+    const value=key==='date'?(row.provider_created_at||row.created_at):row.due_date;
+    const timestamp=value?Date.parse(value):NaN;return Number.isFinite(timestamp)?timestamp:null;
+  }
+  if(key==='amount')return row.amount==null||row.amount===''||!Number.isFinite(Number(row.amount))?null:Number(row.amount);
+  if(key==='party')return row.party_name||'';
+  if(key==='number')return row.number||'';
+  if(key==='status')return row.direction==='incoming'?
+    [row.read_at?'Reçue':'Non lue',row.paid_at?'Payée':({to_review:'À vérifier',verified:'Vérifiée',disputed:'À contester'})[row.review_state]||'',PEPPOL_RESPONSES[row.business_response]||row.business_response||''].join(' '):
+    [PEPPOL_STATES[row.status]||row.status||'',PEPPOL_RESPONSES[row.business_response]||row.business_response||''].join(' ');
+}
+function peppolSortBy(key){
+  if(!['date','party','number','amount','due','status'].includes(key)||!peppolSorts[peppolTab])return;
+  const sort=peppolSorts[peppolTab];
+  sort.ascending=sort.key===key?!sort.ascending:!['date','due'].includes(key);sort.key=key;
+  peppolPage=1;peppolDrawTable();
+  document.querySelector(`[data-peppol-sort="${key}"]`)?.focus({preventScroll:true});
+}
+function peppolSortHeader(key,label){
+  const sort=peppolSorts[peppolTab],active=sort.key===key;
+  return `<th scope="col" aria-sort="${active?(sort.ascending?'ascending':'descending'):'none'}"><button type="button" class="peppol-sort" data-peppol-sort="${key}" onclick="peppolSortBy('${key}')" aria-label="${label} : trier par ordre ${active&&sort.ascending?'décroissant':!active&&['date','due'].includes(key)?'décroissant':'croissant'}">${label}<span aria-hidden="true">${active?(sort.ascending?'↑':'↓'):'↕'}</span></button></th>`;
 }
 function peppolView() {
   if(peppolState.scope!==peppolScope()){peppolState={scope:peppolScope(),phase:'idle',rows:[],events:[],company:null,environment:'playground',error:'',isOwner:false};peppolPage=1;}
@@ -75,7 +109,7 @@ function peppolTable() {
     const original=docs.find(d=>d.dbId===r.source_id),canSend=!incoming&&r.source_id&&['draft','failed'].includes(r.status)&&!r.provider_id;
     return `<tr><td>${esc(peppolDate(r.provider_created_at||r.created_at))}</td><td><div class="peppol-party"><span class="peppol-avatar">${esc(Array.from(r.party_name||'?')[0])}</span><div><strong>${esc(r.party_name)}</strong><small>${esc(r.party_vat||'')}</small></div></div></td><td>${esc(r.number)}${r.kind==='creditNote'?'<small>Note de crédit</small>':!['invoice','creditNote'].includes(r.kind)?`<small>${esc(r.kind)}</small>`:''}</td><td class="peppol-amount">${esc(peppolMoney(r))}</td><td>${esc(peppolDate(r.due_date))}</td><td>${incoming?`${r.read_at?peppolBadge('received'):'<span class="peppol-badge peppol-unread">Non lue</span>'}<small>${r.paid_at?'Payée':({to_review:'À vérifier',verified:'Vérifiée',disputed:'À contester'})[r.review_state]||''}</small>`:peppolBadge(r.status)}${r.business_response?`<small>${esc(PEPPOL_RESPONSES[r.business_response]||r.business_response)}</small>`:''}</td><td><div class="peppol-row-actions">${r.id?`<button data-peppol-view="${esc(r.id)}">Voir</button>${r.provider_id?`<button data-peppol-file="${esc(r.id)}" data-type="pdf">PDF</button><button data-peppol-file="${esc(r.id)}" data-type="xml">XML</button>`:''}`:original?`<button data-peppol-source="${esc(original.id)}">Voir</button>`:''}${canSend?`<button class="primary" data-peppol-${r.kind==='creditNote'?'credit':'send'}="${esc(r.source_id)}">${r.status==='failed'?'Réessayer':'Envoyer'}</button>`:''}${original?`<button data-peppol-test="${esc(original.id)}">Test existant</button>`:''}</div></td></tr>`;
   }).join('');
-  return `<div class="peppol-table-scroll"><table><thead><tr><th>${incoming?'Réception':'Date'}</th><th>${incoming?'Fournisseur':'Client'}</th><th>Numéro</th><th>Montant TTC</th><th>Échéance</th><th>Statut</th><th>Actions</th></tr></thead><tbody>${body||'<tr><td colspan="7"><div class="empty">Aucun document ne correspond à cette liste.</div></td></tr>'}</tbody></table></div><div class="peppol-pagination"><span>${rows.length} document(s) · 10 par page</span><div><button ${peppolPage===1?'disabled':''} onclick="peppolPage--;peppolDrawTable()">Précédent</button><span>${peppolPage} / ${pages}</span><button ${peppolPage===pages?'disabled':''} onclick="peppolPage++;peppolDrawTable()">Suivant</button></div></div>`;
+  return `<div class="peppol-table-scroll"><table><thead><tr>${[['date',incoming?'Réception':'Date'],['party',incoming?'Fournisseur':'Client'],['number','Numéro'],['amount','Montant TTC'],['due','Échéance'],['status','Statut']].map(([key,label])=>peppolSortHeader(key,label)).join('')}<th scope="col">Actions</th></tr></thead><tbody>${body||'<tr><td colspan="7"><div class="empty">Aucun document ne correspond à cette liste.</div></td></tr>'}</tbody></table></div><div class="peppol-pagination"><span>${rows.length} document(s) · 10 par page</span><div><button ${peppolPage===1?'disabled':''} onclick="peppolPage--;peppolDrawTable()">Précédent</button><span>${peppolPage} / ${pages}</span><button ${peppolPage===pages?'disabled':''} onclick="peppolPage++;peppolDrawTable()">Suivant</button></div></div>`;
 }
 function peppolSettings() {
   const c=peppolState.company,owner=peppolState.isOwner;

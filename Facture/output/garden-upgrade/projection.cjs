@@ -1,0 +1,22 @@
+const fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'../../..');
+const sharp=require(path.join(root,'premium-sites/node_modules/sharp'));
+(async()=>{
+ await sharp('C:/Users/FlowUP/.codex/generated_images/01a0e8a2-6b96-72f0-9158-5bcc0cbccd3b/exec-cef86a8f-e5cb-4a5c-90d0-30f33a4e72c6.png').webp({quality:85}).toFile(path.join(root,'premium-sites/public/images/garden-projection-before.webp'));
+ const file=path.join(root,'premium-sites/components/garden.tsx');let s=fs.readFileSync(file,'utf8');
+ s=s.replace('eyebrow="CHANGER DE PERSPECTIVE"','eyebrow="PROJECTION D’AMÉNAGEMENT"').replace('D’une pelouse','Un potentiel caché.').replace('<em>à un jardin vivant.</em>','<em>Un jardin révélé.</em>');
+ s=s.replace('Un même jardin, avant et après la création d’un massif de gestion des eaux de pluie.','Faites glisser le curseur : d’un terrain délaissé à un lieu de vie, avec terrasse, pergola et miroir d’eau.');
+ s=s.replace('garden-real-comparison','garden-projection-comparison').replace('image("garden-real-after")','image("garden-vision")').replace('image("garden-real-before")','image("garden-projection-before")');
+ s=s.replace('Le même jardin en 2016 : massif planté au milieu de la pelouse, devant la clôture et la maison grise','Projection après aménagement : pergola, terrasse en pierre, bassin et massifs autour des arbres conservés').replace('Le jardin en 2013 : pelouse devant la clôture en bois et la maison grise','État initial simulé du même jardin : sol délaissé, allée en terre et dalle usée, avec les mêmes arbres et le même cadrage');
+ s=s.replace('AVANT · 2013','AVANT · SIMULATION').replace('APRÈS · 2016','APRÈS · PROJECTION');
+ const start=s.indexOf('              Transformation réelle documentée');const end=s.indexOf('            </p>',start);if(start<0||end<0)throw Error('Credit missing');
+ s=s.slice(0,start)+'              Projection d’aménagement : deux visuels générés par IA à partir d’une même scène, avec un cadrage et des arbres repères conservés. Cette simulation illustre un potentiel, pas un chantier réalisé.\n'+s.slice(end);
+ fs.writeFileSync(file,s);
+ fs.appendFileSync(path.join(root,'premium-sites/components/garden-immersive.css'),'\n.garden .before-after.garden-projection-comparison{width:100%;height:auto;aspect-ratio:1672/941;margin-inline:auto}.garden .garden-projection-comparison img{object-fit:contain}@media(max-width:640px){.garden .garden-projection-comparison .before-after-label{font-size:7px;letter-spacing:.04em;padding:7px;bottom:10px}.garden .garden-projection-comparison .before-after-label.before{left:8px}.garden .garden-projection-comparison .before-after-label.after{right:8px}}\n');
+ fs.writeFileSync(path.join(root,'premium-sites/public/images/garden-projection.prompt.md'),`# Projection d’aménagement
+Generated with the built-in image generation tool, 13 October 2026. Before-state edited from garden-vision.webp (after-state). Both are fictional AI-generated imagery. Source image and prompt: garden-vision.prompt.md. No claim of a real completed project.
+
+## Editing prompt
+Edit this exact garden image to create the BEFORE state of the same location before landscaping. Output a single image, exact same 1672x941 aspect ratio and framing. CRITICAL preserve camera position, perspective, focal length, horizon, golden-hour light, background trees, and especially the central multi-trunk tree and left large tree in exactly the same positions and silhouettes. Preserve background boundaries. Do not invent a different garden. Remove the timber pergola and all outdoor furniture on the right, replace the raised pristine terrace with a low worn cracked concrete slab at the same location. Remove the ornamental water feature in the lower right and replace its area with patchy tired grass and bare compacted soil. Replace the beautiful limestone stepping-stone path with a rough narrow dirt track in the EXACT same route, preserving its perspective. Remove the ornamental planted beds, white flowering perennials, lush grasses, replace them with sparse weedy tufts and patchy dry grass, ordinary neglected but plausible backyard. Keep all permanent mature trees exactly where they are. Same weather, same illumination, same photographic realism. The transformation must be dramatic when overlaid but stationary trees and background should register in place. No ruins, no garbage, no people, no text, no collage, no labels, no watermark. This is a fictional architectural before-state simulation.
+`);
+})();

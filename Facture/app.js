@@ -426,12 +426,11 @@ function clientsView() {
 }
 function startForClient(id) {
   if (draft) {
-    go("wizard");
-    toast("Terminez ou abandonnez votre brouillon en cours.");
-    return;
+    return resolveCurrentDraft(() => startForClient(id), 'une nouvelle facture pour ce client');
   }
   start("facture");
   draft.client = id;
+  step = 2;
   render();
 }
 function newClient() {
@@ -917,6 +916,7 @@ async function initialize() {
       return;
     }
     const generation = ++sessionGeneration;
+    if(typeof outlookReset==='function')outlookReset();
     account = session?.user || null;
     dataState = account ? "loading" : "idle";
     clients = [];
