@@ -16,3 +16,6 @@ Photo d’accueil accueil-pipou.jpg : Jonathan Borba / Pexels, https://www.pexel
 Photo d’accueil actuelle accueil-cosy.jpg : https://www.pexels.com/photo/armchair-in-a-room-27777820/ (licence Pexels). Fauteuil et intérieur boisé, lumière chaude.
 
 Visuel interactif de croissance : bebe-ages.png, créé avec image_gen intégré. Consigne et répartition des étapes : PROMPTS-AGES.md.
+
+Fond du personnalisateur de broderie : bavoir-broderie.jpg, photo Quax du catalogue public https://www.lafoliedubebe.be/79397-thickbox_default/quax---bavoir-medium.jpg
+Aperçu croissance : bebe-ages-apercu.jpg est une version JPEG du visuel généré, intégrée directement dans index.html pour les aperçus sans accès aux ressources locales.

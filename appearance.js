@@ -27,6 +27,59 @@
       try { localStorage.setItem(key, mode); } catch { /* Current page remains usable. */ }
     });
     apply(mode);
+    const navigation = document.querySelector('header .main-navigation');
+    const links = navigation?.querySelector('.navlinks');
+    if (!navigation || !links) return;
+    const header = navigation.closest('header');
+    const mobile = matchMedia('(max-width: 800px)');
+    const actions = document.createElement('div');
+    actions.className = 'mobile-navigation-actions';
+    const theme = document.createElement('button');
+    theme.type = 'button';
+    theme.className = 'mobile-theme-toggle';
+    const updateTheme = () => {
+      theme.textContent = mode === 'light' ? '☀' : '☾';
+      theme.setAttribute('aria-label', mode === 'light' ? 'Activer le thème sombre' : 'Activer le thème clair');
+    };
+    theme.addEventListener('click', () => control.querySelector(`[data-appearance-choice="${mode === 'light' ? 'dark' : 'light'}"]`)?.click());
+    document.addEventListener('appearancechange', updateTheme);
+    updateTheme();
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'mobile-menu-toggle';
+    toggle.innerHTML = '<span aria-hidden="true">☰</span> <span>Menu</span>';
+    links.id ||= 'orbytek-navigation-links';
+    toggle.setAttribute('aria-controls', links.id);
+    toggle.setAttribute('aria-expanded', 'false');
+    actions.append(theme, toggle);
+    navigation.append(actions);
+    const contact = navigation.querySelector('.header-actions .navcta')?.cloneNode(true);
+    if (contact) {
+      contact.classList.add('mobile-menu-contact');
+      links.append(contact);
+    }
+    function setOpen(open, restoreFocus = false) {
+      header.classList.toggle('mobile-menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.firstElementChild.textContent = open ? '×' : '☰';
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      if (restoreFocus) toggle.focus();
+    }
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    links.addEventListener('click', event => {
+      if (mobile.matches && event.target.closest('a')) setOpen(false, true);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+    });
+    document.addEventListener('click', event => {
+      if (!header.contains(event.target)) setOpen(false);
+    });
+    header.addEventListener('focusout', () => {
+      queueMicrotask(() => { if (!header.contains(document.activeElement)) setOpen(false); });
+    });
+    mobile.addEventListener('change', () => setOpen(false));
+    header.classList.add('mobile-navigation-ready');
   });
   window.addEventListener('storage', event => { if (event.key === key) apply(event.newValue === 'dark' ? 'dark' : 'light'); });
 })();
