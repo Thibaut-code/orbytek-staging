@@ -1,16 +1,30 @@
 import { cp, mkdir, readFile, writeFile, readdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { createHash } from "node:crypto";
 const root = fileURLToPath(new URL("../../", import.meta.url));
 const source = fileURLToPath(new URL("../out/", import.meta.url));
 const target = path.join(root, "demos");
+// Pass a route name to update one demo without rebuilding the published others.
+const selected = new Set(process.argv.slice(2));
+for (const id of selected) {
+  if (!["immobilier", "restaurant", "paysagiste"].includes(id))
+    throw new Error(`Démo inconnue : ${id}`);
+}
 await mkdir(target, { recursive: true });
 // Only generated Next assets are replaced; portfolio and source files are kept.
 const generatedAssets = path.resolve(target, "_next");
 if (generatedAssets !== path.join(path.resolve(root), "demos", "_next"))
   throw new Error("Chemin d’export inattendu");
-await rm(generatedAssets, { recursive: true, force: true });
-await cp(source, target, { recursive: true });
+if (selected.size) {
+  // Older published routes still need their existing hashed assets.
+  await cp(path.join(source, "_next"), generatedAssets, { recursive: true });
+  for (const id of selected)
+    await cp(path.join(source, id), path.join(target, id), { recursive: true });
+} else {
+  await rm(generatedAssets, { recursive: true, force: true });
+  await cp(source, target, { recursive: true });
+}
 await cp(fileURLToPath(new URL("../public/", import.meta.url)), target, {
   recursive: true,
 });
@@ -52,6 +66,7 @@ const entries = [
   },
 ];
 for (const p of entries) {
+  if (selected.size && !selected.has(p.id)) continue;
   const start = await readFile(path.join(source, p.id, "index.html"), "utf8");
   const styles = [...start.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match => match[1]);
   const css = (await Promise.all(styles.map(url => readFile(path.join(source, url.replace(/^\/demos\//, "")), "utf8")))).join("\n");
@@ -70,6 +85,14 @@ for (const p of entries) {
       `${card}</div><p class="portfolio-note">`,
     );
   }
+  // Change the iframe URL whenever its actual content changes, so an older
+  // portfolio preview cannot survive a new static export in the browser cache.
+  const previewFile = path.join(root, `creation-preview-${p.n}.html`);
+  const version = createHash("sha256").update(await readFile(previewFile)).digest("hex").slice(0, 12);
+  html = html.replace(
+    new RegExp(`src="creation-preview-${p.n}\\.html(?:\\?[^"\\s]*)?"`, "g"),
+    `src="creation-preview-${p.n}.html?v=${version}"`,
+  );
 }
 html = html
   .replace(

@@ -13,9 +13,13 @@
     linear-gradient(0deg, rgba(9, 26, 17, 0.72), transparent 35%);
 }
 .garden .garden-cinema img {
-  animation: garden-drift 24s ease-in-out infinite alternate;
+  animation: none;
   object-position: center;
 }
+.garden .garden-breeze { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; pointer-events:none; opacity:0; }
+.garden .garden-breeze[data-ready="true"] { opacity:1; }
+@media(max-width:640px) { .garden .garden-breeze { object-position:60% center; } }
+@media(prefers-reduced-motion:reduce) { .garden .garden-breeze { display:none; } }
 .garden .garden-cinema.is-paused img {
   animation-play-state: paused;
 }

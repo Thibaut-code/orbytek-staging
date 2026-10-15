@@ -9,6 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { image } from "../lib/data";
+import { GardenBreeze } from "./garden-breeze";
 
 export function GardenHero({ onProject }: { onProject: () => void }) {
   const [paused, setPaused] = useState(false);
@@ -27,6 +28,7 @@ export function GardenHero({ onProject }: { onProject: () => void }) {
           alt=""
           fetchPriority="high"
         />
+        <GardenBreeze paused={paused} />
       </div>
       <div className="wrap-premium garden-hero-layout">
         <div className="hero-content">
