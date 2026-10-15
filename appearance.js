@@ -67,7 +67,24 @@
     }
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
     links.addEventListener('click', event => {
-      if (mobile.matches && event.target.closest('a')) setOpen(false, true);
+      const link = event.target.closest('a');
+      if (!mobile.matches || !link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      if (link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+      const destination = new URL(link.href, location.href);
+      const homePath = path => path.replace(/\/index\.html$/, '/');
+      const samePage = destination.origin === location.origin && homePath(destination.pathname) === homePath(location.pathname) && destination.search === location.search;
+      event.preventDefault();
+      // Close without returning focus to the sticky header before navigating.
+      setOpen(false);
+      if (samePage && destination.hash) {
+        const section = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+        if (section) {
+          history.pushState(null, '', destination.hash);
+          section.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+          return;
+        }
+      }
+      location.assign(destination.href);
     });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setOpen(false, true);
