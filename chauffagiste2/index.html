@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cuivre & Flamme — Chauffagiste et plombier en Brabant</title>
+<meta name="description" content="Chauffage, plomberie, pompes à chaleur et dépannage 24/7 en Brabant. Devis gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#EEF3F4;--surf:#fff;--ink:#0F2630;--mute:#4D6670;--line:#CBD9DD;--cu:#B4602A;--cu2:#8E4519;--heat:#4aa3c7;--r:22px;
+--d:'Bricolage Grotesque',Georgia,serif;--b:'DM Sans',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1A20;--surf:#12272F;--ink:#E8F1F3;--mute:#9DB5BD;--line:#244049;--cu:#E39A63;--cu2:#F0B084;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1A20;--surf:#12272F;--ink:#E8F1F3;--mute:#9DB5BD;--line:#244049;--cu:#E39A63;--cu2:#F0B084;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--b)}
+h1,h2,h3{font-family:var(--d);line-height:1.02;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cu);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{font:800 1.3rem var(--d);text-decoration:none;display:flex;align-items:center;gap:9px}
+.logo i{width:14px;height:14px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--heat);transition:background .4s}
+nav a{margin-left:22px;text-decoration:none;font-weight:500;color:var(--mute)}nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);padding:13px 22px;border-radius:99px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font:700 1rem var(--b);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}.btn.cu{background:var(--cu2);color:#fff}
+@media(max-width:760px){nav a:not(.btn){display:none}}
+/* HERO */
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 520px at 78% 40%,color-mix(in srgb,var(--heat) 34%,transparent),transparent 70%),var(--bg);transition:background .3s}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:60px;padding-bottom:70px}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);font-weight:800}
+.hero p.lead{font-size:1.2rem;color:var(--mute);max-width:34ch;margin:22px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.status{margin-top:26px;font-weight:500;min-height:3.2em;max-width:44ch}
+.dial{position:relative;width:min(420px,100%);margin:0 auto;aspect-ratio:1}
+.dial svg{width:100%;height:100%;overflow:visible}
+.dial .read{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none}
+.dial .read b{font:800 clamp(4rem,11vw,6.4rem)/1 var(--d);letter-spacing:-.04em}
+.dial .read span{color:var(--mute);font-weight:500}
+.dial input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:grab;margin:0}
+.dial:focus-within svg{filter:drop-shadow(0 0 0 var(--cu))}
+.hint{text-align:center;color:var(--mute);font-size:.92rem;margin-top:10px}
+/* bandeau */
+.band{border-block:1px solid var(--line);background:var(--surf)}
+.band .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-block:28px}
+@media(max-width:800px){.band .wrap{grid-template-columns:1fr 1fr}}
+.band b{font:800 2rem var(--d);display:block;color:var(--cu2)}.band span{color:var(--mute);font-size:.95rem}
+section{padding:96px 0}
+h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:800;max-width:18ch}
+.sub{color:var(--mute);max-width:52ch;margin:16px 0 40px}
+/* maison */
+.house{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
+@media(max-width:900px){.house{grid-template-columns:1fr}}
+.house svg{width:100%;height:auto;background:var(--surf);border:1px solid var(--line);border-radius:var(--r)}
+.spot{cursor:pointer}.spot .dot{fill:var(--cu);transition:r .2s}.spot:hover .dot,.spot:focus-visible .dot,.spot.on .dot{r:15}
+.spot .pulse{fill:none;stroke:var(--cu);stroke-width:2;animation:pl 2.2s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pl{from{transform:scale(1);opacity:.9}to{transform:scale(2.6);opacity:0}}
+.pipe{fill:none;stroke:var(--cu);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.flow{fill:none;stroke:var(--heat);stroke-width:5;stroke-linecap:round;stroke-dasharray:2 22;animation:fl 1.4s linear infinite;transition:stroke .4s}
+@keyframes fl{to{stroke-dashoffset:-48}}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:30px;min-height:290px}
+.panel h3{font-size:1.9rem;margin-bottom:12px}.panel p{color:var(--mute);margin:0 0 16px}
+.panel ul{padding-left:1.1em;margin:0 0 20px}.panel li{margin:6px 0}
+.tag{display:inline-block;background:color-mix(in srgb,var(--cu) 16%,transparent);color:var(--cu2);padding:4px 12px;border-radius:99px;font-weight:700;font-size:.85rem;margin-bottom:14px}
+/* estimateur */
+.est{background:var(--ink);color:var(--bg);border-radius:34px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:850px){.est{grid-template-columns:1fr}}
+:root[data-theme="dark"] .est,:root:not([data-theme="light"]) .est{--e:1}
+.est h2{color:inherit}.est .sub{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.est label{display:block;font-weight:700;margin:20px 0 8px}
+.est select,.est input[type=range]{width:100%}
+.est select{padding:13px;border-radius:12px;border:0;font:500 1rem var(--b);background:var(--bg);color:var(--ink)}
+.est input[type=range]{accent-color:#F0A06A}
+.res{background:color-mix(in srgb,var(--bg) 10%,transparent);border-radius:var(--r);padding:30px;align-self:center}
+.res b{font:800 clamp(2.4rem,5vw,3.6rem)/1.05 var(--d);display:block;margin:8px 0 14px}
+.res small{opacity:.75;display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tabs button{font:500 .98rem var(--b);padding:10px 18px;border-radius:99px;border:1px solid var(--line);background:var(--surf);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;position:relative;animation:in .45s both}
+.card.hot{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--cu) 16%,transparent);margin-bottom:18px}
+.card svg{width:26px;height:26px;fill:none;stroke:var(--cu);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.35rem;margin-bottom:8px}.card p{margin:0 0 12px;color:var(--mute);font-size:.98rem}.card.hot p{color:color-mix(in srgb,var(--bg) 72%,transparent)}
+.card ul{list-style:none;padding:0;margin:0 0 18px}.card li{padding-left:22px;position:relative;font-size:.95rem;margin:4px 0}.card li::before{content:"✓";position:absolute;left:0;color:var(--cu)}
+.card a{margin-top:auto;font-weight:700;color:var(--cu2);text-decoration:none}.card.hot a{color:#F0A06A}
+.badge{position:absolute;top:0;right:18px;background:var(--cu2);color:#fff;padding:5px 12px;border-radius:0 0 10px 10px;font-size:.82rem;font-weight:700}
+.ba{position:relative;max-width:860px;margin:0 auto 40px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;max-height:560px;user-select:none}
+.ba svg{position:absolute;inset:0;width:100%;height:100%}
+#bef{clip-path:inset(0 50% 0 0)}
+.ba .ln{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2);pointer-events:none}
+.ba .ln::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:#0F2630;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .lb{position:absolute;bottom:14px;padding:5px 14px;border-radius:99px;background:rgba(15,38,48,.8);color:#fff;font-weight:700;font-size:.9rem}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.gal{grid-template-columns:1fr 1fr}}@media(max-width:600px){.gal{grid-template-columns:1fr}}
+.gal figure{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.gal svg{display:block;width:100%;height:auto;transition:transform .5s}.gal figure:hover svg{transform:scale(1.04)}
+.gal .cv{overflow:hidden}.gal figcaption{padding:16px 20px;font-size:.95rem;color:var(--mute)}.gal figcaption b{display:block;color:var(--ink);font:700 1.1rem var(--d)}
+/* avis */
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.rev{grid-template-columns:1fr}}
+.rev figure{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.rev figure:nth-child(2){transform:translateY(22px)}@media(max-width:900px){.rev figure:nth-child(2){transform:none}}
+.rev blockquote{margin:0 0 18px;font:500 1.15rem/1.45 var(--d)}.rev figcaption{color:var(--mute);font-size:.92rem}
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px}
+@media(max-width:850px){.contact{grid-template-columns:1fr}}
+form{display:grid;gap:14px}
+input,textarea,.sel{font:500 1rem var(--b);padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surf);color:var(--ink);width:100%}
+textarea{min-height:120px;resize:vertical}
+.ok{display:none;background:color-mix(in srgb,#2e9e6a 18%,transparent);border-radius:14px;padding:16px;font-weight:700}
+.zone{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:start}
+@media(max-width:900px){.zone{grid-template-columns:1fr}}
+.map{width:100%;height:auto;border-radius:var(--r);border:1px solid var(--line);background:color-mix(in srgb,#7fc8a9 22%,var(--surf))}
+.pin circle{fill:var(--cu);stroke:var(--surf);stroke-width:3;transition:r .2s}.pin text{font:700 13px var(--b);fill:var(--ink);paint-order:stroke;stroke:var(--surf);stroke-width:4px}
+.pin.on circle{r:12;fill:var(--heat)}.pin.on text{font-size:15px}
+.hq circle{fill:var(--ink)}
+.zl{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+.zl button{all:unset;cursor:pointer;display:flex;gap:9px;align-items:center;padding:7px 4px;border-radius:8px;width:100%}
+.zl button::before{content:"";width:9px;height:9px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--cu);flex:none}
+.zl button:hover,.zl button:focus-visible{background:color-mix(in srgb,var(--cu) 14%,transparent)}
+.chk{display:flex;gap:10px;flex-wrap:wrap}.chk input{flex:1;min-width:170px}
+.zres{margin-top:16px;padding:16px 18px;border-left:4px solid var(--cu);background:color-mix(in srgb,var(--cu) 12%,transparent);border-radius:0 14px 14px 0;font-weight:500;min-height:3.4em}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mute);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sos{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#th{background:none;border:1px solid var(--line);color:var(--ink);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem}
+/* entrée hero unique */
+.hero h1,.hero .lead,.hero .cta{animation:in .8s cubic-bezier(.2,.7,.2,1) both}.hero .lead{animation-delay:.12s}.hero .cta{animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(24px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top"><i></i>Cuivre &amp; Flamme</a>
+<nav><a href="#prestations">Prestations</a><a href="#realisations">Réalisations</a><a href="#devis">Estimation</a><a href="#avis">Avis</a><a href="#contact" class="btn" style="margin-left:22px;color:var(--bg)">Devis gratuit</a></nav>
+<button id="th" aria-label="Changer le thème">◐</button>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<div>
+<h1>Chez vous, il fait toujours bon.</h1>
+<p class="lead">Chauffage, plomberie et pompes à chaleur dans tout le Brabant. Un technicien chez vous en moins de 2 heures.</p>
+<div class="cta"><a class="btn cu" href="#contact">Demander un devis gratuit</a><a class="btn" href="tel:+3220000000">Appeler le 02 000 00 00</a></div>
+<p class="status" id="status" aria-live="polite"></p>
+</div>
+<div>
+<div class="dial">
+<svg viewBox="0 0 400 400" aria-hidden="true">
+<circle cx="200" cy="200" r="170" fill="var(--surf)" stroke="var(--line)" stroke-width="2"/>
+<path id="track" d="M 79.8 320.2 A 170 170 0 1 1 320.2 320.2" fill="none" stroke="var(--line)" stroke-width="16" stroke-linecap="round"/>
+<path id="arc" d="M 79.8 320.2 A 170 170 0 1 1 320.2 320.2" fill="none" stroke="var(--heat)" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+<circle id="knob" r="15" fill="var(--surf)" stroke="var(--heat)" stroke-width="6"/>
+</svg>
+<div class="read"><b id="val">19°</b><span>température du salon</span></div>
+<input id="rng" type="range" min="10" max="26" step="0.5" value="19" aria-label="Température souhaitée dans le salon, en degrés">
+</div>
+<p class="hint">Faites tourner le thermostat : toute la page réagit.</p>
+</div>
+</div></div>
+
+<div class="band"><div class="wrap">
+<div><b>&lt; 2 h</b><span>délai moyen d'intervention en urgence</span></div>
+<div><b>24 / 7</b><span>dépannage week-ends et jours fériés</span></div>
+<div><b>15 ans</b><span>de garantie sur nos installations de chauffage*</span></div>
+<div><b>4,9 / 5</b><span>sur 380 avis clients vérifiés</span></div>
+</div></div>
+
+<section id="services"><div class="wrap">
+<h2>Une maison, trois métiers.</h2>
+<p class="sub">Touchez un point de la maison pour voir ce que nous y faisons.</p>
+<div class="house">
+<svg viewBox="0 0 600 400" role="group" aria-label="Coupe d'une maison avec ses installations">
+<path d="M40 190 L300 40 L560 190" fill="none" stroke="var(--ink)" stroke-width="6" stroke-linejoin="round"/>
+<rect x="70" y="190" width="460" height="190" fill="none" stroke="var(--ink)" stroke-width="6"/>
+<line x1="70" y1="285" x2="530" y2="285" stroke="var(--line)" stroke-width="4"/>
+<line x1="300" y1="190" x2="300" y2="380" stroke="var(--line)" stroke-width="4"/>
+<path class="pipe" d="M150 330 H300 V240 H450 M150 330 V230 M300 330 H450 V320"/>
+<path class="flow" d="M150 330 H300 V240 H450 M150 330 V230 M300 330 H450 V320"/>
+<rect x="465" y="95" width="60" height="50" rx="10" fill="var(--surf)" stroke="var(--ink)" stroke-width="4" transform="translate(0 0)"/>
+<circle cx="495" cy="120" r="14" fill="none" stroke="var(--ink)" stroke-width="4"/>
+<rect x="110" y="300" width="70" height="60" rx="8" fill="var(--surf)" stroke="var(--ink)" stroke-width="4"/>
+<path d="M390 215 q25 -20 50 0" fill="none" stroke="var(--ink)" stroke-width="4"/>
+<g class="spot on" tabindex="0" role="button" aria-label="Chaufferie" data-k="0"><circle class="pulse" cx="145" cy="330" r="12"/><circle class="dot" cx="145" cy="330" r="11"/></g>
+<g class="spot" tabindex="0" role="button" aria-label="Salle de bain" data-k="1"><circle class="pulse" cx="420" cy="238" r="12"/><circle class="dot" cx="420" cy="238" r="11"/></g>
+<g class="spot" tabindex="0" role="button" aria-label="Pompe à chaleur" data-k="2"><circle class="pulse" cx="495" cy="120" r="12"/><circle class="dot" cx="495" cy="120" r="11"/></g>
+</svg>
+<div class="panel" id="panel" aria-live="polite"></div>
+</div>
+</div></section>
+
+<section id="prestations"><div class="wrap">
+<h2>Tout ce que nous savons faire.</h2>
+<p class="sub">Du robinet qui goutte à la pompe à chaleur géothermique : une seule équipe, un seul interlocuteur. Filtrez par métier.</p>
+<div class="tabs" id="tabs" role="tablist"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="realisations"><div class="wrap">
+<h2>Nos chantiers, avant et après.</h2>
+<p class="sub">Glissez pour comparer une salle de bain rénovée en 6 jours. Illustrations de démonstration : les photos réelles de l'entreprise viendront les remplacer.</p>
+<div class="ba" id="ba">
+<div id="aft"></div><div id="bef"></div>
+<span class="lb" style="right:14px">Après</span><span class="lb" style="left:14px">Avant</span>
+<div class="ln" id="ln"></div>
+<input type="range" id="bar" min="0" max="100" value="50" aria-label="Comparer avant et après la rénovation">
+</div>
+<div class="gal" id="gal"></div>
+</div></section>
+
+<section id="devis"><div class="wrap"><div class="est">
+<div>
+<h2>Combien ça coûte&nbsp;? Une idée en 10 secondes.</h2>
+<p class="sub">Une fourchette indicative. Le prix exact arrive après une visite gratuite.</p>
+</div>
+<div>
+<label for="ty">Votre projet</label>
+<select id="ty"><option value="0">Chaudière à condensation</option><option value="1">Pompe à chaleur air-eau</option><option value="2">Rénovation de salle de bain</option><option value="3">Remplacement de radiateurs</option></select>
+<label for="m2">Surface à chauffer ou rénover : <span id="m2v">120</span> m²</label>
+<input id="m2" type="range" min="20" max="300" step="5" value="120">
+<div class="res" style="margin-top:26px"><span>Estimation TVAC</span><b id="price">—</b><small>Hors primes et aides éventuelles. Estimation non contractuelle.</small></div>
+</div>
+</div></div></section>
+
+<section id="avis"><div class="wrap">
+<h2>Ils ont retrouvé la chaleur.</h2>
+<p class="sub">Trois messages reçus cet hiver.</p>
+<div class="rev">
+<figure><blockquote>Chaudière en panne un dimanche soir de janvier. Le technicien était là à 21 h et tout refonctionnait à 22 h.</blockquote><figcaption>Sophie D., Overijse</figcaption></figure>
+<figure><blockquote>Pompe à chaleur posée en deux jours, chantier propre, et on a vu la facture baisser dès le premier hiver.</blockquote><figcaption>Marc et Ines V., Waterloo</figcaption></figure>
+<figure><blockquote>Devis clair, prix respecté, salle de bain livrée un jour avant la date annoncée.</blockquote><figcaption>Karim B., Tervuren</figcaption></figure>
+</div></div></section>
+
+<section id="zone"><div class="wrap">
+<h2>Nous intervenons autour de chez vous.</h2>
+<p class="sub">Brabant flamand et Brabant wallon. Touchez une commune sur la carte, ou tapez votre code postal.</p>
+<div class="zone">
+<svg class="map" viewBox="0 0 600 440" role="img" aria-label="Carte schématique de la zone d'intervention">
+<path d="M-10 150C90 120 140 190 250 170S330 60 430 90 610 70 610 70V-10H-10z" fill="#8cc7dc" opacity=".18"/>
+<path d="M130 90C190 40 300 60 330 130S300 250 230 270 90 220 110 150z" fill="#4f9a6b" opacity=".22"/>
+<path d="M0 330C120 300 200 250 300 230S470 150 600 120M300 0C310 120 330 300 420 440M0 60C150 90 260 110 330 190" fill="none" stroke="var(--line)" stroke-width="7" stroke-linecap="round"/>
+<path d="M90 150 150 60 330 40 500 80 560 200 520 330 400 410 220 405 70 330 40 230z" fill="color-mix(in srgb,var(--cu) 10%,transparent)" stroke="var(--cu)" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+<text x="200" y="152" font-size="13" fill="var(--mute)" font-style="italic" font-family="var(--b)">Forêt de Soignes</text>
+<g id="pins"></g></svg>
+<div>
+<h3 style="font-size:1.5rem;margin-bottom:14px">Communes desservies</h3>
+<ul class="zl" id="zl"></ul>
+<form class="chk" id="zf"><input id="zq" placeholder="Code postal ou commune" aria-label="Code postal ou commune" autocomplete="postal-code"><button class="btn cu" type="submit">Vérifier ma zone</button></form>
+<div class="zres" id="zr" role="status">Pas dans la liste ? Appelez-nous : nous étudions chaque demande selon la distance.</div>
+<p style="color:var(--mute);font-size:.88rem;margin:12px 0 0">Carte schématique, positions approximatives.</p>
+</div></div></div></section>
+
+<section id="contact"><div class="wrap contact">
+<div>
+<h2>Parlons de votre projet.</h2>
+<p class="sub">Réponse sous 24 h, et dans l'heure pour une urgence. Visite et devis gratuits.</p>
+<p><b>02 000 00 00</b><br>Lun. à ven. 7 h – 19 h, urgences 24/7<br>contact@cuivre-flamme.example</p>
+</div>
+<form id="f">
+<input name="n" placeholder="Votre nom" required aria-label="Votre nom" autocomplete="name">
+<input name="t" type="tel" placeholder="Téléphone" required aria-label="Téléphone" autocomplete="tel">
+<textarea name="m" placeholder="Décrivez votre besoin : panne, installation, rénovation…" aria-label="Votre besoin"></textarea>
+<button class="btn cu" type="submit">Envoyer ma demande</button>
+<div class="ok" id="ok" role="status">Merci, votre demande est bien envoyée. Nous vous rappelons très vite.</div>
+</form>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Cuivre &amp; Flamme, installateur agréé</span><span>*Selon conditions du contrat d'entretien. Site de démonstration.</span></div></footer>
+<a class="btn cu sos" href="tel:+3220000000">Urgence 24/7</a>
+
+<script>
+const $=s=>document.querySelector(s),r=$('#rng'),root=document.documentElement;
+const cold=[74,163,199],warm=[255,112,60];
+function heat(t){const k=(t-10)/16,c=cold.map((v,i)=>Math.round(v+(warm[i]-v)*k));return`rgb(${c})`}
+const msg=[[14,"Brrr. Chez vous aussi ? Notre équipe dépanne en moins de 2 h."],[18,"Un peu frais. Un réglage de chaudière ou un radiateur purgé peut tout changer."],[23,"Parfait. C'est ce confort que nous installons, avec une facture maîtrisée."],[27,"Un peu chaud ! Une régulation intelligente vous ferait économiser du gaz."]];
+function upd(){
+ const t=+r.value,k=(t-10)/16,c=heat(t);
+ root.style.setProperty('--heat',c);
+ $('#val').textContent=(Number.isInteger(t)?t:t.toFixed(1).replace('.',','))+'°';
+ $('#arc').setAttribute('stroke-dasharray',`${k*100} 100`);
+ // le bouton suit l'arc : de 135° à 405°
+ const a=(135+k*270)*Math.PI/180;
+ $('#knob').setAttribute('cx',200+170*Math.cos(a));$('#knob').setAttribute('cy',200+170*Math.sin(a));
+ $('#status').textContent=msg.find(m=>t<m[0])?.[1]||msg[3][1];
+}
+r.addEventListener('input',upd);upd();
+
+const S=[
+{t:"Chaufferie",tag:"Chauffage",p:"Chaudières à condensation, entretien annuel, désembouage et remplacement.",l:["Diagnostic et dépannage 24/7","Contrat d'entretien annuel","Remplacement en une journée"]},
+{t:"Salle de bain",tag:"Plomberie",p:"Fuites, sanitaires, douches à l'italienne et rénovation complète clé en main.",l:["Recherche de fuite sans casse inutile","Création et rénovation complète","Adoucisseurs et filtration d'eau"]},
+{t:"Pompe à chaleur",tag:"Énergie durable",p:"Étude, installation et mise en service de pompes à chaleur air-eau et hybrides.",l:["Étude thermique gratuite","Aide au dossier de primes","Suivi de performance à distance"]}];
+function show(i){const s=S[i];$('#panel').innerHTML=`<span class="tag">${s.tag}</span><h3>${s.t}</h3><p>${s.p}</p><ul>${s.l.map(x=>`<li>${x}</li>`).join('')}</ul><a class="btn" href="#contact">Demander un devis</a>`;
+ document.querySelectorAll('.spot').forEach((e,j)=>e.classList.toggle('on',j==i))}
+document.querySelectorAll('.spot').forEach(e=>{const go=()=>show(+e.dataset.k);e.onclick=go;e.onkeydown=ev=>{if(ev.key=='Enter'||ev.key==' '){ev.preventDefault();go()}}});show(0);
+
+const P=[[3800,38],[9500,55],[5200,110],[180,0]],m2=$('#m2'),ty=$('#ty');
+function est(){const m=+m2.value,k=+ty.value;$('#m2v').textContent=m;
+ let base=k==2?4500+m*130:k==3?m*22+400:P[k][0]+m*P[k][1];
+ const f=n=>new Intl.NumberFormat('fr-BE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Math.round(n/100)*100);
+ $('#price').textContent=`${f(base*.85)} – ${f(base*1.2)}`}
+m2.oninput=ty.onchange=est;est();
+
+const I={f:'<path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z"/>',d:'<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',w:'<path d="M14 6a4 4 0 0 0-5 5L3 17l4 4 6-6a4 4 0 0 0 5-5l-3 3-3-1-1-3z"/>',b:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',s:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',h:'<path d="M4 10h16M6 10v3a6 6 0 0 0 12 0v-3M8 4h4a3 3 0 0 1 3 3"/>'};
+const V=[
+['Chauffage','f','Installation de chaudière','Gaz, mazout ou condensation, étude et pose comprises.','Remplacement en 1 journée|Mise en service et réglage|Reprise de l\'ancienne chaudière'],
+['Chauffage','w','Entretien annuel','Un contrat pour la sécurité, la performance et la durée de vie.','Nettoyage complet|Contrôle sécurité gaz|Attestation officielle',1],
+['Chauffage','h','Plancher chauffant','Confort homogène et pieds au chaud, en neuf comme en rénovation.','Pose hydraulique|Régulation pièce par pièce|Compatible pompe à chaleur'],
+['Chauffage','f','Radiateurs et désembouage','Des radiateurs froids en haut ou bruyants ? On rééquilibre le circuit.','Désembouage complet|Vannes thermostatiques|Équilibrage hydraulique'],
+['Chauffage','s','Régulation connectée','Pilotez votre chauffage depuis le téléphone et réduisez la consommation.','Thermostat intelligent|Programmation par pièce|Suivi de consommation'],
+['Chauffage','b','Contrôle et mise en conformité gaz','Installations gaz vérifiées et mises aux normes en toute sécurité.','Test d\'étanchéité|Remplacement de flexibles|Attestation de conformité'],
+['Énergie','s','Pompe à chaleur','Air/eau, géothermie ou hybride, avec étude thermique gratuite.','Dimensionnement précis|Aide au dossier de primes|Suivi à distance'],
+['Énergie','d','Chauffe-eau thermodynamique','De l\'eau chaude pour jusqu\'à trois fois moins d\'électricité.','Ballons 200 à 300 L|Pose et raccordement|Entretien annuel'],
+['Énergie','d','Citerne d\'eau de pluie','Récupérez l\'eau pour les WC, le jardin et la machine à laver.','Étude et terrassement|Pompe et filtration|Raccordement au réseau'],
+['Plomberie','d','Recherche de fuite','Localisation précise par caméra et détection, sans casser tout le mur.','Caméra thermique|Réparation ciblée|Rapport pour l\'assurance'],
+['Plomberie','w','Débouchage et canalisations','Évier, WC, colonne ou égout : curage et inspection par caméra.','Curage haute pression|Inspection vidéo|Remplacement de tuyaux'],
+['Plomberie','d','Adoucisseur et filtration','Fini le calcaire : protégez vos appareils et votre peau.','Adoucisseur sur mesure|Filtre anti-sédiments|Entretien et sel'],
+['Sanitaire','h','Salle de bain clé en main','De la démolition au dernier joint, avec un seul chef de chantier.','Douche à l\'italienne|Meuble et baignoire|Carrelage et électricité'],
+['Sanitaire','h','WC, lavabos et robinetterie','Remplacement et pose de sanitaires, WC suspendus compris.','WC suspendu et bâti-support|Mitigeurs thermostatiques|Raccordements cuisine'],
+['Sanitaire','w','Salle de bain accessible (PMR)','Douche de plain-pied, barres d\'appui et siège adaptés à tous les âges.','Douche de plain-pied|Barres et sièges|Revêtement antidérapant'],
+['Urgence','b','Dépannage 24/7','Fuite, panne de chaudière, plus d\'eau chaude : nous arrivons vite.','Intervention en moins de 2 h|Week-ends et jours fériés|Devis annoncé avant de commencer']];
+const cats=['Tout',...new Set(V.map(v=>v[0]))];let cur='Tout';
+function grid(){$('#tabs').innerHTML=cats.map(c=>`<button role="tab" aria-selected="${c==cur}">${c}</button>`).join('');
+ $('#grid').innerHTML=V.filter(v=>cur=='Tout'||v[0]==cur).map(v=>`<article class="card${v[5]?' hot':''}">${v[5]?'<span class="badge">Le plus demandé</span>':''}<div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${I[v[1]]}</svg></div><h3>${v[2]}</h3><p>${v[3]}</p><ul>${v[4].split('|').map(x=>`<li>${x}</li>`).join('')}</ul><a href="${v[0]=='Urgence'?'tel:+3220000000">Appeler maintenant':'#contact">Demander un devis'}</a></article>`).join('');
+ document.querySelectorAll('#tabs button').forEach((b,i)=>b.onclick=()=>{cur=cats[i];grid()})}
+grid();
+const sc=x=>`<svg viewBox="0 0 400 300" role="img" aria-label="Illustration de réalisation">${x}</svg>`;
+const CU='#c9763a',BL='#17313b';
+const SC={
+chaufferie:sc(`<rect width="400" height="300" fill="${BL}"/><rect x="60" y="50" width="110" height="180" rx="10" fill="#f3f6f7"/><circle cx="115" cy="100" r="24" fill="${BL}"/><path d="M115 100l12-12" stroke="#ff7a45" stroke-width="4"/><rect x="90" y="150" width="50" height="10" rx="5" fill="${CU}"/><path d="M115 50V25H300V230M170 200H300M200 25v60" stroke="${CU}" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="230" y="95" width="90" height="60" rx="8" fill="#2c5663"/><circle cx="275" cy="125" r="16" fill="#e9a36b"/>`),
+bain:sc(`<rect width="400" height="300" fill="#e6eef0"/><rect y="235" width="400" height="65" fill="#cdd9dc"/><rect x="55" y="40" width="150" height="85" rx="10" fill="#fff" stroke="${CU}" stroke-width="5"/><rect x="35" y="170" width="210" height="75" rx="34" fill="#fff" stroke="#9fb3b9" stroke-width="4"/><path d="M130 140v30M110 140h40" stroke="#8fa4ab" stroke-width="6" stroke-linecap="round"/><rect x="275" y="35" width="100" height="205" fill="#8cc7dc" opacity=".3" stroke="#5aa5bd" stroke-width="4"/><circle cx="325" cy="62" r="16" fill="#8fa4ab"/><path d="M310 85l-6 40M325 85v45M340 85l6 40" stroke="#5aa5bd" stroke-width="3" stroke-linecap="round"/>`),
+pac:sc(`<rect width="400" height="300" fill="#dfeaec"/><rect y="240" width="400" height="60" fill="#b9cfa8"/><path d="M40 240V130L150 50l110 80v110z" fill="#f6f2ea" stroke="#0F2630" stroke-width="5"/><rect x="110" y="160" width="50" height="80" fill="#b4602a"/><rect x="285" y="150" width="90" height="90" rx="10" fill="#fff" stroke="#0F2630" stroke-width="4"/><circle cx="330" cy="195" r="30" fill="none" stroke="#0F2630" stroke-width="4"/><path d="M330 165v60M300 195h60M309 174l42 42M351 174l-42 42" stroke="#5aa5bd" stroke-width="3"/><path d="M260 200h20" stroke="${CU}" stroke-width="7" stroke-linecap="round"/>`),
+sol:sc(`<rect width="400" height="300" fill="#e9d9c6"/><path d="M40 40H340a30 30 0 0 1 0 50H60a30 30 0 0 0 0 50H340a30 30 0 0 1 0 50H60a30 30 0 0 0 0 50H340" fill="none" stroke="${CU}" stroke-width="9" stroke-linecap="round"/><path d="M40 40H340a30 30 0 0 1 0 50H60a30 30 0 0 0 0 50H340a30 30 0 0 1 0 50H60a30 30 0 0 0 0 50H340" fill="none" stroke="#ff7a45" stroke-width="4" stroke-dasharray="2 18" stroke-linecap="round"/><rect x="340" y="30" width="40" height="240" rx="6" fill="#0F2630"/>`),
+rad:sc(`<rect width="400" height="300" fill="#eef3f4"/><rect y="250" width="400" height="50" fill="#cdb89a"/><rect x="230" y="40" width="130" height="130" fill="#cfe6ef" stroke="#0F2630" stroke-width="5"/><rect x="50" y="150" width="200" height="90" rx="8" fill="#fff" stroke="#9fb3b9" stroke-width="3"/>${[0,1,2,3,4,5,6,7].map(i=>`<rect x="${62+i*23}" y="160" width="13" height="70" rx="6" fill="#dbe6e9"/>`).join('')}<path d="M80 240v10M220 240v10" stroke="${CU}" stroke-width="7" stroke-linecap="round"/><circle cx="262" cy="205" r="9" fill="#ff7a45"/>`),
+cuisine:sc(`<rect width="400" height="300" fill="#e8e1d6"/><rect y="180" width="400" height="120" fill="#fff"/><rect y="175" width="400" height="16" fill="#8e8576"/><rect x="110" y="150" width="150" height="30" rx="8" fill="#bfc9cc"/><path d="M300 175V95q0-30-30-30" stroke="#8fa4ab" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M185 210v60M120 235h130" stroke="${CU}" stroke-width="8" stroke-linecap="round"/><rect x="40" y="40" width="130" height="80" rx="6" fill="#d8cdb9"/>`)
+};
+const GL=[['chaufferie','Chaufferie rénovée','Overijse, 1 journée'],['pac','Pompe à chaleur air/eau','Waterloo, 2 jours'],['sol','Plancher chauffant','Tervuren, 4 jours'],['rad','Radiateurs et désembouage','Rixensart, 1 jour'],['cuisine','Cuisine : évier et raccordements','Wavre, 1 jour'],['bain','Salle de bain complète','Huldenberg, 6 jours']];
+$('#gal').innerHTML=GL.map(g=>`<figure><div class="cv">${SC[g[0]]}</div><figcaption><b>${g[1]}</b>${g[2]}</figcaption></figure>`).join('');
+$('#aft').innerHTML=SC.bain;$('#aft').style.cssText='position:absolute;inset:0';
+$('#bef').innerHTML=sc(`<rect width="400" height="300" fill="#8c8a7d"/><path d="M0 60h400M0 120h400M0 180h400M100 0v235M200 0v235M300 0v235" stroke="#74726a" stroke-width="3"/><rect y="235" width="400" height="65" fill="#5f5d55"/><rect x="35" y="170" width="210" height="75" rx="10" fill="#cfc7a8" stroke="#8d6a3a" stroke-width="4"/><path d="M70 200l30 25M180 190l-20 40" stroke="#8d6a3a" stroke-width="3"/><rect x="55" y="40" width="150" height="85" fill="#b8b39a" stroke="#6b5a3a" stroke-width="5"/><path d="M130 140v28" stroke="#8d5a2a" stroke-width="8" stroke-linecap="round"/><circle cx="130" cy="182" r="5" fill="#8cc7dc"/><path d="M275 40l20 60 25 20 40 60" stroke="#5a584f" stroke-width="3" fill="none"/>`);
+$('#bef').firstChild.setAttribute('preserveAspectRatio','xMidYMid slice');$('#aft').firstChild.setAttribute('preserveAspectRatio','xMidYMid slice');
+$('#bar').oninput=e=>{const v=e.target.value;$('#bef').style.clipPath=`inset(0 ${100-v}% 0 0)`;$('#ln').style.left=v+'%'};
+const Z=[['Overijse','3090',300,215],['Hoeilaart','1560',215,250],['Tervuren','3080',385,110],['Huldenberg','3040',430,260],['Waterloo','1410',190,350],['La Hulpe','1310',270,345],['Rixensart','1330',350,345],['Wavre','1300',450,370],['Uccle','1180',165,120],['Braine-l\'Alleud','1420',110,310]];
+const nz=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f'\- ]/g,'');
+$('#pins').innerHTML=Z.map((z,i)=>`<g class="pin${i?'':' hq'}" data-i="${i}"><circle cx="${z[2]}" cy="${z[3]}" r="9"/><text x="${z[2]+14}" y="${z[3]+5}">${z[0]}</text></g>`).join('');
+$('#zl').innerHTML=Z.map((z,i)=>`<li><button data-i="${i}">${z[0]}</button></li>`).join('');
+const hl=i=>document.querySelectorAll('.pin').forEach((p,j)=>p.classList.toggle('on',j==i));
+document.querySelectorAll('#zl button').forEach(b=>{const i=+b.dataset.i;b.onmouseenter=b.onfocus=()=>hl(i);b.onclick=()=>{hl(i);$('#zr').textContent=`Oui, nous intervenons à ${Z[i][0]} (${Z[i][1]}).`}});
+document.querySelectorAll('.pin').forEach(p=>{p.style.cursor='pointer';p.onclick=()=>{const i=+p.dataset.i;hl(i);$('#zr').textContent=`Oui, nous intervenons à ${Z[i][0]} (${Z[i][1]}).`}});
+$('#zf').onsubmit=e=>{e.preventDefault();const q=nz($('#zq').value);if(!q)return;const i=Z.findIndex(z=>z[1]==q||nz(z[0]).includes(q));hl(i);$('#zr').textContent=i>=0?`Oui, nous intervenons à ${Z[i][0]} (${Z[i][1]}). Demandez votre devis gratuit.`:'Cette commune n\'est pas dans notre liste. Appelez le 02 000 00 00 : nous étudions chaque demande selon la distance.'};
+$('#f').onsubmit=e=>{e.preventDefault();$('#ok').style.display='block';e.target.querySelector('button').disabled=true};
+$('#th').onclick=()=>{const d=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);root.dataset.theme=d?'light':'dark'};
+</script>
+</body>
+</html>
