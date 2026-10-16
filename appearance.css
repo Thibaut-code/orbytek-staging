@@ -76,9 +76,6 @@ html[data-appearance] .footer-inner .brand img { width:218.75px; }
 @media(max-width:800px) { header .brand { flex-basis:237.5px; width:237.5px; height:87.3px; } html[data-appearance] header .brand img { width:237.5px; } }
 
 /* Wider desktop composition; paragraphs keep a comfortable reading measure. */
-.section-return { display:flex; justify-content:flex-end; margin-top:28px; }
-.section-return a { display:inline-flex; align-items:center; min-height:44px; padding:8px 0 8px 12px; color:var(--muted); font-size:13px; text-decoration:none; }
-.section-return a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
 .service-area { display:block; margin-top:6px; max-width:65ch; line-height:1.65; letter-spacing:normal; }
 .plan-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-top:40px; }
 .maintenance-plan { position:relative; display:flex; flex-direction:column; padding:64px 32px 32px; background:#15191a; border:1px solid var(--line); border-radius:20px; }
@@ -118,7 +115,7 @@ html[data-appearance="light"] .plan-featured { box-shadow:0 12px 38px #006aaa18;
 
 /* Keep the project link and appearance switch together at the right edge. */
 header .main-navigation { display:grid; grid-template-columns:auto minmax(0,1fr) auto; }
-header .header-actions { display:flex; align-items:center; gap:clamp(16px,2vw,32px); }
+header .header-actions { display:flex; align-items:center; gap:12px; }
 header .header-actions .appearance-control { margin:0; }
 header .header-actions .navcta { display:block; white-space:nowrap; padding:11px 18px; background:#dfbb91; border:1px solid #dfbb91; border-radius:12px; color:#20180f; font:700 clamp(.8125rem,.5rem + .35vw,.9375rem)/1.65 Arial,Helvetica,sans-serif; }
 html[data-appearance="light"] header .header-actions .navcta { color:#fff; background:#0869bc; border-color:#0869bc; }
@@ -162,3 +159,23 @@ header .header-actions .navcta:hover { text-decoration:none; filter:brightness(1
   header.mobile-navigation-ready .navlinks .mobile-menu-contact { display:block; margin-top:10px; background:#dfbb91; color:#20180f; text-align:center; font-weight:600; }
   html[data-appearance="light"] header.mobile-navigation-ready .navlinks .mobile-menu-contact { background:#0869bc; color:#fff; }
 }
+
+/* Shared sticky header and a single return-to-top control on the showcase. */
+html[data-appearance] body > header { position:sticky; top:0; z-index:100; }
+@media(min-width:801px) {
+  header .main-navigation { min-height:100px; padding-block:6px; gap:6px 24px; }
+  header .brand { height:80px; }
+  html[data-appearance] header .brand img { max-height:80px; }
+  header .header-actions { gap:12px; }
+  header .header-actions .navcta { padding-block:7px; }
+  header .header-actions .appearance-control { padding:2px; }
+  header .header-actions .appearance-control button { min-height:36px; padding-block:6px; }
+}
+html[data-appearance] { scroll-padding-top:calc(var(--site-header-height, 135px) + 16px); }
+.back-to-top { position:fixed; right:max(20px, env(safe-area-inset-right)); bottom:calc(20px + env(safe-area-inset-bottom)); z-index:90; display:flex; align-items:center; justify-content:center; width:52px; height:52px; border:1px solid #dfbb91; border-radius:50%; background:#dfbb91; color:#20180f; box-shadow:0 4px 18px #0003; text-decoration:none; }
+.back-to-top[hidden] { display:none; }
+.back-to-top svg { width:24px; height:24px; }
+html[data-appearance="light"] .back-to-top { background:#0869bc; color:#fff; border-color:#0869bc; }
+.back-to-top:hover { filter:brightness(1.1); }
+.back-to-top:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+@media(prefers-reduced-motion:reduce) { html[data-appearance] { scroll-behavior:auto; } }

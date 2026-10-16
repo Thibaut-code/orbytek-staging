@@ -18,6 +18,19 @@
   }
   apply(mode);
   document.addEventListener('DOMContentLoaded', () => {
+    const siteHeader = document.querySelector('body > header');
+    if (siteHeader) {
+      const measureHeader = () => root.style.setProperty('--site-header-height', `${Math.ceil(siteHeader.getBoundingClientRect().height)}px`);
+      measureHeader();
+      if ('ResizeObserver' in window) new ResizeObserver(measureHeader).observe(siteHeader);
+      else window.addEventListener('resize', measureHeader);
+    }
+    const backToTop = document.querySelector('.back-to-top');
+    if (backToTop) {
+      const updateBackToTop = () => { backToTop.hidden = window.scrollY < 300; };
+      window.addEventListener('scroll', updateBackToTop, { passive: true });
+      updateBackToTop();
+    }
     const control = document.querySelector('header .appearance-control');
     if (!control) return;
     control.addEventListener('click', event => {

@@ -1,117 +1,43 @@
 <!DOCTYPE html>
 
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Chauffage Dupuis – Chauffagiste à Cul-des-Sarts | 40 ans d'expérience</title>
+<meta name="description" content="Chauffage Dupuis à Cul-des-Sarts : installation, entretien et dépannage. Le savoir-faire d’une entreprise familiale au service de votre confort depuis 1984."/>
+<script>try{const t=localStorage.getItem('dupuis-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link href="style.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 </head>
 <body>
-<!-- ========== TOPBAR ========== -->
-<div class="topbar">
-<div class="topbar-inner">
-<div class="topbar-left">
-<span><i class="fas fa-map-marker-alt"></i> Cul-des-Sarts &amp; environs</span>
-<span><i class="fas fa-clock"></i> Lun–Ven : 7h–18h | Urgences 24h/7j</span>
+<a class="skip-link" href="#accueil">Aller au contenu</a>
+<header class="navbar" id="navbar"><div class="nav-container">
+<a class="nav-logo" href="#accueil" aria-label="Chauffage Dupuis — accueil"><span class="logo-mark"><svg viewBox="0 0 52 66" fill="none" aria-hidden="true"><path d="M5 59V22L26 5l21 17v37" stroke="currentColor" stroke-width="2"/><path d="M27 29c2 9 11 12 8 22-1 5-6 9-11 9 5-5 6-9 3-14-1 5-5 6-5 11-8-5-7-13-2-19 4-5 5-7 7-9Z" fill="currentColor"/></svg></span><span class="logo-text-block"><span class="logo-eyebrow">Chauffage</span><span class="logo-main">Dupuis</span><span class="logo-sub">Votre confort, notre métier</span></span></a>
+<nav aria-label="Navigation principale"><ul class="nav-links" id="navLinks"><li><a href="#services">Services</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+<div class="nav-actions"><button type="button" class="theme-toggle" id="themeToggle" aria-label="Activer le thème clair"><i class="fas fa-sun" aria-hidden="true"></i><span>Clair</span></button><a class="nav-cta" href="#devis">Devis gratuit <span aria-hidden="true">→</span></a><button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button></div>
+</div></header>
+<main>
+<section class="hero" id="accueil" aria-labelledby="heroTitle"><div class="warmth warmth-one" aria-hidden="true"></div><div class="warmth warmth-two" aria-hidden="true"></div><div class="hero-grid container">
+<div class="hero-content"><p class="hero-eyebrow reveal">Votre partenaire chauffage<br/>dans la région de Cul-des-Sarts</p><h1 class="hero-title reveal" id="heroTitle">Le confort<br/>commence<br/><em>chez vous<span class="hero-period">.</span></em></h1><p class="hero-desc reveal">Installation, entretien et dépannage<br class="desktop-break"/> à Cul-des-Sarts.</p><div class="hero-btns reveal"><a class="btn-primary" href="#devis">Demander un devis <span aria-hidden="true">→</span></a><a class="btn-urgence" href="tel:+3260123456"><i class="fas fa-phone" aria-hidden="true"></i> Nous appeler</a></div></div>
+<figure class="hero-visual image-reveal"><div class="hero-photo-frame"><img class="hero-photo hero-photo-dark" src="images/anthracite-reference.webp" width="1536" height="1024" alt="Installation de chauffage et ballon d’eau chaude dans un intérieur aux tons anthracite et cuivre" fetchpriority="high"/><img class="hero-photo hero-photo-light" src="images/hero-light.webp" width="1200" height="800" alt="Technicien entretenant une chaudière dans un intérieur lumineux"/></div></figure>
 </div>
-<div class="topbar-right">
-<a href="tel:+3260123456"><i class="fas fa-phone"></i> +32 60 12 34 56</a>
-<a href="mailto:info@chauffage-Dupuis.be"><i class="fas fa-envelope"></i> info@chauffage-Dupuis.be</a>
-</div>
-</div>
-</div>
-<!-- ========== NAVIGATION ========== -->
-<nav class="navbar" id="navbar">
-<div class="nav-container">
-<div class="nav-logo">
-<div class="logo-flame"><i class="fas fa-fire"></i></div>
-<div class="logo-text-block">
-<span class="logo-main">Chauffage <strong>Dupuis</strong></span>
-<span class="logo-sub">Cul-des-Sarts · Depuis 1984</span>
-</div>
-</div>
-<ul class="nav-links" id="navLinks">
-<li><a href="#accueil">Accueil</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#realisations">Réalisations</a></li>
-<li><a href="#pourquoi">Pourquoi nous</a></li>
-<li><a href="#avis">Avis</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a class="nav-cta" href="#devis"><i class="fas fa-file-alt"></i> Devis gratuit</a></li>
-</ul>
-<div class="hamburger" id="hamburger">
-<span></span><span></span><span></span>
-</div>
-</div>
-</nav>
-<!-- ========== HERO ========== -->
-<section class="hero" id="accueil">
-<div class="hero-overlay"></div>
-<div class="hero-content">
-<div class="hero-badge reveal">
-<i class="fas fa-award"></i>
-<span>40 ans d'expérience · Entreprise familiale</span>
-</div>
-<h1 class="hero-title reveal">Votre Chauffagiste<br/><em>de Confiance</em><br/>depuis 1984</h1>
-<p class="hero-desc reveal">Installation, entretien et dépannage de systèmes de chauffage à Cul-des-Sarts et dans toute la région. Disponible 24h/7j pour les urgences.</p>
-<div class="hero-btns reveal">
-<a class="btn-primary" href="#devis"><i class="fas fa-file-alt"></i> Devis gratuit</a>
-<a class="btn-urgence" href="tel:+3260123456"><i class="fas fa-phone-alt"></i> Urgence : +32 60 12 34 56</a>
-</div>
-<div class="hero-stats reveal">
-<div class="stat">
-<span class="stat-num">40</span>
-<span class="stat-label">Ans d'expérience</span>
-</div>
-<div class="stat-divider"></div>
-<div class="stat">
-<span class="stat-num">2500+</span>
-<span class="stat-label">Clients satisfaits</span>
-</div>
-<div class="stat-divider"></div>
-<div class="stat">
-<span class="stat-num">24h</span>
-<span class="stat-label">Dépannage urgence</span>
-</div>
-<div class="stat-divider"></div>
-<div class="stat">
-<span class="stat-num">100%</span>
-<span class="stat-label">Agréé &amp; certifié</span>
-</div>
-</div>
-</div>
-<div class="hero-scroll">
-<span>Découvrir</span>
-<div class="scroll-line"></div>
-</div>
+<div class="trust-row container"><div class="trust-item reveal"><svg class="line-icon" viewBox="0 0 38 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="26" height="27" rx="3"/><path d="M5 15h26M12 3v8M24 3v8"/></svg><div><h2>Depuis 1984</h2><p>Une entreprise familiale<br/>au service de votre confort.</p></div></div><div class="trust-item reveal"><svg class="line-icon" viewBox="0 0 38 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 15c0 10-12 19-12 19S6 25 6 15a12 12 0 1 1 24 0Z"/><circle cx="18" cy="15" r="4"/></svg><div><h2>Proximité</h2><p>À l’écoute de vos besoins,<br/>dans la région de Cul-des-Sarts.</p></div></div><div class="trust-item reveal"><svg class="line-icon" viewBox="0 0 38 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 3 6 0 1 5 4 2 5-1 3 5-4 4v4l4 4-3 5-5-1-4 2-1 5h-6l-1-5-4-2-5 1-3-5 4-4v-4l-4-4 3-5 5 1 4-2Z"/><circle cx="18" cy="20" r="6"/></svg><div><h2>Savoir-faire</h2><p>Une expertise solide,<br/>un travail soigné.</p></div></div></div>
+<div class="teaser-grid container"><a class="teaser-card teaser-install reveal" href="#services"><svg class="line-icon" viewBox="0 0 38 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="5" height="28" rx="2"/><rect x="15" y="5" width="5" height="28" rx="2"/><rect x="24" y="5" width="5" height="28" rx="2"/><path d="M2 11h4m23 0h5M2 26h4m23 0h5M9 33v3m17-3v3"/></svg><h2>Installation</h2><p>Des solutions de chauffage<br/>performantes et durables,<br/>adaptées à votre habitat.</p><span aria-hidden="true">→</span></a><a class="teaser-card teaser-maintain reveal" href="#services"><svg class="line-icon" viewBox="0 0 38 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 4a10 10 0 0 0-13 13L5 29a4 4 0 0 0 6 6l12-12A10 10 0 0 0 35 10l-8 6-6-6 9-6Z"/></svg><h2>Entretien</h2><p>Un chauffage fiable<br/>et économique grâce<br/>à un entretien régulier.</p><span aria-hidden="true">→</span></a><a class="teaser-card teaser-repair reveal" href="tel:+3260123456"><svg class="line-icon" viewBox="0 0 38 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 4 16 29H2L18 4Z"/><path d="M18 14v9m0 4v1"/></svg><h2>Dépannage</h2><p>Une intervention rapide<br/>pour retrouver votre confort<br/>en toute sérénité.</p><span aria-hidden="true">→</span></a></div>
 </section>
-<!-- ========== BANDEAU URGENCE ========== -->
-<div class="urgence-band">
-<div class="urgence-inner">
-<div class="urgence-icon"><i class="fas fa-exclamation-triangle"></i></div>
-<div class="urgence-text">
-<strong>Panne de chauffage ? Fuite ? Urgence ?</strong>
-<span>Nous intervenons 24h/24 – 7j/7 dans toute la région de Cul-des-Sarts</span>
-</div>
-<a class="urgence-btn" href="tel:+3260123456">
-<i class="fas fa-phone-alt"></i> Appeler maintenant
-        </a>
-</div>
-</div>
+<div class="experience-strip container" aria-label="Notre expérience"><div><strong class="stat-num" data-count="40" data-suffix="+">40+</strong><span>années de savoir-faire</span></div><div><strong class="stat-num" data-count="2500" data-suffix="+">2500+</strong><span>clients accompagnés</span></div><div><strong class="stat-num" data-count="24" data-suffix="h/7j">24h/7j</strong><span>pour vos urgences</span></div></div>
 <!-- ========== À PROPOS ========== -->
 <section class="about" id="apropos">
 <div class="container">
 <div class="about-grid">
 <div class="about-images">
 <div class="about-img-main">
-<img alt="Technicien Chauffage Dupuis" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&amp;q=80"/>
+<img alt="Technicien Chauffage Dupuis" src="images/hero-light.webp"/>
 </div>
 <div class="about-img-float">
-<img alt="Chaudière installation" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&amp;q=80"/>
+<img alt="Chaudière installation" src="images/hero-dark.webp"/>
 </div>
 <div class="about-badge-years">
 <span class="badge-num">40</span>
@@ -275,7 +201,7 @@
 </div>
 <div class="real-grid">
 <div class="real-card large">
-<img alt="Installation chaudière" src="https://plus.unsplash.com/premium_photo-1663047170515-66632d2a374d?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800&amp;q=80"/>
+<img alt="Installation chaudière" src="images/hero-dark.webp" loading="lazy"/>
 <div class="real-overlay">
 <span class="real-tag">Installation</span>
 <h4>Chaudière à condensation</h4>
@@ -358,7 +284,7 @@
 </div>
 <div class="pourquoi-visual">
 <div class="pourquoi-img">
-<img alt="Technicien expert" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&amp;q=80"/>
+<img alt="Technicien expert" src="images/hero-light.webp"/>
 </div>
 <div class="pourquoi-cards">
 <div class="mini-card">
@@ -421,25 +347,20 @@
 <h3><i class="fas fa-file-alt"></i> Demande de devis gratuit</h3>
 <div class="form-row">
 <div class="form-group">
-<label>Prénom *</label>
-<input class="form-control" name="prenom" placeholder="Jean" required="" type="text"/>
+<label for="field-prenom">Prénom *</label><input id="field-prenom" class="form-control" name="prenom" placeholder="Jean" required="" type="text"/>
 </div>
 <div class="form-group">
-<label>Nom *</label>
-<input class="form-control" name="nom" placeholder="Dupont" required="" type="text"/>
+<label for="field-nom">Nom *</label><input id="field-nom" class="form-control" name="nom" placeholder="Dupont" required="" type="text"/>
 </div>
 </div>
 <div class="form-group">
-<label>Téléphone *</label>
-<input class="form-control" name="tel" placeholder="+32 470 12 34 56" required="" type="tel"/>
+<label for="field-tel">Téléphone *</label><input id="field-tel" class="form-control" name="tel" placeholder="+32 470 12 34 56" required="" type="tel"/>
 </div>
 <div class="form-group">
-<label>Email</label>
-<input class="form-control" name="email" placeholder="jean.dupont@email.com" type="email"/>
+<label for="field-email">Email</label><input id="field-email" class="form-control" name="email" placeholder="jean.dupont@email.com" type="email"/>
 </div>
 <div class="form-group">
-<label>Type de prestation *</label>
-<select class="form-control" name="prestation" required="">
+<label for="field-prestation">Type de prestation *</label><select id="field-prestation" class="form-control" name="prestation" required="">
 <option value="">Sélectionnez une prestation</option>
 <option>Installation chaudière gaz</option>
 <option>Installation chaudière mazout</option>
@@ -469,8 +390,7 @@
 </div>
 </div>
 <div class="form-group">
-<label>Votre message</label>
-<textarea class="form-control" name="message" placeholder="Décrivez votre projet ou votre problème... (marque de la chaudière, année d'installation, symptômes de la panne...)" rows="4"></textarea>
+<label for="field-message">Votre message</label><textarea id="field-message" class="form-control" name="message" placeholder="Décrivez votre projet ou votre problème... (marque de la chaudière, année d'installation, symptômes de la panne...)" rows="4"></textarea>
 </div>
 <div class="form-group checkbox-group">
 <label class="checkbox-label">
@@ -565,9 +485,9 @@
 </div>
 </div>
 <div class="avis-controls">
-<button class="avis-btn" id="avisPrev"><i class="fas fa-chevron-left"></i></button>
+<button class="avis-btn" id="avisPrev" aria-label="Avis précédents"><i class="fas fa-chevron-left"></i></button>
 <div class="avis-dots" id="avisDots"></div>
-<button class="avis-btn" id="avisNext"><i class="fas fa-chevron-right"></i></button>
+<button class="avis-btn" id="avisNext" aria-label="Avis suivants"><i class="fas fa-chevron-right"></i></button>
 </div>
 </div>
 </section>
@@ -580,7 +500,7 @@
 </div>
 <div class="zone-grid">
 <div class="zone-map">
-<iframe allowfullscreen="" height="100%" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40000!2d4.4!3d50.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1a0b0b0b0b0b0%3A0x0!2sCul-des-Sarts%2C+Belgium!5e0!3m2!1sfr!2sbe!4v1620000000000!5m2!1sfr!2sbe" style="border:0;" width="100%">
+<iframe title="Zone d’intervention autour de Cul-des-Sarts" allowfullscreen="" height="100%" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40000!2d4.4!3d50.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1a0b0b0b0b0b0%3A0x0!2sCul-des-Sarts%2C+Belgium!5e0!3m2!1sfr!2sbe!4v1620000000000!5m2!1sfr!2sbe" style="border:0;" width="100%">
 </iframe>
 </div>
 <div class="zone-content">
@@ -645,6 +565,7 @@
 </div>
 </div>
 </section>
+</main>
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
 <div class="footer-top">
@@ -735,7 +656,7 @@
 </a>
 </div>
 <!-- ========== BACK TO TOP ========== -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="back-to-top" id="backToTop" aria-label="Revenir en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
 <i class="fas fa-chevron-up"></i>
 </button>
 <script src="script.js"></script>
