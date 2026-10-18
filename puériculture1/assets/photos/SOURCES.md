@@ -19,3 +19,5 @@ Visuel interactif de croissance : bebe-ages.png, créé avec image_gen intégré
 
 Fond du personnalisateur de broderie : bavoir-broderie.jpg, photo Quax du catalogue public https://www.lafoliedubebe.be/79397-thickbox_default/quax---bavoir-medium.jpg
 Aperçu croissance : bebe-ages-apercu.jpg est une version JPEG du visuel généré, intégrée directement dans index.html pour les aperçus sans accès aux ressources locales.
+
+Optimisation WebP : chambre-avant-v2.webp, chambre-apres-v2.webp et bebe-ages.webp, qualité 85, dimensions conservées. Les chambres sont référencées en WebP ; le bébé est intégré en WebP dans le HTML pour rester visible dans les aperçus. PNG conservés comme originaux.

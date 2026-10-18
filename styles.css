@@ -680,3 +680,11 @@ h1 em { font-style:normal; color:#e6a57b; }
 @media(max-width:1100px) { nav { flex-wrap:wrap; justify-content:center; gap:0; padding:12px 0; } .navlinks { justify-content:center; flex-wrap:wrap; gap:8px 24px; } .brand img { width:210px; } .pricing-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:800px) { .navlinks a:not(.navcta) { display:block; } .navlinks { width:100%; gap:0 20px; font-size:13px; } .navlinks .navcta { display:none; } .hero { min-height:600px; } .hero:after { background:linear-gradient(90deg,#17100cf2,#21160dc9); } .hero-copy { padding:54px 0; } .hero-bottom { gap:12px 20px; font-size:11px; } .support-banner { grid-template-columns:1fr; gap:24px; padding:28px; margin-top:28px; } .support-price strong { font-size:40px; } .support-price small { display:inline; margin-left:10px; } .page-intro { padding:55px 0; } .maintenance-grid { grid-template-columns:1fr; gap:24px; } .page-cta { padding:32px 25px; margin:50px 0; } }
 @media(max-width:540px) { .pricing-grid { grid-template-columns:1fr; } .price-card { padding:28px; } .price { font-size:34px; } .footer-inner { flex-direction:column; align-items:flex-start; } }
+
+/* Exemples concrets dans les cartes de la section Services. */
+.card .service-examples { margin:0 0 26px; }
+.card .service-examples h4 { font-size:15px; line-height:1.4; font-weight:600; margin:0 0 12px; letter-spacing:-.2px; }
+.card .service-examples ul { margin:0; padding-left:19px; font-size:14px; line-height:1.65; color:var(--muted); overflow-wrap:break-word; }
+.card .service-examples li + li { margin-top:10px; }
+.card .service-examples li::marker { color:var(--accent); }
+.card .service-examples strong { color:var(--ink); font-weight:600; }
