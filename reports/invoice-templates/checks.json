@@ -14,15 +14,7 @@
       "rows": 60,
       "pdfBytes": 351586,
       "normalPrintPages": 1,
-      "normalExportPages": 1,
-      "pdfPages": {
-        "print": 1,
-        "export": 1,
-        "multipage": 5,
-        "multipage-export": 4,
-        "quote-long": 2
-      },
-      "printedRowsVerified": 60
+      "normalExportPages": 1
     },
     {
       "model": "architecture",
@@ -38,15 +30,7 @@
       "rows": 60,
       "pdfBytes": 374178,
       "normalPrintPages": 1,
-      "normalExportPages": 1,
-      "pdfPages": {
-        "print": 1,
-        "export": 1,
-        "multipage": 5,
-        "multipage-export": 5,
-        "quote-long": 1
-      },
-      "printedRowsVerified": 60
+      "normalExportPages": 1
     },
     {
       "model": "industriel",
@@ -62,15 +46,369 @@
       "rows": 60,
       "pdfBytes": 327916,
       "normalPrintPages": 1,
-      "normalExportPages": 1,
-      "pdfPages": {
-        "print": 1,
-        "export": 1,
-        "multipage": 6,
-        "multipage-export": 6,
-        "quote-long": 1
-      },
-      "printedRowsVerified": 60
+      "normalExportPages": 1
+    }
+  ],
+  "previewFit": [
+    {
+      "model": "classique",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1
+    },
+    {
+      "model": "cuivre",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1
+    },
+    {
+      "model": "orbytek",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1
+    },
+    {
+      "model": "architecture",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1
+    },
+    {
+      "model": "industriel",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1
+    },
+    {
+      "model": "classique",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125
+    },
+    {
+      "model": "cuivre",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125
+    },
+    {
+      "model": "orbytek",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125
+    },
+    {
+      "model": "architecture",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125
+    },
+    {
+      "model": "industriel",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125
+    },
+    {
+      "model": "classique",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825
+    },
+    {
+      "model": "cuivre",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825
+    },
+    {
+      "model": "orbytek",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825
+    },
+    {
+      "model": "architecture",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825
+    },
+    {
+      "model": "industriel",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825
+    },
+    {
+      "model": "classique",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39
+    },
+    {
+      "model": "cuivre",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39
+    },
+    {
+      "model": "orbytek",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39
+    },
+    {
+      "model": "architecture",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39
+    },
+    {
+      "model": "industriel",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39
+    },
+    {
+      "model": "classique",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625
+    },
+    {
+      "model": "cuivre",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625
+    },
+    {
+      "model": "orbytek",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625
+    },
+    {
+      "model": "architecture",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625
+    },
+    {
+      "model": "industriel",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625
+    },
+    {
+      "model": "classique",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1
+    },
+    {
+      "model": "cuivre",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1
+    },
+    {
+      "model": "orbytek",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1
+    },
+    {
+      "model": "architecture",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1
+    },
+    {
+      "model": "industriel",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1
+    },
+    {
+      "model": "classique",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125
+    },
+    {
+      "model": "cuivre",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125
+    },
+    {
+      "model": "orbytek",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125
+    },
+    {
+      "model": "architecture",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125
+    },
+    {
+      "model": "industriel",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125
+    },
+    {
+      "model": "classique",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825
+    },
+    {
+      "model": "cuivre",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825
+    },
+    {
+      "model": "orbytek",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825
+    },
+    {
+      "model": "architecture",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825
+    },
+    {
+      "model": "industriel",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825
+    },
+    {
+      "model": "classique",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39
+    },
+    {
+      "model": "cuivre",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39
+    },
+    {
+      "model": "orbytek",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39
+    },
+    {
+      "model": "architecture",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39
+    },
+    {
+      "model": "industriel",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39
+    },
+    {
+      "model": "classique",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625
+    },
+    {
+      "model": "bleu_nuit",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625
+    },
+    {
+      "model": "cuivre",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625
+    },
+    {
+      "model": "orbytek",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625
+    },
+    {
+      "model": "architecture",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625
+    },
+    {
+      "model": "industriel",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625
     }
   ],
   "errors": []

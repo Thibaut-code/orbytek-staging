@@ -63,7 +63,45 @@ async function main(){
    results.push({model,whiteBackground:true,interfaceThemes:palettes.length,selector:true,mobileWidths:[390,320],quote:true,mixedVAT:true,rows:60,pdfBytes:exported.size,normalPrintPages:1,normalExportPages:1});
    console.log(model+': aperçu, sélecteur, mobile, devis, impression et export PDF réels vérifiés.');
   }
-  assert.deepEqual(errors,[]);fs.writeFileSync(path.join(reports,'checks.json'),JSON.stringify({results,errors},null,2));
+  // Regression: the entire paper width must remain visible in the model picker,
+  // including large application text, small screens, resizing and uploaded logos.
+  await page.goto(base+'/?model=orbytek');await page.waitForFunction(()=>window.previewReady);
+  const logo=fs.readFileSync(path.resolve(__dirname,'../../orbytek-logo-light.webp')).toString('base64');
+  await page.evaluate(logo=>{previewDocument.issuer.logo='data:image/webp;base64,'+logo;customizeDocument(previewDocument.id);},logo);
+  const previewFit=[];
+  for(const fontSize of [16,22]){
+   await page.evaluate(size=>document.documentElement.style.fontSize=size+'px',fontSize);
+   for(const width of [1389,1024,800,390,320]){
+    await page.setViewportSize({width,height:1000});
+    for(const model of ['classique','bleu_nuit','cuivre','orbytek','architecture','industriel']){
+     await page.selectOption('#template-choice',model);
+     await page.waitForFunction(()=>{
+      const preview=document.querySelector('#template-preview'),paper=preview.querySelector('.document'),stage=preview.querySelector('.template-preview-page');
+      const box=paper.getBoundingClientRect(),frame=stage.getBoundingClientRect();
+      return box.width>0&&Math.abs(box.width-frame.width)<1&&box.height<=frame.height+1;
+     });
+     const geometry=await page.evaluate(()=>{
+      const preview=document.querySelector('#template-preview'),paper=preview.querySelector('.document'),dialog=document.querySelector('#feature-dialog');
+      const p=preview.getBoundingClientRect(),d=paper.getBoundingClientRect(),last=paper.querySelector('thead th:last-child').getBoundingClientRect();
+      return {dialogWidth:dialog.clientWidth,dialogScroll:dialog.scrollWidth,left:d.left,right:d.right,frameLeft:p.left,frameRight:p.right,lastColumnRight:last.right,scale:d.width/paper.offsetWidth};
+     });
+     assert.ok(geometry.dialogScroll<=geometry.dialogWidth+1,JSON.stringify({model,width,fontSize,geometry}));
+     assert.ok(geometry.left>=geometry.frameLeft&&geometry.right<=geometry.frameRight+1,JSON.stringify({model,width,fontSize,geometry}));
+     assert.ok(geometry.lastColumnRight<=geometry.frameRight+1,'Dernière colonne coupée');
+     previewFit.push({model,width,fontSize,scale:geometry.scale});
+     if(model==='orbytek'&&((width===1389&&fontSize===22)||(width===390&&fontSize===16))){
+      await page.locator('#feature-dialog').screenshot({path:path.join(reports,`preview-orbytek-${width}-font-${fontSize}.png`)});
+     }
+    }
+   }
+  }
+  await page.evaluate(()=>document.querySelector('#feature-dialog').close());
+  // Reopening and switching to a different feature must also clean up observers.
+  await page.evaluate(()=>{customizeDocument(previewDocument.id);featureDialog('Autre fenêtre','<p>Test local</p>');});
+  await page.evaluate(()=>customizeDocument(previewDocument.id));
+  assert.equal(await page.locator('#template-preview .document').count(),1);
+  assert.deepEqual(errors,[]);fs.writeFileSync(path.join(reports,'checks.json'),JSON.stringify({results,previewFit,errors},null,2));
+  console.log('Aperçu complet : six modèles × cinq largeurs × deux tailles de texte vérifiés.');
  } finally {if(browser)await browser.close();server.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

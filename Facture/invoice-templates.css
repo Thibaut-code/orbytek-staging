@@ -139,8 +139,19 @@
 .document.template-industriel .total>div>span:last-child {font-family:Consolas,'Courier New',monospace;font-size:22px;font-weight:700;letter-spacing:-1px;}
 .document.template-industriel .total .grand {background:var(--invoice-accent);color:var(--invoice-on-accent);margin:0;border:0;padding:calc(14px * var(--design-space)) 12px;}
 
-/* Keep a readable paper preview in the existing model picker. */
-#template-preview .document.invoice-designed {min-width:640px;}
+/* Fit the whole paper width inside the picker; never resize invoice/PDF content. */
+#feature-dialog.appearance-dialog {width:min(1280px,96vw);max-width:96vw;max-height:94vh;overflow-x:hidden;overflow-y:auto;}
+#feature-dialog.appearance-dialog .template-editor {grid-template-columns:260px minmax(0,1fr);align-items:start;}
+#feature-dialog.appearance-dialog .template-editor>div {min-width:0;}
+#template-preview {min-width:0;overflow:hidden;}
+#template-preview .template-preview-page {position:relative;overflow:hidden;max-width:100%;margin:0 auto;}
+#template-preview .template-preview-document {position:absolute;top:0;left:0;width:800px;transform-origin:top left;font-size:16px;line-height:1.5;}
+#template-preview .template-preview-document>.document {width:800px;min-width:800px;max-width:800px;margin:0;}
+@media screen and (max-width:800px) {
+  #feature-dialog.appearance-dialog {padding:20px;}
+  #feature-dialog.appearance-dialog .template-editor {grid-template-columns:minmax(0,1fr);}
+  #template-preview {padding:10px;}
+}
 @media screen and (max-width:600px) {
   #main .document.invoice-designed {padding:22px 18px;max-width:100%;}
   #main .document.invoice-designed .design-heading {gap:18px;}

@@ -1061,6 +1061,7 @@ function validDate(value) {
   );
 }
 function featureDialog(title, body) {
+  document.getElementById('template-preview')?.previewObserver?.disconnect();
   document.getElementById("feature-dialog")?.remove();
   const dialog = document.createElement("dialog");
   dialog.id = "feature-dialog";
@@ -1585,11 +1586,34 @@ function customizeDocument(id) {
   if (!d) return;
   appearanceDraft = cleanAppearance(d.appearance || company.appearance || DEFAULT_APPEARANCE);
   const dialog = featureDialog('Personnaliser le document', `<div class="template-editor"><div><label class="field">Modèle<select id="template-choice" onchange="updateAppearance('template',this.value)">${Object.entries(TEMPLATES).map(([key,label]) => `<option value="${key}" ${appearanceDraft.template === key ? 'selected' : ''}>${label}</option>`).join('')}</select></label><label class="field">Couleur du document<input id="template-color" type="color" value="${appearanceDraft.color}" oninput="updateAppearance('color',this.value)"></label><button onclick="resetAppearance()">Retour au modèle par défaut</button><label class="field"><span><input id="default-appearance" type="checkbox"> Utiliser aussi pour mes prochains documents</span></label><button class="primary" onclick="saveAppearance()">Enregistrer le modèle</button></div><div id="template-preview" aria-live="polite"></div></div>`);
-  dialog.classList.add('wide-dialog'); drawAppearance();
+  dialog.classList.add('wide-dialog', 'appearance-dialog');
+  dialog.addEventListener('close', () => $('#template-preview')?.previewObserver?.disconnect(), {once:true});
+  drawAppearance();
 }
 function drawAppearance() {
   const d = appearanceTarget ? docs.find(x => x.id === appearanceTarget) : draft;
-  $('#template-preview').innerHTML = documentHTML({...d, id:d.id || 'Aperçu · numéro à attribuer', appearance:appearanceDraft});
+  const preview = $('#template-preview');
+  preview.previewObserver?.disconnect();
+  preview.innerHTML = `<div class="template-preview-page"><div class="template-preview-document">${documentHTML({...d, id:d.id || 'Aperçu · numéro à attribuer', appearance:appearanceDraft})}</div></div>`;
+  const fit = () => fitAppearancePreview(preview);
+  fit();
+  if (typeof ResizeObserver === 'function') {
+    preview.previewObserver = new ResizeObserver(() => requestAnimationFrame(fit));
+    preview.previewObserver.observe(preview);
+    preview.previewObserver.observe(preview.querySelector('.document'));
+  }
+}
+function fitAppearancePreview(preview) {
+  const page = preview.querySelector('.template-preview-page');
+  const paper = preview.querySelector('.document');
+  if (!page || !paper || !preview.isConnected) return;
+  const style = getComputedStyle(preview);
+  const width = preview.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  if (width <= 0 || !paper.offsetWidth) return;
+  const scale = Math.min(1, width / paper.offsetWidth);
+  page.style.width = `${paper.offsetWidth * scale}px`;
+  page.style.height = `${Math.ceil(paper.offsetHeight * scale)}px`;
+  preview.querySelector('.template-preview-document').style.transform = `scale(${scale})`;
 }
 function updateAppearance(k,v) { appearanceDraft[k]=v; if(k==='template'){appearanceDraft.color=TEMPLATE_COLORS[v];$('#template-color').value=appearanceDraft.color;} drawAppearance(); }
 function resetAppearance() {
