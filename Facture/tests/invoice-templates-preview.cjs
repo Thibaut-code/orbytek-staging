@@ -17,7 +17,8 @@ function createServer(){return http.createServer((req,res)=>{
    const count=Number(params.get('rows')||3);if(count>3)previewDocument.lines=Array.from({length:count},(_,i)=>({...previewDocument.lines[i%3],name:'Prestation '+(i+1)+' — '+previewDocument.lines[i%3].name,tax:[0,6,12,21][i%4]}));
    account={id:'local-preview'};company={...previewDocument.issuer};clients=[{id:'preview-client',...previewDocument.customer}];docs=[previewDocument];dataState='ready';
    db={from(){throw Error('Aucune écriture autorisée dans cet aperçu');},rpc(){throw Error('Aucune écriture autorisée dans cet aperçu');}};
-   document.querySelector('#main').innerHTML=view(previewDocument.id);window.previewReady=true;`;
+   if(params.has('draft')){draft={...previewDocument,id:'',dbId:null};delete draft.customer;step=3;}
+   document.querySelector('#main').innerHTML=params.has('draft')?wizard():view(previewDocument.id);window.previewReady=true;`;
   html=html.replace('</body>','<script>'+bootstrap+'</script></body>');
   res.setHeader('Content-Type','text/html; charset=utf-8');return res.end(html);
  }

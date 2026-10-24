@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const {createServer}=require('./invoice-templates-preview.cjs');
 const packageRoot=process.env.FF_NODE_MODULES||'C:/Users/FlowUP/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
 const {chromium}=require(path.join(packageRoot,'playwright'));
-const reports=path.resolve(__dirname,'../../reports/invoice-templates');
+const reports=process.env.FF_REPORTS?path.resolve(process.env.FF_REPORTS):path.resolve(__dirname,'../../reports/invoice-templates');
 async function main(){
  fs.mkdirSync(reports,{recursive:true});
  const server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
@@ -15,7 +15,7 @@ async function main(){
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   const base='http://127.0.0.1:'+server.address().port;
   const results=[];
-  for(const model of ['orbytek','architecture','industriel']) {
+  for(const model of process.env.FF_PREVIEW_ONLY?[]:['orbytek','architecture','industriel']) {
    await page.goto(base+'/?model='+model);await page.waitForFunction(()=>window.previewReady);
    await page.locator('#main > .document').screenshot({path:path.join(reports,model+'-desktop.png')});
    assert.equal(await page.locator('.document .design-lines tbody tr').count(),3);
@@ -65,43 +65,57 @@ async function main(){
   }
   // Regression: the entire paper width must remain visible in the model picker,
   // including large application text, small screens, resizing and uploaded logos.
-  await page.goto(base+'/?model=orbytek');await page.waitForFunction(()=>window.previewReady);
   const logo=fs.readFileSync(path.resolve(__dirname,'../../orbytek-logo-light.webp')).toString('base64');
-  await page.evaluate(logo=>{previewDocument.issuer.logo='data:image/webp;base64,'+logo;customizeDocument(previewDocument.id);},logo);
   const previewFit=[];
+  for(const source of ['saved','draft']){
+  await page.goto(base+'/?model=orbytek'+(source==='draft'?'&draft=1':''));await page.waitForFunction(()=>window.previewReady);
+  await page.evaluate(({logo,source})=>{const d=source==='draft'?draft:previewDocument;d.issuer.logo='data:image/webp;base64,'+logo;customizeDocument(source==='draft'?undefined:previewDocument.id);},{logo,source});
   for(const fontSize of [16,22]){
    await page.evaluate(size=>document.documentElement.style.fontSize=size+'px',fontSize);
-   for(const width of [1389,1024,800,390,320]){
+   for(const width of [1389,1024,800,768,390,320]){
     await page.setViewportSize({width,height:1000});
     for(const model of ['classique','bleu_nuit','cuivre','orbytek','architecture','industriel']){
      await page.selectOption('#template-choice',model);
      await page.waitForFunction(()=>{
       const preview=document.querySelector('#template-preview'),paper=preview.querySelector('.document'),stage=preview.querySelector('.template-preview-page');
       const box=paper.getBoundingClientRect(),frame=stage.getBoundingClientRect();
-      return box.width>0&&Math.abs(box.width-frame.width)<1&&box.height<=frame.height+1;
+      return box.width>0&&Math.abs(box.width-frame.width)<1&&Math.abs(box.height-frame.height)<1;
      });
      const geometry=await page.evaluate(()=>{
       const preview=document.querySelector('#template-preview'),paper=preview.querySelector('.document'),dialog=document.querySelector('#feature-dialog');
       const p=preview.getBoundingClientRect(),d=paper.getBoundingClientRect(),last=paper.querySelector('thead th:last-child').getBoundingClientRect();
-      return {dialogWidth:dialog.clientWidth,dialogScroll:dialog.scrollWidth,left:d.left,right:d.right,frameLeft:p.left,frameRight:p.right,lastColumnRight:last.right,scale:d.width/paper.offsetWidth};
+      return {dialogWidth:dialog.clientWidth,dialogScroll:dialog.scrollWidth,previewWidth:preview.clientWidth,previewScroll:preview.scrollWidth,left:d.left,right:d.right,frameLeft:p.left,frameRight:p.right,lastColumnRight:last.right,scale:d.width/paper.offsetWidth};
      });
-     assert.ok(geometry.dialogScroll<=geometry.dialogWidth+1,JSON.stringify({model,width,fontSize,geometry}));
-     assert.ok(geometry.left>=geometry.frameLeft&&geometry.right<=geometry.frameRight+1,JSON.stringify({model,width,fontSize,geometry}));
+     assert.ok(geometry.dialogScroll<=geometry.dialogWidth+1,JSON.stringify({source,model,width,fontSize,geometry}));
+     assert.ok(geometry.previewScroll<=geometry.previewWidth+1,JSON.stringify({source,model,width,fontSize,geometry}));
+     assert.ok(geometry.left>=geometry.frameLeft&&geometry.right<=geometry.frameRight+1,JSON.stringify({source,model,width,fontSize,geometry}));
      assert.ok(geometry.lastColumnRight<=geometry.frameRight+1,'Dernière colonne coupée');
-     previewFit.push({model,width,fontSize,scale:geometry.scale});
-     if(model==='orbytek'&&((width===1389&&fontSize===22)||(width===390&&fontSize===16))){
-      await page.locator('#feature-dialog').screenshot({path:path.join(reports,`preview-orbytek-${width}-font-${fontSize}.png`)});
+     const end=await page.evaluate(()=>{
+      const preview=document.querySelector('#template-preview');
+      preview.scrollLeft=9999;preview.querySelector('.template-preview-page').scrollLeft=9999;
+      return {preview:preview.scrollLeft,page:preview.querySelector('.template-preview-page').scrollLeft};
+     });
+     assert.deepEqual(end,{preview:0,page:0},'Le document ne doit pas pouvoir défiler horizontalement');
+     previewFit.push({source,model,width,fontSize,scale:geometry.scale,horizontalScroll:false});
+     if(model==='orbytek'&&((width===1389&&fontSize===22)||(width===768&&fontSize===16)||(width===390&&fontSize===16))){
+      await page.locator('#feature-dialog').evaluate(el=>{el.scrollTop=0;});
+      await page.locator('#feature-dialog').screenshot({path:path.join(reports,`preview-${source}-orbytek-${width}-font-${fontSize}.png`)});
+      if(source==='draft'&&width===768){
+       await page.locator('#template-preview .design-lines').evaluate(el=>el.scrollIntoView({block:'center'}));
+       await page.locator('#feature-dialog').screenshot({path:path.join(reports,'preview-draft-full-width.png')});
+      }
      }
     }
    }
   }
   await page.evaluate(()=>document.querySelector('#feature-dialog').close());
+  }
   // Reopening and switching to a different feature must also clean up observers.
   await page.evaluate(()=>{customizeDocument(previewDocument.id);featureDialog('Autre fenêtre','<p>Test local</p>');});
   await page.evaluate(()=>customizeDocument(previewDocument.id));
   assert.equal(await page.locator('#template-preview .document').count(),1);
   assert.deepEqual(errors,[]);fs.writeFileSync(path.join(reports,'checks.json'),JSON.stringify({results,previewFit,errors},null,2));
-  console.log('Aperçu complet : six modèles × cinq largeurs × deux tailles de texte vérifiés.');
+  console.log('Largeur complète sans défilement horizontal : six modèles × six largeurs × deux tailles de texte, sur facture enregistrée et brouillon.');
  } finally {if(browser)await browser.close();server.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

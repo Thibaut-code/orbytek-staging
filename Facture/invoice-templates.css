@@ -144,8 +144,8 @@
 #feature-dialog.appearance-dialog .template-editor {grid-template-columns:260px minmax(0,1fr);align-items:start;}
 #feature-dialog.appearance-dialog .template-editor>div {min-width:0;}
 #template-preview {min-width:0;overflow:hidden;}
-#template-preview .template-preview-page {position:relative;overflow:hidden;max-width:100%;margin:0 auto;}
-#template-preview .template-preview-document {position:absolute;top:0;left:0;width:800px;transform-origin:top left;font-size:16px;line-height:1.5;}
+#template-preview .template-preview-page {max-width:100%;margin:0 auto;}
+#template-preview .template-preview-document {width:800px;font-size:16px;line-height:1.5;}
 #template-preview .template-preview-document>.document {width:800px;min-width:800px;max-width:800px;margin:0;}
 @media screen and (max-width:800px) {
   #feature-dialog.appearance-dialog {padding:20px;}

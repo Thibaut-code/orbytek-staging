@@ -1587,7 +1587,7 @@ function customizeDocument(id) {
   appearanceDraft = cleanAppearance(d.appearance || company.appearance || DEFAULT_APPEARANCE);
   const dialog = featureDialog('Personnaliser le document', `<div class="template-editor"><div><label class="field">Modèle<select id="template-choice" onchange="updateAppearance('template',this.value)">${Object.entries(TEMPLATES).map(([key,label]) => `<option value="${key}" ${appearanceDraft.template === key ? 'selected' : ''}>${label}</option>`).join('')}</select></label><label class="field">Couleur du document<input id="template-color" type="color" value="${appearanceDraft.color}" oninput="updateAppearance('color',this.value)"></label><button onclick="resetAppearance()">Retour au modèle par défaut</button><label class="field"><span><input id="default-appearance" type="checkbox"> Utiliser aussi pour mes prochains documents</span></label><button class="primary" onclick="saveAppearance()">Enregistrer le modèle</button></div><div id="template-preview" aria-live="polite"></div></div>`);
   dialog.classList.add('wide-dialog', 'appearance-dialog');
-  dialog.addEventListener('close', () => $('#template-preview')?.previewObserver?.disconnect(), {once:true});
+  dialog.addEventListener('close', () => dialog.querySelector('#template-preview')?.previewObserver?.disconnect(), {once:true});
   drawAppearance();
 }
 function drawAppearance() {
@@ -1612,8 +1612,9 @@ function fitAppearancePreview(preview) {
   if (width <= 0 || !paper.offsetWidth) return;
   const scale = Math.min(1, width / paper.offsetWidth);
   page.style.width = `${paper.offsetWidth * scale}px`;
-  page.style.height = `${Math.ceil(paper.offsetHeight * scale)}px`;
-  preview.querySelector('.template-preview-document').style.transform = `scale(${scale})`;
+  // Native zoom also reduces layout/scroll dimensions. A transform only changes
+  // painting and can leave a wide, horizontally scrollable box behind it.
+  preview.querySelector('.template-preview-document').style.zoom = String(scale);
 }
 function updateAppearance(k,v) { appearanceDraft[k]=v; if(k==='template'){appearanceDraft.color=TEMPLATE_COLORS[v];$('#template-color').value=appearanceDraft.color;} drawAppearance(); }
 function resetAppearance() {

@@ -1,0 +1,1158 @@
+{
+  "results": [],
+  "previewFit": [
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "classique",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "bleu_nuit",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "cuivre",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "orbytek",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "architecture",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "saved",
+      "model": "industriel",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 1389,
+      "fontSize": 16,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 1024,
+      "fontSize": 16,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 800,
+      "fontSize": 16,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 768,
+      "fontSize": 16,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 390,
+      "fontSize": 16,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 320,
+      "fontSize": 16,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 1389,
+      "fontSize": 22,
+      "scale": 1,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 1024,
+      "fontSize": 22,
+      "scale": 0.76125,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 800,
+      "fontSize": 22,
+      "scale": 0.8825,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 768,
+      "fontSize": 22,
+      "scale": 0.84375,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 390,
+      "fontSize": 22,
+      "scale": 0.39,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "classique",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "bleu_nuit",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "cuivre",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "orbytek",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "architecture",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    },
+    {
+      "source": "draft",
+      "model": "industriel",
+      "width": 320,
+      "fontSize": 22,
+      "scale": 0.30625,
+      "horizontalScroll": false
+    }
+  ],
+  "errors": []
+}
