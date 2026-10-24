@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#f6f3ec"><title>Administration · La BD d’Albert</title><link rel="stylesheet" href="style.css?v=20261019-admin"><link rel="stylesheet" href="admin.css?v=2"><script defer src="config.js"></script><script defer src="questionnaire-data.js"></script><script defer src="admin-core.js?v=1"></script><script defer src="admin.js?v=2"></script></head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-mark">a.</span><span>Un album de famille<small>ADMINISTRATION</small></span></a><a class="text-button" href="./">Retour au questionnaire</a></header>
+  <main class="admin-wrap">
+    <section id="adminLogin" class="admin-login"><div class="eyebrow">DANS LES COULISSES DE LA BD</div><h1>Les souvenirs,<br><em>réunis au même endroit.</em></h1><form id="adminLoginForm" class="welcome-card"><h2>Accès administrateur</h2><label for="adminPassword">Mot de passe</label><div class="access-input"><input id="adminPassword" type="password" autocomplete="current-password" required><button id="adminEnter" class="button primary" type="submit">Ouvrir l’administration →</button></div><p id="adminLoginError" class="notice" role="alert" hidden></p></form></section>
+    <div id="adminWorkspace" hidden>
+      <div class="admin-heading"><div><div class="eyebrow">LA BD D’ALBERT · ADMINISTRATION</div><h1>Le carnet <em>de famille.</em></h1></div><button id="adminLogout" class="button subtle">Se déconnecter</button></div>
+      <p class="muted">Tous les récits, leurs auteurs et les photos pour préparer l’histoire d’Albert.</p>
+      <div class="admin-actions"><button class="button primary" id="exportMerged">Télécharger le regroupement</button><button class="button secondary" id="exportAll">Sauvegarde complète</button><button class="text-button" id="adminRefresh">Actualiser</button><span class="small muted" id="adminStatus" role="status"></span></div>
+      <p id="adminNotice" class="notice" role="status" hidden></p>
+      <div class="admin-stats"><div><strong id="statPeople">0</strong><span>personnes</span></div><div><strong id="statQuestions">0</strong><span>questions renseignées</span></div><div><strong id="statPhotos">0</strong><span>photos</span></div><div><strong id="statVariants">0</strong><span>questions avec plusieurs versions</span></div></div>
+      <nav class="admin-tabs" aria-label="Vues de l’administration"><button class="active" data-tab="merged" aria-pressed="true">Réponses regroupées</button><button data-tab="photos" aria-pressed="false">Toutes les photos</button><button data-tab="characters" aria-pressed="false">Personnages de la BD</button><button data-tab="people" aria-pressed="false">Personnes</button></nav>
+      <div class="admin-filters" id="adminFilters"><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="adminSearch" placeholder="Une question, un prénom, un souvenir…" aria-label="Rechercher"></label><select id="adminChapter" aria-label="Filtrer par thème"><option value="">Tous les thèmes</option></select><select id="photoPerson" aria-label="Filtrer les photos par personne" hidden><option value="">Toutes les personnes</option></select></div>
+      <section id="mergedPanel"><p class="small muted">Les réponses identiques sont réunies avec leurs auteurs. Les versions différentes sont signalées pour relecture ; les réponses originales restent disponibles.</p><div id="mergedList"></div></section>
+      <section id="photosPanel" hidden><h2>Toutes les photos, avec leur histoire.</h2><p class="small muted" id="photoCount"></p><div id="photoGrid" class="photo-grid"></div></section>
+      <section id="charactersPanel" hidden>
+        <h2>Les personnages de la BD</h2><p class="muted">Un nom, un visage, des repères pour dessiner la famille. Ajoute des portraits de face et de profil, et précise l’époque si les photos sont anciennes.</p>
+        <button id="newCharacter" class="button primary" type="button">＋ Ajouter un personnage</button>
+        <form id="characterForm" class="merged-question" hidden>
+          <h3 id="characterFormTitle">Nouveau personnage</h3>
+          <label for="characterName">Nom ou prénom</label><input id="characterName" maxlength="100" required placeholder="Par exemple : Albert ou Renaud">
+          <label for="characterNotes">Repères pour la BD</label><textarea id="characterNotes" maxlength="4000" placeholder="Lien avec Albert, surnom, âge, époque des photos, détails à garder…"></textarea>
+          <label for="characterFiles">Photos de référence · jusqu’à 8 portraits</label><input id="characterFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple><p class="small muted">JPEG, PNG ou WebP, 20 Mo par fichier maximum. Les photos sont réduites avant enregistrement.</p>
+          <div id="characterDraftPhotos" class="reference-photos"></div><p id="characterStatus" role="status" class="small"></p>
+          <div class="admin-actions"><button id="saveCharacter" class="button primary" type="submit">Enregistrer la fiche</button><button id="cancelCharacter" class="button subtle" type="button">Annuler</button></div>
+        </form>
+        <label class="search character-search"><span aria-hidden="true">⌕</span><input type="search" id="characterSearch" placeholder="Retrouver un personnage par son nom…" aria-label="Rechercher un personnage"></label>
+        <div id="characterList" class="character-list"></div>
+      </section>
+      <section id="peoplePanel" hidden><h2>Les personnes qui racontent</h2><p class="muted small">Supprimer une personne la retire du questionnaire, avec ses contributions. Tu peux la restaurer ci-dessous avec tous ses souvenirs.</p><div id="adminPeopleList"></div><details id="archivedPeopleBox" class="archived-people" hidden><summary>Personnes supprimées · restaurer un profil</summary><div id="archivedPeopleList"></div></details></section>
+    </div>
+    <footer><span class="footer-mark">a.</span> Les souvenirs de chacun. Une histoire à partager.</footer>
+  </main>
+  <dialog id="photoDialog"><button class="button subtle close-photo" id="closePhoto" aria-label="Fermer la photo">×</button><img id="largePhoto" alt=""><div class="photo-dialog-caption"><strong id="photoTitle"></strong><p id="photoContext" class="small muted"></p><a id="photoDownload" class="button secondary" download>Télécharger la photo</a></div></dialog>
+  <noscript><p class="notice">Active JavaScript pour ouvrir l’administration.</p></noscript>
+</body></html>

@@ -1,5 +1,15 @@
 # Facture Facile avec Supabase
 
+## Modèles Orbytek, Architecture et Industriel — version 2026.10.18.1
+
+Les trois nouveaux modèles s’ajoutent aux trois modèles existants dans **Modèle et aperçu**, sur une facture ou un devis, et dans **Personnaliser le modèle** lors de la création. Le logo, les coordonnées archivées, les prestations, le chantier, les totaux par taux de TVA et le QR de paiement utilisent les données habituelles du document. La couleur reste personnalisable ; **Utiliser aussi pour mes prochains documents** conserve le modèle comme préférence de société.
+
+Le modèle Orbytek conserve un fond blanc, des accents bleus et de fines lignes orbitales, sans image de la Terre. Les trois modèles disposent de styles pour l’écran, l’impression A4 et les PDF joints aux e-mails. Sur mobile, les tableaux se parcourent horizontalement. Les documents longs peuvent occuper plusieurs pages.
+
+Pour publier cette mise à jour, transférer ensemble `index.html`, `app.js` et **`invoice-templates.css`**. Les préférences utilisent les colonnes JSON `appearance` existantes ; aucune migration supplémentaire n’est nécessaire sur une installation déjà à jour.
+
+Vérifications depuis le dossier `Facture` : `node --test tests/*.test.cjs`. Un aperçu local sans accès à Supabase est disponible avec `node tests/invoice-templates-preview.cjs`, puis `http://127.0.0.1:4190/?model=orbytek` (également `architecture` ou `industriel`). Le contrôle navigateur `node tests/invoice-templates-browser.cjs` nécessite Playwright et Edge, ou les chemins `FF_NODE_MODULES` et `FF_BROWSER` ; ses captures et PDF de test sont enregistrés dans `reports/invoice-templates`.
+
 ## Récupération du mot de passe — version 2026.10.08.2
 
 Le lien envoyé avec **Authentication > Users > Send password recovery** ouvre désormais un formulaire de nouveau mot de passe avec confirmation. L’événement Supabase `PASSWORD_RECOVERY` est traité même si l’utilisateur est déjà connecté. Les liens invalides ou expirés proposent de demander un nouveau lien. Le bouton **Mot de passe oublié ?** est également disponible sur la connexion.

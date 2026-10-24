@@ -1,0 +1,186 @@
+/* Printable document designs, independent of the application interface theme.
+   No external font, image background or fixed page height: rows can paginate. */
+.document.invoice-designed {
+  --design-space:1; --ink:#101f2d; --muted:#53616e; --line:#d6dfe5; --green:var(--invoice-accent);
+  box-sizing:border-box; background:#fff; color:var(--ink); border-radius:0;
+  padding:38px; font:13px/1.5 Arial,Helvetica,sans-serif; overflow-wrap:anywhere;
+}
+.document.invoice-designed * {box-sizing:border-box;}
+.document.invoice-designed h2,.document.invoice-designed h3 {color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.2;margin:0;}
+.document.invoice-designed p {font-size:12px;line-height:1.6;margin:calc(8px * var(--design-space)) 0 0;white-space:pre-line;}
+.document.invoice-designed .design-label {display:block;font-size:10px;font-weight:700;line-height:1.5;letter-spacing:1.7px;text-transform:uppercase;color:var(--muted);margin-bottom:calc(8px * var(--design-space));}
+.document.invoice-designed .design-heading {display:flex;position:relative;justify-content:space-between;gap:26px;align-items:flex-start;margin-bottom:calc(30px * var(--design-space));break-inside:avoid;}
+.document.invoice-designed .design-identity {display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;}
+.document.invoice-designed .design-identity h3 {font-size:25px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;}
+.document.invoice-designed .company-logo {object-fit:contain;object-position:left center;max-width:205px;max-height:82px;margin:0;}
+.document.invoice-designed .company-logo.logo-square {width:78px;height:78px;}
+.document.invoice-designed .design-document-reference {text-align:right;min-width:0;}
+.document.invoice-designed .design-document-reference>strong {font-size:13px;font-weight:400;}
+.document.invoice-designed .design-meta {margin:0;min-width:0;font-size:12px;}
+.document.invoice-designed .design-meta>div {display:grid;grid-template-columns:minmax(80px,auto) minmax(0,1fr);gap:16px;margin:5px 0;}
+.document.invoice-designed .design-meta dt {font-weight:400;}
+.document.invoice-designed .design-meta dd {margin:0;}
+.document.invoice-designed .design-party {min-width:0;}
+.document.invoice-designed .design-party h3 {font-size:17px;font-weight:700;}
+.document.invoice-designed .design-party p {font-size:12px;}
+.document.invoice-designed .design-parties {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;break-inside:avoid;}
+.document.invoice-designed .design-project {margin:calc(24px * var(--design-space)) 0;break-inside:avoid;}
+.document.invoice-designed .design-project h3 {font-size:20px;font-weight:700;}
+.document.invoice-designed .design-table-wrap {min-width:0;}
+.document.invoice-designed .design-scroll-hint {display:none;}
+.document.invoice-designed .design-lines {table-layout:fixed;width:100%;margin:calc(24px * var(--design-space)) 0 0;font-size:12px;font-variant-numeric:tabular-nums;}
+.document.invoice-designed .design-col-number {width:6%;}
+.document.invoice-designed .design-col-description {width:38%;}
+.document.invoice-designed .design-col-qty {width:8%;}
+.document.invoice-designed .design-col-price {width:18%;}
+.document.invoice-designed .design-col-tax {width:10%;}
+.document.invoice-designed .design-col-amount {width:20%;}
+.document.invoice-designed.template-orbytek .design-col-description {width:44%;}
+.document.invoice-designed .design-lines th {background:#fff;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;vertical-align:bottom;border-block:1px solid var(--line);padding:calc(12px * var(--design-space)) 6px;}
+.document.invoice-designed .design-lines td {background:#fff;color:var(--ink);font-size:12px;border-bottom:1px solid var(--line);padding:calc(15px * var(--design-space)) 6px;vertical-align:top;overflow-wrap:anywhere;}
+.document.invoice-designed .design-lines .design-description {text-align:left;}
+.document.invoice-designed .design-lines td.design-description {font-weight:600;}
+.document.invoice-designed .design-lines .design-line-number {text-align:center;width:6%;}
+.document.invoice-designed .design-lines th:first-child,.document.invoice-designed .design-lines td:first-child {padding-left:0;}
+.document.invoice-designed .design-lines th:last-child,.document.invoice-designed .design-lines td:last-child {padding-right:0;}
+.document.invoice-designed .design-summary {margin:calc(24px * var(--design-space)) 0 0;}
+.document.invoice-designed .total {width:300px;max-width:100%;margin:0 0 0 auto;font-size:13px;break-inside:avoid;}
+.document.invoice-designed .total>div {gap:18px;padding:calc(7px * var(--design-space)) 0;}
+.document.invoice-designed .total>div>span:last-child {text-align:right;font-variant-numeric:tabular-nums;}
+.document.invoice-designed .total .grand {align-items:baseline;border-top:2px solid var(--invoice-accent);padding:14px 0 0;margin-top:10px;background:white;color:var(--ink);font-size:15px;}
+.document.invoice-designed .grand>span:last-child {font-size:26px;font-weight:800;letter-spacing:-.7px;}
+.document.invoice-designed .design-payment {margin-top:calc(30px * var(--design-space));border-top:1px solid var(--line);padding-top:calc(18px * var(--design-space));break-inside:avoid;}
+.document.invoice-designed .design-bank .design-label {color:var(--muted);margin-bottom:4px;}
+.document.invoice-designed .design-bank p {font-size:11px;margin:0;}
+.document.invoice-designed .payment-qr {margin:calc(16px * var(--design-space)) 0 0;gap:16px;display:flex;align-items:center;}
+.document.invoice-designed .payment-qr svg {width:132px;height:132px;min-width:132px;flex-shrink:0;}
+.document.invoice-designed .payment-qr p {font-size:10px;margin:4px 0;}
+.document.invoice-designed .payment-qr strong {font-size:12px;}
+.document.invoice-designed .qr-warning {font-size:10px;background:#fff;color:var(--muted);border-left:2px solid var(--line);padding:8px;margin:12px 0 0;}
+.document.invoice-designed .design-legal {margin-top:calc(20px * var(--design-space));break-inside:avoid;}
+.document.invoice-designed .demo-stamp {font-size:9px;letter-spacing:.4px;font-weight:600;color:#665c46;border:1px dashed #b8ae98;padding:7px;margin:0;}
+.document.invoice-designed .document-legal {color:var(--muted);font-size:9px!important;line-height:1.5;margin-top:7px!important;}
+
+/* Orbytek: white paper, electric-blue details and a small orbital line motif. */
+.document.template-orbytek .design-orbytek-heading {padding-top:7px;}
+.document.template-orbytek .design-identity h3 {font-size:29px;letter-spacing:4px;}
+.document.template-orbytek .design-identity:after {content:"";height:4px;width:44px;background:var(--invoice-accent);}
+.document.template-orbytek .design-issuer-details {margin-top:calc(18px * var(--design-space));font-size:11px;}
+.document.template-orbytek .design-document-reference {position:relative;padding-top:60px;}
+.document.template-orbytek .design-document-reference .design-label {color:var(--ink);letter-spacing:3px;}
+.document.template-orbytek .design-orbits {position:absolute;right:0;top:0;width:130px;height:44px;overflow:hidden;}
+.document.template-orbytek .design-orbits:before,.document.template-orbytek .design-orbits:after {content:"";position:absolute;border:1px solid var(--invoice-accent);border-radius:50%;width:210px;height:180px;right:-85px;bottom:0;opacity:.35;}
+.document.template-orbytek .design-orbits:after {width:165px;height:135px;bottom:14px;right:-65px;}
+.document.invoice-designed.template-orbytek .design-hero-title {font-size:var(--design-hero-size,64px);letter-spacing:-3px;font-weight:800;margin:calc(28px * var(--design-space)) 0;}
+.document.template-orbytek .design-hero-title:after {content:"";display:block;width:55px;height:4px;background:var(--invoice-accent);margin-top:10px;}
+.document.template-orbytek .design-orbytek-parties {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:38px;align-items:start;margin:calc(30px * var(--design-space)) 0;break-inside:avoid;}
+.document.template-orbytek .design-orbytek-parties .design-meta {border-left:2px solid var(--invoice-accent);border-right:2px solid var(--invoice-accent);padding:calc(12px * var(--design-space)) 16px;}
+.document.template-orbytek .design-label:before {content:"";display:inline-block;width:7px;height:7px;background:var(--invoice-accent);margin-right:9px;}
+.document.template-orbytek .design-document-reference .design-label:before {display:none;}
+.document.template-orbytek .design-project {margin-top:calc(35px * var(--design-space));}
+.document.template-orbytek .design-project h3 {font-size:24px;}
+
+/* Architecture: framed schedule, numbered rows and a bottom title block. */
+.document.invoice-designed.template-architecture {--ink:#28323a;--line:#bfcbd3;border:1px solid #8e9eaa;outline:1px solid #dce2e6;outline-offset:-8px;padding:30px;}
+.document.template-architecture .design-architecture-heading {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:32px;border-bottom:1px solid #8e9eaa;padding-bottom:calc(26px * var(--design-space));}
+.document.template-architecture .design-project {margin:0 0 calc(28px * var(--design-space));}
+.document.template-architecture .design-project h3 {font-size:23px;}
+.document.template-architecture .design-project .design-label:after {content:"";display:inline-block;vertical-align:middle;height:1px;width:45%;margin-left:14px;background:var(--line);}
+.document.invoice-designed.template-architecture h2 {font-family:Impact,'Arial Narrow',Arial,sans-serif;font-size:46px;font-weight:400;text-transform:uppercase;letter-spacing:.5px;}
+.document.template-architecture .design-sequence {font:400 55px/1.2 'Arial Narrow',Arial,sans-serif;color:var(--invoice-accent);margin:8px 0 20px;}
+.document.template-architecture .design-document-reference .design-meta {font-size:10px;text-align:left;}
+.document.template-architecture .design-meta dt {letter-spacing:.7px;}
+.document.template-architecture .design-schedule {min-height:230px;padding-left:10px;border-left:2px solid var(--invoice-accent);}
+.document.template-architecture .design-lines th {background:#f1f4f6;}
+.document.template-architecture .design-lines td,.document.template-architecture .design-lines th {border-right:1px dotted var(--line);border-bottom:1px dotted var(--line);}
+.document.template-architecture .design-lines td:last-child,.document.template-architecture .design-lines th:last-child {border-right:0;}
+.document.template-architecture .design-line-number span {display:inline-block;min-width:22px;padding:3px 1px;border:1px solid var(--invoice-accent);color:var(--invoice-accent);border-radius:50%;font-size:10px;}
+.document.template-architecture .design-summary {border-block:1px solid #8e9eaa;margin:calc(24px * var(--design-space)) 0 0;}
+.document.template-architecture .design-summary .total {display:flex;flex-wrap:wrap;width:auto;max-width:none;margin:0;}
+.document.template-architecture .total>div {flex:1 1 150px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:calc(17px * var(--design-space)) 12px;gap:10px;border-right:1px dotted var(--line);}
+.document.template-architecture .total>div>span:first-child {font-size:9px;letter-spacing:1px;text-transform:uppercase;}
+.document.template-architecture .total>div>span:last-child {font-size:23px;font-weight:700;letter-spacing:-.6px;}
+.document.template-architecture .total .grand {margin:0;border:0;padding:calc(17px * var(--design-space)) 12px;color:var(--invoice-accent);background:#f2f9fc;}
+.document.template-architecture .design-architecture-footer {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:calc(20px * var(--design-space));align-items:start;break-inside:avoid;}
+.document.template-architecture .design-payment {border:0;padding:0;margin:0;}
+.document.template-architecture .design-title-block {border:1px solid #8e9eaa;padding:12px;}
+.document.template-architecture .design-title-block .design-identity h3 {font-family:Impact,'Arial Narrow',Arial,sans-serif;font-size:19px;letter-spacing:.5px;font-weight:400;}
+.document.template-architecture .design-title-block .design-party>.design-label,.document.template-architecture .design-title-block .design-party>h3 {display:none;}
+.document.template-architecture .design-title-block .design-party p {font-size:10px;}
+.document.template-architecture .design-title-block .design-meta {margin-top:10px;border-top:1px solid var(--line);padding-top:6px;font-size:9px;}
+.document.template-architecture .design-title-block .design-meta>div {gap:8px;grid-template-columns:1fr 1fr;}
+.document.template-architecture .design-title-block .company-logo {max-width:150px;max-height:60px;}
+.document.template-architecture .design-title-block .company-logo.logo-square {width:60px;height:60px;}
+.document.template-architecture .payment-qr {flex-direction:column;align-items:flex-start;gap:6px;}
+
+/* Industrial: serial plate, workshop typography and an orange total strip. */
+.document.invoice-designed.template-industriel {--ink:#202326;--muted:#555b60;--line:#c9ced1;border-right:6px solid var(--invoice-accent);}
+.document.template-industriel .design-industrial-heading {align-items:center;border-bottom:2px solid var(--ink);padding-bottom:calc(24px * var(--design-space));}
+.document.template-industriel .design-identity h3 {font-family:Impact,'Arial Narrow',Arial,sans-serif;font-size:35px;font-weight:400;letter-spacing:.2px;}
+.document.template-industriel .design-serial {border:2px solid var(--ink);padding:14px;min-width:0;max-width:48%;}
+.document.invoice-designed.template-industriel .design-serial h2 {font-size:12px;text-transform:uppercase;letter-spacing:3px;border-bottom:1px solid var(--ink);padding-bottom:8px;margin-bottom:calc(8px * var(--design-space));}
+.document.template-industriel .design-serial>div {font:400 28px/1.2 Impact,'Arial Narrow',Arial,sans-serif;}
+.document.template-industriel .design-parties {padding-bottom:calc(20px * var(--design-space));border-bottom:1px solid var(--ink);}
+.document.template-industriel .design-parties>.design-party+div {border-left:1px solid var(--ink);padding-left:25px;}
+.document.template-industriel .design-party h3 {font-family:'Arial Narrow',Arial,sans-serif;font-weight:800;}
+.document.template-industriel .design-industrial-meta {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;padding:calc(18px * var(--design-space)) 0;}
+.document.template-industriel .design-industrial-meta .design-project {margin:0;border-left:1px solid var(--line);padding-left:25px;}
+.document.template-industriel .design-project h3 {font-size:15px;}
+.document.template-industriel .design-schedule>.design-label {color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:7px;}
+.document.template-industriel .design-lines {margin-top:14px;}
+.document.template-industriel .design-lines th {background:#eff0f1;color:var(--ink);letter-spacing:.5px;}
+.document.template-industriel .design-lines td.design-description {font-size:12px;text-transform:uppercase;font-family:'Arial Narrow',Arial,sans-serif;font-weight:700;}
+.document.template-industriel .design-lines td:not(.design-description) {font-family:Consolas,'Courier New',monospace;font-size:11px;}
+.document.template-industriel .design-lines .design-line-number {font-weight:700;}
+.document.template-industriel .design-summary {border:2px solid var(--ink);}
+.document.template-industriel .design-summary .total {display:flex;flex-wrap:wrap;width:auto;max-width:none;margin:0;}
+.document.template-industriel .total>div {display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 150px;gap:10px;padding:calc(14px * var(--design-space)) 12px;border-right:1px solid var(--line);}
+.document.template-industriel .total>div>span:first-child {font-size:10px;font-weight:700;text-transform:uppercase;}
+.document.template-industriel .total>div>span:last-child {font-family:Consolas,'Courier New',monospace;font-size:22px;font-weight:700;letter-spacing:-1px;}
+.document.template-industriel .total .grand {background:var(--invoice-accent);color:var(--invoice-on-accent);margin:0;border:0;padding:calc(14px * var(--design-space)) 12px;}
+
+/* Keep a readable paper preview in the existing model picker. */
+#template-preview .document.invoice-designed {min-width:640px;}
+@media screen and (max-width:600px) {
+  #main .document.invoice-designed {padding:22px 18px;max-width:100%;}
+  #main .document.invoice-designed .design-heading {gap:18px;}
+  #main .document.invoice-designed .design-identity h3 {font-size:22px;letter-spacing:1px;}
+  #main .document.invoice-designed .company-logo {max-width:150px;max-height:65px;}
+  #main .document.invoice-designed .design-parties,
+  #main .document.invoice-designed .design-orbytek-parties,
+  #main .document.invoice-designed .design-industrial-meta,
+  #main .document.invoice-designed .design-architecture-heading,
+  #main .document.invoice-designed .design-architecture-footer {grid-template-columns:minmax(0,1fr);gap:24px;}
+  #main .document.invoice-designed .design-table-wrap {overflow-x:auto;}
+  #main .document.invoice-designed .design-scroll-hint {display:block;font-size:11px;color:var(--muted);margin:14px 0 0;}
+  #main .document.invoice-designed .design-lines {min-width:560px;}
+  #main .document.invoice-designed .design-summary .total>div {flex-basis:100%;border-right:0;border-bottom:1px solid var(--line);}
+  #main .document.invoice-designed .design-serial {max-width:100%;}
+  #main .document.invoice-designed .design-serial>div {font-size:22px;}
+  #main .document.invoice-designed .design-industrial-heading {flex-direction:column;align-items:flex-start;}
+  #main .document.template-industriel .design-parties>.design-party+div {border-left:0;padding-left:0;}
+  #main .document.template-industriel .design-industrial-meta .design-project {border-left:0;padding-left:0;}
+  #main .document.template-architecture .design-document-reference {text-align:left;}
+  #main .document.template-architecture .design-sequence {font-size:40px;margin:8px 0;}
+  #main .document.template-architecture .design-schedule {min-height:0;}
+  #main .document.template-orbytek .design-heading {flex-direction:column;}
+  #main .document.template-orbytek .design-document-reference {text-align:left;padding-top:0;}
+  #main .document.template-orbytek .design-orbits {display:none;}
+  #main .document.invoice-designed.template-orbytek .design-hero-title {font-size:48px;}
+  #main .document.invoice-designed .payment-qr {flex-wrap:wrap;}
+}
+/* The export wrapper is outside #main so mobile rules never alter exported PDFs. */
+.pdf-export .document.invoice-designed {width:182mm;max-width:none;padding:0;border:0;outline:0;--design-space:.55;--design-hero-size:48px;}
+.pdf-export .document.invoice-designed .design-table-wrap {overflow:visible;}
+@media print {
+  .document.invoice-designed {--design-space:.55;--design-hero-size:48px;padding:0!important;border:0!important;outline:0!important;max-width:none;width:auto;background:#fff!important;color:var(--ink)!important;box-shadow:none;}
+  .document.invoice-designed .design-table-wrap {overflow:visible;}
+  .document.invoice-designed .design-lines {font-size:9pt;}
+  .document.invoice-designed .design-lines thead {display:table-header-group;}
+  .document.invoice-designed .design-lines tr {break-inside:avoid;}
+  .document.invoice-designed .design-lines th:first-child,.document.invoice-designed .design-lines td:first-child {width:auto;}
+  .document.invoice-designed .design-lines th,.document.invoice-designed .design-lines td {padding-top:8px;padding-bottom:8px;}
+  .document.invoice-designed .design-lines th,.document.invoice-designed .total .grand {print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+  .document.invoice-designed .design-heading,.document.invoice-designed .design-parties,.document.invoice-designed .design-meta,.document.invoice-designed .design-project,.document.invoice-designed .design-orbytek-parties,.document.invoice-designed .design-architecture-footer,.document.invoice-designed .design-legal {break-inside:avoid;}
+  .document.invoice-designed .payment-qr svg {width:35mm;height:35mm;min-width:35mm;}
+}

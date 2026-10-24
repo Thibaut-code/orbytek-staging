@@ -1,0 +1,3 @@
+Généré avec l’outil intégré image_gen.
+Référence graphique : 02-le-garage-qui-servait-de-but-v2.png.
+Consigne : créer une page de sommaire portrait, papier crème, cadres noirs et cartouches jaune pâle, lettrage BD lisible, deux colonnes, sans personnages. Reprendre les 48 titres du sommaire fourni dans la conversation et ajouter 46 — Une petite moustache pour veiller sur toi entre 45 et 47. Conserver les numéros des planches et leurs sauts. Titre SOMMAIRE, sous-titre De pension à la pension, mention de la couverture.

@@ -1475,7 +1475,11 @@ function render() {
 
 
 const DEFAULT_APPEARANCE = {template:"classique", color:"#194739", font:"sans"};
-const TEMPLATES = {classique:"1 · Original", bleu_nuit:"2 · Bleu nuit", cuivre:"3 · ORBYT — Noir et cuivre"};
+const TEMPLATES = {
+  classique:"1 · Original", bleu_nuit:"2 · Bleu nuit", cuivre:"3 · ORBYT — Noir et cuivre",
+  orbytek:"4 · Orbytek — Bleu électrique", architecture:"5 · Architecture — Plan technique",
+  industriel:"6 · Industriel — Atelier et chantier",
+};
 let appearanceDraft = null;
 let appearanceTarget = null;
 function publicCustomer(c) {
@@ -1492,7 +1496,7 @@ function clientExtraFields(c) {
 function readClientExtras(form) {
   return Object.fromEntries(["note","vat","peppol_id","street","postal_code","city","country"].map(k => [k, String(form.get(k) || '').trim()]));
 }
-const TEMPLATE_COLORS = {classique:'#194739',bleu_nuit:'#0b304e',cuivre:'#a45f36'};
+const TEMPLATE_COLORS = {classique:'#194739',bleu_nuit:'#0b304e',cuivre:'#a45f36',orbytek:'#009fe3',architecture:'#0087ad',industriel:'#ea6500'};
 function cleanAppearance(a = {}) {
   const template = Object.hasOwn(TEMPLATES,a?.template) ? a.template : 'classique';
   const color = /^#[0-9a-f]{6}$/i.test(a?.color) ? a.color : TEMPLATE_COLORS[template];
@@ -1516,10 +1520,37 @@ function navyDocumentHTML(d) {
   const c = d.customer || client(d), biz = documentBusiness(d);
   return `<article class="document">${documentHeader(d)}${d.job ? `<h3 class="invoice-job">Objet : ${esc(d.job)}</h3>` : ''}${d.site ? `<p>Chantier : ${esc(d.site)}</p>` : ''}<table><thead><tr><th>Description</th><th>Qté</th><th>Prix HTVA</th><th>TVA</th><th>Total HTVA</th></tr></thead><tbody>${d.lines.map(l=>`<tr><td>${esc(l.name)}</td><td>${l.qty}</td><td>${euro(l.price)}</td><td>${l.tax} %</td><td>${euro(round(l.qty*l.price))}</td></tr>`).join('')}</tbody></table>${totalBlock(d)}<div class="invoice-payment">${paymentQR(d,biz)}<p>Compte bancaire : ${esc(biz.iban)}<br>Communication : ${esc(d.id)}</p></div><div class="demo-stamp">DOCUMENT À VÉRIFIER AVANT UTILISATION</div><p class="muted document-legal">Mentions légales et traitement TVA à valider avant utilisation professionnelle. Vérifiez les mentions applicables à votre activité.</p></article>`;
 }
+// Live document layouts: reuse invoice snapshots, tax rounding and EPC payment data.
+function designedDocumentHTML(d, template) {
+  const biz = documentBusiness(d), buyer = d.customer || client(d);
+  const quote = d.type === 'devis', title = quote ? 'Devis' : 'Facture';
+  const label = text => `<span class="design-label">${text}</span>`;
+  const party = (p, heading) => `<div class="design-party">${label(heading)}<h3>${esc(p.name)}</h3><p>${invoiceAddress(p)}${p.vat ? '<br>TVA : '+esc(p.vat) : ''}${p.email ? '<br>'+esc(p.email) : ''}</p></div>`;
+  const issuer = party(biz, 'Émetteur'), customer = party(buyer, 'Client');
+  const identity = `<div class="design-identity">${logoHTML(biz.logo,biz.logo_shape)}<h3>${esc(biz.name)}</h3></div>`;
+  const metadata = `<dl class="design-meta"><div><dt>Référence</dt><dd>${esc(d.id)}</dd></div><div><dt>Date</dt><dd>${esc(fmt(d.date))}</dd></div><div><dt>${quote ? 'Valable jusqu’au' : 'Échéance'}</dt><dd>${esc(fmt(d.due))}</dd></div></dl>`;
+  const project = d.job || d.site ? `<div class="design-project">${d.job ? `${label('Projet')}<h3>${esc(d.job)}</h3>` : ''}${d.site ? `<p><strong>Chantier :</strong> ${esc(d.site)}</p>` : ''}</div>` : '';
+  const numbered = template !== 'orbytek';
+  const table = `<p class="design-scroll-hint no-print">Faites défiler le tableau pour voir les montants →</p><div class="design-table-wrap" role="region" aria-label="Détail des prestations et montants" tabindex="0"><table class="design-lines"><colgroup>${numbered ? '<col class="design-col-number">' : ''}<col class="design-col-description"><col class="design-col-qty"><col class="design-col-price"><col class="design-col-tax"><col class="design-col-amount"></colgroup><thead><tr>${numbered ? '<th scope="col" class="design-line-number">N°</th>' : ''}<th scope="col" class="design-description">${template === 'orbytek' ? 'Services' : 'Description'}</th><th scope="col">Qté</th><th scope="col">Prix unitaire HTVA</th><th scope="col">TVA</th><th scope="col">Total HTVA</th></tr></thead><tbody>${d.lines.map((l,i) => `<tr>${numbered ? `<td class="design-line-number"><span>${template === 'industriel' ? 'P' : ''}${String(i+1).padStart(2,'0')}</span></td>` : ''}<td class="design-description">${esc(l.name)}</td><td>${esc(l.qty)}</td><td>${euro(l.price)}</td><td>${esc(l.tax)} %</td><td>${euro(round(l.qty*l.price))}</td></tr>`).join('')}</tbody></table></div>`;
+  const summary = `<div class="design-summary">${totalBlock(d)}</div>`;
+  const payment = `<section class="invoice-payment design-payment"><div class="design-bank">${label('Coordonnées bancaires')}<p>IBAN : ${esc(biz.iban)}<br>Communication : ${esc(d.id)}</p></div>${paymentQR(d,biz)}</section>`;
+  const legal = `<div class="design-legal"><div class="demo-stamp">DOCUMENT À VÉRIFIER AVANT UTILISATION</div><p class="muted document-legal">Mentions légales et traitement TVA à valider avant utilisation professionnelle. Vérifiez les mentions applicables à votre activité.</p></div>`;
+  let content;
+  if (template === 'architecture') {
+    const sequence = String(d.id || '').match(/(?:^|-)(\d+)$/)?.[1];
+    content = `<div class="design-heading design-architecture-heading"><div>${project}${customer}</div><div class="design-document-reference"><h2>${title}</h2>${sequence ? `<div class="design-sequence" aria-hidden="true">/ ${esc(sequence)}</div>` : ''}${metadata}</div></div><div class="design-schedule">${table}</div>${summary}<div class="design-architecture-footer">${payment}<div class="design-title-block">${identity}${issuer}${metadata}</div></div>${legal}`;
+  } else if (template === 'industriel') {
+    content = `<div class="design-heading design-industrial-heading">${identity}<div class="design-serial"><h2>${title}</h2><div>${esc(d.id)}</div></div></div><div class="design-parties">${issuer}${customer}</div><div class="design-industrial-meta">${metadata}${project}</div><section class="design-schedule">${label('Détail des prestations')}${table}</section>${summary}${payment}${legal}`;
+  } else {
+    content = `<div class="design-heading design-orbytek-heading"><div>${identity}<p class="design-issuer-details">${invoiceAddress(biz)}${biz.vat ? '<br>TVA : '+esc(biz.vat) : ''}${biz.email ? '<br>'+esc(biz.email) : ''}</p></div><div class="design-document-reference">${label(title)}<strong>${esc(d.id)}</strong><span class="design-orbits" aria-hidden="true"></span></div></div><h2 class="design-hero-title">${title}</h2><div class="design-orbytek-parties">${metadata}${customer}</div>${project}${table}${summary}${payment}${legal}`;
+  }
+  return `<article class="document invoice-designed">${content}</article>`;
+}
 function documentHTML(d) {
   const a = cleanAppearance(d.appearance || company.appearance || DEFAULT_APPEARANCE);
-  const html = a.template !== 'classique' ? navyDocumentHTML(d) : baseDocumentHTML(d);
-  return html.replace('class="document"', `class="document template-${a.template}${a.template === 'cuivre' ? ' template-bleu_nuit' : ''} font-sans" style="--invoice-accent:${a.color};--invoice-on-accent:${accentText(a.color)}"`);
+  const designed = ['orbytek','architecture','industriel'].includes(a.template);
+  const html = designed ? designedDocumentHTML(d,a.template) : a.template !== 'classique' ? navyDocumentHTML(d) : baseDocumentHTML(d);
+  return html.replace('class="document', `style="--invoice-accent:${a.color};--invoice-on-accent:${accentText(a.color)}" class="document template-${a.template}${a.template === 'cuivre' ? ' template-bleu_nuit' : ''} font-sans`);
 }
 function documentActions(d) {
   return `<section class="no-print panel document-actions"><div class="filter-row document-toolbar"><span class="document-state"><span class="document-state-dot" aria-hidden="true"></span>${d.sentAt ? 'Envoyé le ' + new Date(d.sentAt).toLocaleString('fr-BE') : 'Enregistré'}</span><button onclick="sendDocument('${d.id}')">${d.sentAt ? 'Renvoyer par e-mail' : 'Envoyer par e-mail'}</button><button onclick="customizeDocument('${d.id}')">Modèle et aperçu</button>${!d.sentAt && !d.paid && !d.peppol ? `<button onclick="editDocument('${d.id}')">Modifier le contenu</button>${d.type === 'facture' ? `<button class="danger-button" onclick="deleteInvoice('${d.id}')">Supprimer la facture</button>` : ''}` : ''}${d.type === 'facture' ? `<button onclick="sendPeppolTest('${d.id}')">Peppol · test</button>` : ''}</div>${d.peppol ? `<p>Peppol test : demande enregistrée auprès du fournisseur. Vérifiez la livraison dans son tableau de bord.</p>` : ''}<div id="action-error" class="application-error" role="alert"></div></section>`;
@@ -1592,9 +1623,9 @@ async function documentPDF(d) {
   wrapper.className = 'pdf-export'; wrapper.style.width = '182mm';
   wrapper.innerHTML = documentHTML(d);
   return await html2pdf().set({margin:14,filename:documentFilename(d)+'.pdf',
-    image:{type:'jpeg',quality:0.96},html2canvas:{scale:2,backgroundColor:'#ffffff',logging:false},
+    image:{type:'jpeg',quality:0.96},html2canvas:{scale:2,backgroundColor:'#ffffff',logging:false,windowWidth:1120},
     jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
-    pagebreak:{mode:['css'],avoid:['tr','.document-heading','.invoice-parties','.total','.payment-qr','.invoice-payment','.document-legal']}
+    pagebreak:{mode:['css'],avoid:['tr','.document-heading','.invoice-parties','.total','.payment-qr','.invoice-payment','.document-legal','.design-heading','.design-parties','.design-orbytek-parties','.design-meta','.design-project','.design-architecture-footer','.design-legal']}
   }).from(wrapper).outputPdf('blob');
 }
 function documentFilename(d) { return String(d.id).replace(/[^a-zA-Z0-9_-]/g,'_'); }

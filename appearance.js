@@ -9,7 +9,7 @@
     root.dataset.appearance = mode;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', mode === 'light' ? '#f6f9ff' : '#090c0d');
     document.querySelectorAll('[data-appearance-choice]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.appearanceChoice === mode)));
-    document.querySelectorAll('.brand img').forEach(image => { image.src = mode === 'light' ? 'orbytek-logo-light.webp' : 'orbytek-logo-dark.webp'; });
+    document.querySelectorAll('.brand img').forEach(image => { image.src = mode === 'light' ? 'orbytek-logo-light.webp?v=20261018-alpha' : 'orbytek-logo-dark.webp?v=20261018-alpha'; });
     document.querySelectorAll('img[data-appearance-light][data-appearance-dark]').forEach(image => {
       image.src = mode === 'light' ? image.dataset.appearanceLight : image.dataset.appearanceDark;
     });

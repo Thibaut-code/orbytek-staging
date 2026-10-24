@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#f6f3ec">
+  <title>Les souvenirs d’Albert · Une BD en famille</title>
+  <link rel="stylesheet" href="style.css?v=20261019-people">
+  <script defer src="config.js?v=20261019-family-default"></script>
+  <script defer src="questionnaire-data.js"></script>
+  <script defer src="core.js?v=20261019-admin"></script>
+  <script defer src="app.js?v=20261019-family-default"></script>
+</head>
+<body>
+  <a class="skip" href="#form">Aller aux questions</a>
+  <header class="topbar"><a class="brand" href="./" aria-label="Accueil du questionnaire"><span class="brand-mark">a.</span><span>Un album de famille<small>ALBERT · 65 ANS</small></span></a><span class="edition">À plusieurs voix, une belle histoire.</span><button id="changePerson" class="button subtle" hidden></button></header>
+  <main class="wrap">
+    <section id="welcome" class="welcome">
+      <div class="eyebrow">LE CADEAU SE PRÉPARE ENSEMBLE</div>
+      <h1>Une vie de souvenirs.<br><em>Une histoire à dessiner.</em></h1>
+      <p class="lead">Pour les 65 ans d’Albert, rassemblons les petits détails et les grandes aventures qui feront sa BD.</p>
+      <div class="welcome-card">
+        <span class="step-label">POUR COMMENCER</span><h2>Qui raconte aujourd’hui ?</h2><p class="muted">Choisis ton prénom pour retrouver et compléter tes réponses.</p>
+        <div class="people" id="people" role="group" aria-label="Choisir qui répond">
+          <button class="person" data-person="maman" disabled><span class="avatar rose">M</span><strong>Maman</strong><small>Marianne</small><span class="person-arrow" aria-hidden="true">↗</span></button>
+          <button class="person" data-person="jean-paul" disabled><span class="avatar blue">J</span><strong>Jean-Paul</strong><small>Son frère</small><span class="person-arrow" aria-hidden="true">↗</span></button>
+          <button class="person" data-person="thibaut" disabled><span class="avatar sage">T</span><strong>Thibaut</strong><small>Son fils</small><span class="person-arrow" aria-hidden="true">↗</span></button>
+        </div>
+        <button class="text-button add-person" id="addPerson" disabled>＋ Ajouter une personne</button>
+        <form id="newPersonForm" hidden>
+          <h2>Et toi, comment t’appelles-tu ?</h2>
+          <label for="newPersonName">Ton prénom ou ton nom</label>
+          <p class="muted small" id="nameHelp">Il accompagnera tes souvenirs et apparaîtra dans la liste pour toute la famille. Si tu y es déjà, choisis ton prénom dans la liste.</p>
+          <input id="newPersonName" type="text" maxlength="80" autocomplete="name" aria-describedby="nameHelp" placeholder="Par exemple : Arnaud" required>
+          <div id="newPersonCodeField" hidden><label for="newPersonCode">Le code de la famille</label><input id="newPersonCode" type="password" autocomplete="off"></div>
+          <div class="extra-actions" style="margin-top:18px"><button class="button primary" id="createPerson" type="submit">Ajouter et commencer →</button><button class="button subtle" id="cancelNewPerson" type="button">Revenir à la liste</button></div>
+          <p id="newPersonStatus" class="notice" role="status" hidden></p>
+        </form>
+        <form id="accessForm" hidden>
+          <div class="access-heading"><strong id="selectedPerson"></strong><button type="button" class="text-button" id="chooseAgain">Changer</button></div>
+          <label for="familyCode">Le code de la famille</label><p id="codeHelp" class="muted small">Il accompagne le lien d’invitation. Il ne sera demandé qu’une fois sur cet appareil.</p>
+          <div class="access-input"><input id="familyCode" type="password" autocomplete="off" aria-describedby="codeHelp" required><button class="button primary" id="start" type="submit">Ouvrir mes souvenirs →</button></div>
+        </form>
+        <p id="welcomeStatus" role="status" class="notice" hidden></p>
+      </div>
+      <div class="welcome-notes"><span><b>01</b> Chacun ses souvenirs</span><span><b>02</b> Les réponses de tous, visibles</span><span><b>03</b> On reprend quand on veut</span></div>
+    </section>
+    <div id="workspace" hidden>
+      <section class="intro"><div class="eyebrow">LES SOUVENIRS D’ALBERT</div><h1>Racontons <em>son histoire.</em></h1><p>Quelques mots ou toute une aventure : chaque souvenir compte. Tu peux passer une question et y revenir plus tard.</p></section>
+      <div class="savebar"><span class="save-dot" id="saveDot" aria-hidden="true"></span><span id="status" role="status">Chargement…</span><button class="text-button" id="saveNow">Enregistrer maintenant</button></div>
+      <div id="connectionNotice" class="notice" role="status" hidden></div>
+      <section class="progress-card" aria-label="Ton avancement"><div class="progress-heading"><strong id="progressTitle">Tes souvenirs prennent forme</strong><span id="progressCount"></span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="165" aria-valuenow="0" id="progressBar"><span id="progress"></span></div><p class="small muted" id="progressText"></p></section>
+      <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Rechercher une question, un souvenir…" aria-label="Rechercher dans les questions"></label><label class="unanswered"><input type="checkbox" id="unanswered"> À compléter</label><button class="text-button" id="expand">Tout ouvrir</button><button class="text-button" id="collapse">Tout replier</button></div>
+      <p class="small muted reading-tip">Lis les souvenirs des autres, puis choisis « Je suis d’accord » pour les reprendre ou « Je veux apporter une précision » pour écrire ta version.</p>
+      <div id="form"></div><p id="noResults" class="notice" hidden>Aucune question ne correspond à cette recherche.</p>
+      <section class="extras" id="extras"><span class="eyebrow">LES PETITES HISTOIRES FONT LA GRANDE</span><h2>Encore un souvenir ?</h2><p class="muted">Une conversation marquante, un fou rire, un détail qui mérite sa place dans la BD…</p><div class="extra-actions"><button class="button primary" id="addDialog">＋ Ajouter une conversation</button><button class="button secondary" id="addAnecdote">＋ Ajouter une anecdote</button></div><div id="sceneList"></div></section>
+      <details class="backup"><summary>Garder une copie de mes souvenirs</summary><p class="small muted">Télécharge une copie de tes réponses et photos, ou reprends une ancienne sauvegarde dans ton profil.</p><div class="extra-actions"><button class="button secondary" id="export">Télécharger ma sauvegarde</button><label class="button secondary" for="importFile">Reprendre une sauvegarde</label><input id="importFile" type="file" accept="application/json,.json" hidden><button class="button subtle" id="print">Imprimer / PDF</button></div></details>
+    </div>
+    <footer><span class="footer-mark">a.</span> Une BD pour Albert. Des souvenirs de nous tous.<small id="footerInfo">Un projet familial, préparé avec amour.</small><a class="text-button" href="admin.html">Administration</a></footer>
+  </main>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <noscript><p class="notice">Active JavaScript pour ouvrir et sauvegarder le questionnaire.</p></noscript>
+</body>
+</html>

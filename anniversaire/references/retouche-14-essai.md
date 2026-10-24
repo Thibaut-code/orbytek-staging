@@ -1,0 +1,16 @@
+# Essai de retouche de la planche 14
+
+Original conservé : `14-albert-rencontre-marianne-v3.png`.
+Résultat : `14-albert-rencontre-marianne-essai-modeles-v1.png`.
+Outil : générateur d’images intégré.
+
+Références utilisées : planche originale, planche de style `02-le-garage-qui-servait-de-but-v2.png`, expressions de Marianne 20–30 ans, expressions et face/profil d’Albert 20–30 ans récupérés sur le site. Limite du générateur : cinq images par appel.
+
+Observation : les changements de visage du premier essai sont faibles, particulièrement pour Marianne. Une seconde tentative plus ciblée a échoué car la limite d’utilisation du générateur était atteinte. Ce fichier est un essai, pas une validation de conformité aux modèles.
+
+## Prompt du premier essai
+
++Retouche fidèle d'une planche de BD française. Image 1 = SEULE PLANCHE À RETOUCHER « ALBERT RENCONTRE MARIANNE ». Image 2 = référence de STYLE uniquement, le garage. Image 3 = modèle exact de Marianne 20–30 ans, feuille de dix expressions avec vues de face et de trois quarts. Images 4 et 5 = modèles exacts d'Albert 20–30 ans : expressions puis face/profil. Livrer une seule planche portrait entière, même découpage à cinq cases, sans ajouter de cases ni de portraits de référence.
+But : remplacer/réajuster les visages, coiffures, proportions et expressions d'Albert et Marianne dans toutes les cases afin qu'ils correspondent aux modèles fournis, sans inventer leurs traits ni les rajeunir depuis d'autres versions. Reprendre les expressions heureuses/petit sourire/attendrie disponibles dans les modèles en les adaptant aux angles et regards de la scène. Ne pas exagérer les yeux ni leur donner un visage manga. Albert doit avoir exactement la coiffure, les lunettes et la moustache des modèles, Marianne les boucles, la longueur des cheveux et le visage exacts des modèles. Conserver les vêtements narratifs de la planche cible : veste grise à carreaux et chemise bleue d'Albert, pull bleu clair et collier de Marianne ; les habits des fiches ne remplacent pas ceux de la scène.
+Style : faire correspondre le trait, les contours encrés, les textures et le modelé doux à la planche garage, une BD figurative chaleureuse et détaillée sur fond crème. Image 2 ne fournit ni personnages ni scène.
+Invariants stricts : conserver composition et cadrages des cinq cases, pose et orientation des personnages, maison de briques avec balcon, porte et ferronnerie, moto rouge et noire, sac, décors, objets et la continuité de la scène. Conserver bulles et cartouches et tous les textes EXACTEMENT comme l'original, sans corriger l'orthographe ou la ponctuation, ni modifier leurs locuteurs. Titre : « ALBERT RENCONTRE MARIANNE ». Cartouche haut : « Vers 1979, Albert vient dire bonjour à Bernard, son ancien camarade d’école. ». Bulle deuxième case : « Bonjour ! Bernard est là ? ». Cartouche troisième case : « Coup de foudre pour Marianne. ». Bas gauche : « Waw, qu’est ce qu’elle est belle. » et « quel beau sourire ». Bas droite cartouche : « quelques semaines plus tard. » ; bulles « Tu voudrais être mon cavalier au mariage de mon amie? » et « j’adorerais. ». Ne pas déplacer/attribuer autrement les bulles que dans la cible. Aucun filigrane. Résultat fini propre, lisible, pleine résolution.

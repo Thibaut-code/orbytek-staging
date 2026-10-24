@@ -12,11 +12,8 @@ html[data-appearance="light"] { color-scheme:light; --ink:#112440; --paper:#f6f9
 html[data-appearance] body { font-family:Inter,Arial,sans-serif; background:var(--paper); }
 html[data-appearance] :is(h1,h2,h3) { font-family:'Space Grotesk',Inter,Arial,sans-serif; font-weight:600; }
 html[data-appearance="light"] header { background:#ffffffed; color:var(--ink); border-color:var(--line); }
-/* Fond du logo neutralisé dans chaque thème, en conservant les images d'origine.
-   Le contraste ramène le fond clair au blanc et le fond sombre au noir purs ;
-   multiply/screen les rendent invisibles sur le fond de l'en-tête ou du pied. */
-html[data-appearance="light"] .brand img { filter:contrast(1.06) !important; mix-blend-mode:multiply !important; }
-html[data-appearance="dark"] .brand img { filter:contrast(1.15) !important; mix-blend-mode:screen !important; }
+/* Les deux WebP possèdent maintenant leur propre canal alpha. */
+html[data-appearance] .brand img { filter:none !important; mix-blend-mode:normal !important; }
 html[data-appearance="light"] header { backdrop-filter:blur(12px); }
 html[data-appearance="light"] .navlinks a { color:#425570; }
 html[data-appearance="light"] .navlinks a:hover,html[data-appearance="light"] .navlinks a[aria-current="page"] { color:#005f9d; }
