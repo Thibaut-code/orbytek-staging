@@ -1,0 +1,46 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'filmthibaut-son-nettoye-v3.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    title           : E1
+    encoder         : Lavf61.7.100
+    copyright       : for-ever.com
+  Duration: 03:43:21.41, start: 0.000000, bitrate: 1508 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(progressive), 720x576 [SAR 16:15 DAR 4:3], 1310 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 193 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+[Parsed_volumedetect_0 @ 0000019a5f1bcf00] n_samples: 0
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> pcm_s16le (native))
+Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    title           : E1
+    copyright       : for-ever.com
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 pcm_s16le
+size=N/A time=00:14:18.60 bitrate=N/A speed=1.67e+03x    size=N/A time=00:29:16.24 bitrate=N/A speed=1.7e+03x    size=N/A time=00:44:42.09 bitrate=N/A speed=1.73e+03x    size=N/A time=01:00:01.98 bitrate=N/A speed=1.74e+03x    size=N/A time=01:15:20.32 bitrate=N/A speed=1.75e+03x    size=N/A time=01:30:06.61 bitrate=N/A speed=1.75e+03x    size=N/A time=01:45:21.53 bitrate=N/A speed=1.75e+03x    size=N/A time=02:00:47.59 bitrate=N/A speed=1.76e+03x    size=N/A time=02:15:57.05 bitrate=N/A speed=1.76e+03x    size=N/A time=02:31:21.32 bitrate=N/A speed=1.76e+03x    size=N/A time=02:46:45.14 bitrate=N/A speed=1.76e+03x    size=N/A time=03:01:38.36 bitrate=N/A speed=1.76e+03x    size=N/A time=03:17:11.23 bitrate=N/A speed=1.77e+03x    size=N/A time=03:32:56.21 bitrate=N/A speed=1.77e+03x    [Parsed_volumedetect_0 @ 0000019a5f246a40] n_samples: 1286531072
+[Parsed_volumedetect_0 @ 0000019a5f246a40] mean_volume: -23.2 dB
+[Parsed_volumedetect_0 @ 0000019a5f246a40] max_volume: -1.4 dB
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_1db: 264
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_2db: 1719
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_3db: 6960
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_4db: 28008
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_5db: 96073
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_6db: 272749
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_7db: 635701
+[Parsed_volumedetect_0 @ 0000019a5f246a40] histogram_8db: 1275760
+[out#0/null @ 0000019a5f24edc0] video:0KiB audio:2512756KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=03:43:21.42 bitrate=N/A speed=1.77e+03x    

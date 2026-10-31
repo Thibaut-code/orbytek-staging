@@ -1,0 +1,34 @@
+{
+  "expected_commit": "0f4d6f61a32b3401b51fbae853b5f4376f020661",
+  "build_commit": "0f4d6f61a32b3401b51fbae853b5f4376f020661",
+  "status": "built",
+  "error": {
+    "message": null
+  },
+  "page": {
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": "2961"
+  },
+  "media-web/film.m3u8": {
+    "status": 200,
+    "content_type": "application/vnd.apple.mpegurl",
+    "bytes": "24323"
+  },
+  "media-web/init.mp4": {
+    "status": 200,
+    "content_type": "video/mp4",
+    "bytes": "1355"
+  },
+  "media-web/archive-0000.m4s": {
+    "status": 200,
+    "content_type": "video/iso.segment",
+    "bytes": "1086716"
+  },
+  "media-web/archive-0670.m4s": {
+    "status": 200,
+    "content_type": "video/iso.segment",
+    "bytes": "92816"
+  },
+  "url": "https://orbytek.be/Archive/"
+}

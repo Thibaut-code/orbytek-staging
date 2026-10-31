@@ -1,0 +1,32 @@
+{
+  "source": "filmthibaut-son-nettoye.mp4",
+  "output": "filmthibaut-son-nettoye-v2.mp4",
+  "start": 1942,
+  "end": 2428,
+  "filter": "afftdn=nr=14:nf=-38:tn=1:gs=12,lowpass=f=7500",
+  "filter_latency_compensation_ms": 25,
+  "quiet_excerpt_measurements": [
+    {
+      "time": 1970,
+      "quiet_before_dbfs": -41.93,
+      "quiet_after_dbfs": -45.48
+    },
+    {
+      "time": 2045,
+      "quiet_before_dbfs": -41.64,
+      "quiet_after_dbfs": -44.83
+    },
+    {
+      "time": 2210,
+      "quiet_before_dbfs": -40.9,
+      "quiet_after_dbfs": -44.29
+    },
+    {
+      "time": 2370,
+      "quiet_before_dbfs": -40.55,
+      "quiet_after_dbfs": -44.47
+    }
+  ],
+  "video": "stream copy",
+  "other_chapters": "No additional denoising; audio track encoded as AAC 192 kb/s"
+}

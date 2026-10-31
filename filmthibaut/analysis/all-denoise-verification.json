@@ -1,0 +1,48 @@
+{
+  "source": {
+    "duration": 13401.336,
+    "video_duration": 13401.32,
+    "audio_duration": 13401.336,
+    "audio_start": 0.0,
+    "video_start": 0.0,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "video_sha256": "d8185c0edfc3072a4bfa2d8e2c4f37242da28d79c408a3db55433c1a54d43ec1",
+    "video_packets": 335033
+  },
+  "output": {
+    "duration": 13401.405,
+    "video_duration": 13401.32,
+    "audio_duration": 13401.405,
+    "audio_start": 0.0,
+    "video_start": 0.0,
+    "audio_codec": "aac",
+    "sample_rate": 48000,
+    "video_sha256": "d8185c0edfc3072a4bfa2d8e2c4f37242da28d79c408a3db55433c1a54d43ec1",
+    "video_packets": 335033
+  },
+  "encoded_peak_dbfs": -1.4,
+  "checks": "Video bitstream identical; duration and A/V timing preserved; decoded audio peak below 0 dBFS.",
+  "waveform_alignment": [
+    {
+      "time": 90,
+      "lag_ms": 25.0
+    },
+    {
+      "time": 2045,
+      "lag_ms": 25.0625
+    },
+    {
+      "time": 2370,
+      "lag_ms": 25.0625
+    },
+    {
+      "time": 4325,
+      "lag_ms": 25.0
+    },
+    {
+      "time": 12965,
+      "lag_ms": 25.0625
+    }
+  ]
+}

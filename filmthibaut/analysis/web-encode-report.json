@@ -1,0 +1,10 @@
+{
+  "archive_bytes": 790183756,
+  "segments": 671,
+  "files": 699,
+  "video": "H.264, 720x576, 4:3, 25 fps",
+  "audio": "AAC 64 kb/s, same denoised audio",
+  "container": "HLS fragmented MP4",
+  "exclude_from_publication": "media/",
+  "video_reencoded_during_compaction": false
+}

@@ -1,0 +1,8 @@
+{
+  "source": "filmthibaut-son-ameliore.mp4",
+  "output": "filmthibaut-son-nettoye.mp4",
+  "filters": "highpass=f=60,afftdn=nr=9:nf=-40:tn=1:gs=8,lowpass=f=10000,alimiter=limit=0.841395:level=0:latency=1",
+  "video": "stream copy",
+  "description": "Adaptive spectral noise reduction up to 9 dB, 60 Hz high-pass, 10 kHz low-pass, peak limiter with latency compensation.",
+  "preview_measurements": "noise-excerpts.json"
+}

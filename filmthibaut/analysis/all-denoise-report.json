@@ -1,0 +1,9 @@
+{
+  "source": "filmthibaut-son-nettoye.mp4",
+  "output": "filmthibaut-son-nettoye-v3.mp4",
+  "filters": "afftdn=nr=14:nf=-38:tn=1:gs=12,lowpass=f=7500,atrim=start=0.025,asetpts=PTS-STARTPTS,apad,atrim=duration=13401.405",
+  "duration": 13401.405,
+  "scope": "Entire film, same additional filtering as birth chapter; starting from v1 to avoid doubling the birth treatment",
+  "video": "stream copy",
+  "latency_compensation_ms": 25
+}

@@ -1,0 +1,32 @@
+{
+  "source": "filmthibaut.mp4",
+  "output": "filmthibaut-son-ameliore.mp4",
+  "original": {
+    "input_i": "-37.73",
+    "input_tp": "-23.78",
+    "input_lra": "21.00",
+    "input_thresh": "-49.74",
+    "output_i": "-16.28",
+    "output_tp": "-1.50",
+    "output_lra": "15.10",
+    "output_thresh": "-27.42",
+    "normalization_type": "dynamic",
+    "target_offset": "-1.72"
+  },
+  "correction": {
+    "input_i": "-37.73",
+    "input_tp": "-23.78",
+    "input_lra": "21.00",
+    "input_thresh": "-49.74",
+    "output_i": "-17.99",
+    "output_tp": "-1.50",
+    "output_lra": "15.10",
+    "output_thresh": "-29.14",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.01"
+  },
+  "video": "copied without re-encoding",
+  "audio_codec": "AAC 192 kb/s, 48 kHz",
+  "target_lufs": -18,
+  "true_peak_limit_dbtp": -1.5
+}
