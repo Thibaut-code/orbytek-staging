@@ -32,10 +32,13 @@
 .creation-tags li { padding:5px 11px; border:1px solid #ffffff1a; border-radius:30px; color:#cec7c0; font-size:14px; }
 .creation-link { display:inline-block; color:var(--project-accent); font-size:16px; font-weight:600; padding:8px 0; border-bottom:1px solid currentColor; transition:letter-spacing .3s; }
 .creation-link:hover { letter-spacing:.5px; }
-.creation-alternatives { margin-top:22px; padding-top:18px; border-top:1px solid var(--line); }
+.creation-actions { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:20px 28px; }
+.creation-actions > .creation-link { flex-shrink:0; }
+.creation-alternatives { margin-left:auto; }
 .creation-alternatives p { margin:0 0 8px; font-size:15px; }
 .creation-alternative-links { display:flex; flex-wrap:wrap; gap:8px 22px; }
 .creation-alternative-links .creation-link { font-size:15px; }
+@media(max-width:480px) { .creation-alternatives { margin-left:0; flex-basis:100%; } }
 .portfolio-note { color:#b7b1a9; font-size:14px; margin:25px 0 0; }
 .creation-card.entering { opacity:0; transform:translateY(25px); }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
