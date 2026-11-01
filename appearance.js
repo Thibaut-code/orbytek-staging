@@ -4,12 +4,33 @@
   const key = 'orbytek-appearance';
   let mode = 'light';
   try { if (localStorage.getItem(key) === 'dark') mode = 'dark'; } catch { /* Private browsing keeps a session choice. */ }
+  // Installed in the head, before any logo can paint with its HTML fallback.
+  const logoStyle = document.createElement('style');
+  logoStyle.textContent = '.brand img{background:transparent!important}.brand img:not([data-logo-ready="true"]){visibility:hidden}';
+  document.head.append(logoStyle);
+  function updateLogo(image) {
+    const source = new URL(mode === 'light' ? 'orbytek-logo-light.webp?v=20261018-alpha' : 'orbytek-logo-dark.webp?v=20261018-alpha', document.baseURI).href;
+    if (image.src === source && image.dataset.logoReady === 'true') return;
+    image.dataset.logoReady = 'false';
+    image.onload = () => {
+      if (image.src === source && image.naturalWidth > 0) image.dataset.logoReady = 'true';
+    };
+    if (image.src !== source) image.src = source;
+    if (image.complete && image.naturalWidth > 0) image.onload();
+  }
+  new MutationObserver(records => {
+    for (const record of records) for (const node of record.addedNodes) {
+      if (node.nodeType !== 1) continue;
+      if (node.matches('.brand img')) updateLogo(node);
+      node.querySelectorAll('.brand img').forEach(updateLogo);
+    }
+  }).observe(document.documentElement, { childList: true, subtree: true });
   function apply(value) {
     mode = value;
     root.dataset.appearance = mode;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', mode === 'light' ? '#f6f9ff' : '#090c0d');
     document.querySelectorAll('[data-appearance-choice]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.appearanceChoice === mode)));
-    document.querySelectorAll('.brand img').forEach(image => { image.src = mode === 'light' ? 'orbytek-logo-light.webp?v=20261018-alpha' : 'orbytek-logo-dark.webp?v=20261018-alpha'; });
+    document.querySelectorAll('.brand img').forEach(updateLogo);
     document.querySelectorAll('img[data-appearance-light][data-appearance-dark]').forEach(image => {
       image.src = mode === 'light' ? image.dataset.appearanceLight : image.dataset.appearanceDark;
     });
@@ -43,6 +64,21 @@
     const navigation = document.querySelector('header .main-navigation');
     const links = navigation?.querySelector('.navlinks');
     if (!navigation || !links) return;
+    // Keep the current menu item in sync with section links and browser history.
+    const pagePath = url => url.pathname.replace(/\/index\.html$/, '/');
+    const pageLinks = [...links.querySelectorAll('a[href]')].filter(link => {
+      const url = new URL(link.href);
+      return url.origin === location.origin && pagePath(url) === pagePath(location);
+    });
+    const updateCurrentLink = () => {
+      const current = pageLinks.find(link => new URL(link.href).hash === location.hash)
+        || pageLinks.find(link => !new URL(link.href).hash);
+      if (!current) return;
+      links.querySelectorAll('[aria-current]').forEach(link => link.removeAttribute('aria-current'));
+      current.setAttribute('aria-current', 'page');
+    };
+    window.addEventListener('hashchange', updateCurrentLink);
+    updateCurrentLink();
     const header = navigation.closest('header');
     const mobile = matchMedia('(max-width: 800px)');
     const actions = document.createElement('div');
