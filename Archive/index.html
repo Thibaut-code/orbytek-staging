@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thibaut · Les films de mon enfance</title>
+<link rel="stylesheet" href="pellicule.css">
+<body>
+<main>
+<div class="intro"><div class="archive-label"><h1>Les souvenirs de Thibaut</h1><p class="archive-subtitle">Archive de famille</p><p class="archive-dates"><span>1981 — 2001</span></p></div></div>
+<section class="cinema" aria-label="Lecteur du film"><div class="photo-frame"><video id="film" controls playsinline preload="metadata" poster="thumbnails/10.jpg" src="media-web/film.m3u8"></video></div><div class="player-summary"><div class="now"><span id="current">Le film de Thibaut</span><span id="duration">3 h 43 min de souvenirs</span></div><div class="transport" role="group" aria-label="Navigation dans le film"><button id="back-five" type="button" aria-label="Reculer de 5 secondes">↶ −5 s</button><button id="forward-five" type="button" aria-label="Avancer de 5 secondes">+5 s ↷</button></div></div></section>
+<section class="collection" aria-label="Au fil des années"><nav id="year-tabs" class="year-tabs" aria-label="Parcourir les années"></nav><p id="notice" hidden></p><div id="chapters" class="chronology" aria-label="Chapitres du film"></div><div id="strip-years" hidden></div><div id="timeline" hidden></div><p id="chapter-count" class="chapter-count"></p></section>
+<aside class="thanks" aria-labelledby="thanks-title"><p class="eyebrow" id="thanks-title">DERRIÈRE LA CAMÉRA</p><p>Merci à <strong>Tonton Jean-Paul</strong> et à <strong>ma marraine Marie-Rose</strong> d’avoir filmé tous ces moments. C’est grâce à vous que je peux aujourd’hui retrouver et partager ces beaux souvenirs d’enfance.</p></aside>
+<button id="edit" class="edit-button" aria-expanded="false">✎ Modifier les chapitres</button>
+<section id="editor" hidden><h2>Vos repères, vos souvenirs</h2><p>Mettez le film en pause au début d’un événement, puis ajoutez un chapitre. Les changements restent dans ce navigateur. Exportez-les pour les publier sur votre site.</p><form id="add"><label>Nom du moment<input id="title" required placeholder="Ex. Anniversaire — 8 ans" maxlength="120"></label><button>Ajouter au temps actuel</button></form><div id="rows"></div><div class="actions"><button id="export">Exporter les chapitres</button><label class="import">Importer un fichier JSON<input type="file" id="import" accept="application/json,.json"></label><button id="reset">Rétablir les séquences repérées</button></div><p id="status" role="status"></p></section>
+<footer>THIBAUT <span>Une collection de souvenirs à partager. <a class="site-credit" href="https://orbytek.be" target="_blank" rel="noopener noreferrer">Créé par Orbytek</a></span></footer>
+</main><script src="hls.min.js"></script><script src="stream.js"></script><script src="chapters.js"></script><script src="app.js"></script>
+</body></html>
