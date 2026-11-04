@@ -688,3 +688,6 @@ h1 em { font-style:normal; color:#e6a57b; }
 .card .service-examples li + li { margin-top:10px; }
 .card .service-examples li::marker { color:var(--accent); }
 .card .service-examples strong { color:var(--ink); font-weight:600; }
+
+/* Confirmation remains above the page while the second relay completes. */
+.contact-confirmation{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147483647;background:var(--bg,#090c0d);}

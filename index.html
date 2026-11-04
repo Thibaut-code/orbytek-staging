@@ -12,7 +12,7 @@
 <script src="appearance.js?v=20261101-logo"></script>
 <meta name="theme-color" content="#090c0d">
 
-<link rel="stylesheet" href="styles.css?v=20261018-services-examples">
+<link rel="stylesheet" href="styles.css?v=20261104-contact-confirmation">
 <link rel="stylesheet" href="cosmos.css">
 <script src="cosmos.js" defer></script>
 <link rel="canonical" href="https://orbytek.be/">
@@ -361,36 +361,29 @@
 </div>
 </section>
 <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
-<form class="contact-form" action="https://formsubmit.co/Thibaut@orbytek.be" method="POST">
+<form class="contact-form" id="orbytek-contact-form" method="POST">
 <button class="dialog-close" type="button" id="close-contact-form" aria-label="Fermer">×</button>
 <p class="eyebrow">Votre projet</p>
 <h2 id="contact-dialog-title">Parlez-moi de votre idée.</h2>
-<input type="hidden" name="_subject" value="Nouvelle demande depuis Orbytek">
-<input type="hidden" name="_next" value="https://orbytek.be/merci.html">
-<input type="hidden" name="_captcha" value="false">
-<input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+<input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div class="form-grid">
-<label>Nom et prénom<input type="text" name="Nom" autocomplete="name" required></label>
-<label>Adresse e-mail<input type="email" name="Email" autocomplete="email" required></label>
-<label>Téléphone <small>(facultatif)</small><input type="tel" name="Téléphone" autocomplete="tel"></label>
-<label>Société <small>(facultatif)</small><input type="text" name="Société" autocomplete="organization"></label>
+<label>Nom et prénom<input type="text" name="name" autocomplete="name" maxlength="120" required></label>
+<label>Adresse e-mail<input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+<label>Téléphone <small>(facultatif)</small><input type="tel" name="phone" autocomplete="tel" maxlength="80"></label>
+<label>Société <small>(facultatif)</small><input type="text" name="company" autocomplete="organization" maxlength="160"></label>
 </div>
-<label>Type de projet<select name="Type de projet"><option>Site web</option><option>Application web</option><option>API / intégration</option><option>Support IT</option><option>Autre</option></select></label>
-<label>Votre message<textarea name="Message" rows="6" placeholder="Décrivez brièvement votre activité, votre besoin et ce que vous aimeriez améliorer." required></textarea></label>
-<button class="form-submit" type="submit">Envoyer ma demande <span aria-hidden="true">→</span></button>
-<p class="form-note">Votre message sera envoyé à Thibaut@orbytek.be.</p>
+<label>Type de projet<select name="project"><option>Site web</option><option>Application web</option><option>API / intégration</option><option>Support IT</option><option>Autre</option></select></label>
+<label>Votre message<textarea name="message" rows="6" maxlength="5000" placeholder="Décrivez brièvement votre activité, votre besoin et ce que vous aimeriez améliorer." required></textarea></label>
+<button class="form-submit" type="submit" disabled>Envoyer ma demande <span aria-hidden="true">→</span></button>
+<p id="contact-status" role="status" aria-live="polite"></p>
+<p class="form-note">Vous pouvez aussi écrire directement à <a href="mailto:Thibaut@orbytek.be">Thibaut@orbytek.be</a>.</p>
+<p class="form-note">Les informations servent à traiter votre demande et sont transmises à FormSubmit.co et FormSubmit.io pour assurer sa réception. N’indiquez aucun mot de passe ni donnée sensible.</p>
 </form>
 </dialog>
 </div>
 </main>
 <footer><div class="wrap footer-inner"><a href="index.html" class="brand" aria-label="Orbytek, accueil"><img src="orbytek-logo-light.webp?v=20261018-alpha" alt="Orbytek — Solutions digitales" width="2282" height="757"></a><span>© 2026 Orbytek · Thibaut Courtois<br>Proximité · Simplicité · Sur mesure</span><div class="footer-links"><a href="mentions-legales.html">Mentions légales</a></div></div></footer>
-<script>
-const contactDialog = document.getElementById('contact-dialog');
-document.getElementById('open-contact-form').addEventListener('click', () => contactDialog.showModal());
-document.getElementById('close-contact-form').addEventListener('click', () => contactDialog.close());
-contactDialog.addEventListener('click', event => {
-  if (event.target === contactDialog) contactDialog.close();
-});
-</script>
+<script src="contact-config.js?v=20261104-3"></script>
+<script src="contact.js?v=20261104-3"></script>
 <a class="back-to-top" href="#page-top" aria-label="Retour en haut" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></a></body>
 </html>

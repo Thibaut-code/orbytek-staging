@@ -150,8 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('devisForm')?.addEventListener('submit', function (e) {
-    e.preventDefault();
-
     const prenom = this.querySelector('input[name="prenom"]').value.trim();
     const nom = this.querySelector('input[name="nom"]').value.trim();
     const tel = this.querySelector('input[name="tel"]').value.trim();
@@ -160,24 +158,18 @@ document.getElementById('devisForm')?.addEventListener('submit', function (e) {
 
     // Validation
     if (!prenom || !nom || !tel || !prestation) {
+        e.preventDefault();
         showError('Veuillez remplir tous les champs obligatoires (*).');
         return;
     }
     if (!checkbox.checked) {
+        e.preventDefault();
         showError('Veuillez accepter la politique de confidentialité.');
         return;
     }
 
-    // Success
-    document.getElementById('modalOverlay').classList.add('active');
-
-    // Reset
-    setTimeout(() => {
-        this.reset();
-        // Reset radio buttons
-        const firstRadio = this.querySelector('input[type="radio"]');
-        if (firstRadio) firstRadio.checked = true;
-    }, 500);
+    // Allow the native POST to FormSubmit.io, which handles spam filtering and confirmation.
+    // Keep the entered values intact until the external service accepts the request.
 });
 
 function showError(msg) {
@@ -195,16 +187,3 @@ function showError(msg) {
     err.scrollIntoView({ behavior: 'smooth', block: 'center' });
     setTimeout(() => err.remove(), 5000);
 }
-
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
-}
-
-document.getElementById('modalOverlay')?.addEventListener('click', function (e) {
-    if (e.target === this) closeModal();
-});
-
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-});
-

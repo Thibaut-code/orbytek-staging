@@ -343,7 +343,8 @@
 </div>
 </div>
 <div class="devis-form-wrapper">
-<form class="devis-form" id="devisForm">
+<form class="devis-form" id="devisForm" action="https://formsubmit.io/f/5448c996-26a1-4821-b105-0aed8e687f85" method="POST">
+<input type="text" name="_formsubmit_id" hidden tabindex="-1" autocomplete="off" aria-hidden="true"/>
 <h3><i class="fas fa-file-alt"></i> Demande de devis gratuit</h3>
 <div class="form-row">
 <div class="form-group">
@@ -394,7 +395,7 @@
 </div>
 <div class="form-group checkbox-group">
 <label class="checkbox-label">
-<input required="" type="checkbox"/>
+<input required="" type="checkbox" name="consentement" value="accepte"/>
 <span>J'accepte que mes données soient utilisées pour traiter ma demande *</span>
 </label>
 </div>
@@ -634,16 +635,6 @@
 </div>
 </div>
 </footer>
-<!-- ========== MODAL CONFIRMATION ========== -->
-<div class="modal-overlay" id="modalOverlay">
-<div class="modal">
-<div class="modal-icon"><i class="fas fa-check"></i></div>
-<h3>Demande envoyée !</h3>
-<p>Merci pour votre demande de devis. Notre équipe vous recontactera dans les <strong>24 heures ouvrables</strong>.</p>
-<p class="modal-sub">En cas d'urgence, appelez-nous directement au <a href="tel:+3260123456"><strong>+32 60 12 34 56</strong></a></p>
-<button class="btn-primary" onclick="closeModal()">Parfait, merci !</button>
-</div>
-</div>
 <!-- ========== FLOATING CTA ========== -->
 <div class="floating-cta" id="floatingCta">
 <a class="float-btn urgence-float" href="tel:+3260123456">

@@ -4,6 +4,15 @@
 # working directory name when running `supabase init`.
 project_id = "Facture"
 
+[functions.orbytek-contact]
+verify_jwt = false # Public contact: validated Turnstile, origin and database quotas.
+
+[functions.orbytek-contact-worker]
+verify_jwt = false # Private CONTACT_WORKER_TOKEN, not a public browser endpoint.
+
+[functions.orbytek-contact-webhook]
+verify_jwt = false # Svix HMAC signature verified against the exact request bytes.
+
 [functions.peppol]
 verify_jwt = false # The handler validates the user JWT with auth.getUser.
 
