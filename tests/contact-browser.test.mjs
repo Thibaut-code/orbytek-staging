@@ -129,3 +129,13 @@ for(const pageUrl of [
  assert.deepEqual(h.redirects(),[new URL('merci.html',pageUrl).href]);
  h.calls[0].resolve(okCo());
 });
+
+test('merci signals provider success when framed, without submitting another form',()=>{
+ const script=readFileSync(new URL('../merci.js',import.meta.url),'utf8'),sent=[];
+ const parent={postMessage:(data,target)=>sent.push({data,target})};
+ const document={querySelectorAll:()=>[],getElementById:()=>({addEventListener(){}}),querySelector:()=>({})};
+ vm.runInNewContext(script,{window:{parent},document});
+ assert.equal(sent.length,1);assert.equal(sent[0].data.type,'orbytek-contact-received');
+ const top={postMessage(){throw Error('no parent notification at top level');}};top.parent=top;
+ vm.runInNewContext(script,{window:top,document});
+});

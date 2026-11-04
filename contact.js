@@ -9,7 +9,7 @@
  function available(){
   try{
    const co=new URL(config.formsubmitCo),io=new URL(config.formsubmitIo),receiptPage=new URL(config.ioReceipt);
-   return config.enabled===true&&co.origin==='https://formsubmit.co'&&co.pathname.startsWith('/ajax/')&&io.origin==='https://formsubmit.io'&&io.pathname.startsWith('/f/')&&receiptPage.protocol==='https:'&&receiptPage.pathname==='/contact-receipt.html';
+   return config.enabled===true&&co.origin==='https://formsubmit.co'&&co.pathname.startsWith('/ajax/')&&io.origin==='https://formsubmit.io'&&io.pathname.startsWith('/f/')&&receiptPage.protocol==='https:'&&receiptPage.pathname==='/merci.html';
   }catch{return false;}
  }
  document.getElementById('open-contact-form').addEventListener('click',()=>{
@@ -23,7 +23,7 @@
  }
  function sendIo(fields){
   // .io accepts native forms but refuses cross-origin AJAX responses.
-  // Only its successful redirect to our receipt page can confirm this request.
+  // Only its successful redirect to merci.html can confirm this request.
   return new Promise((resolve,reject)=>{
    const frame=document.createElement('iframe'),relay=document.createElement('form');
    frame.name=`orbytek-contact-${crypto.randomUUID()}`;frame.hidden=true;frame.title='Transmission de votre demande';
