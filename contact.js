@@ -19,15 +19,7 @@
  document.getElementById('close-contact-form').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
  function showConfirmation(){
-  // Keep this document alive so the other provider's request can finish.
-  dialog.close();
-  const screen=document.createElement('iframe');
-  screen.src=new URL('merci.html',window.location.href).href;
-  screen.title='Votre message a été envoyé — Orbytek';
-  screen.className='contact-confirmation';
-  document.body.append(screen);
-  document.documentElement.style.overflow='hidden';
-  screen.focus();
+  window.location.assign(new URL('merci.html',window.location.href).href);
  }
  function sendIo(fields){
   // .io accepts native forms but refuses cross-origin AJAX responses.
@@ -85,8 +77,8 @@
    ]);
    showConfirmation();
   }catch{
-   message('Aucun service n’a confirmé la réception. Vos champs sont conservés : réessayez ou utilisez le lien e-mail ci-dessous.',true);
-   posting=false;submit.disabled=false;submit.textContent='Envoyer ma demande →';
+   message('');
+   posting=false;submit.disabled=false;submit.textContent='Réessayer l’envoi →';
   }
  });
 })();
