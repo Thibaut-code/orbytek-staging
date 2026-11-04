@@ -20,7 +20,7 @@ Quatre pages de services et une présentation du projet Facture Facile ont été
 - seo.css : styles des liens de services, FAQ et nouveaux contenus.
 - orbytek-logo.png : logo original fourni.
 
-Le formulaire de contact conserve le service FormSubmit et les coordonnées existants. Le bon fonctionnement de l’envoi dépend de son activation côté destinataire.
+Le formulaire de contact utilise Web3Forms avec une clé de formulaire associée à l’adresse destinataire. Voir CONTACT-SETUP.md pour la configuration et la vérification de l’envoi.
 
 Les tarifs sont indicatifs ; le devis précise le périmètre et les conditions.
 

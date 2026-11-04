@@ -1,81 +1,21 @@
-# Formulaire principal Orbytek : deux envois parallèles
+# Formulaire Orbytek — Web3Forms
 
-## Fonctionnement actuel
+Créer un formulaire Web3Forms gratuit associé à thibaut@orbytek.be, vérifier l'adresse e-mail, puis copier son Access Key dans contact-config.js (accessKey). Cette clé de formulaire est publique ; une clé Resend ou un mot de passe SMTP ne doit jamais y figurer.
 
-`index.html` charge `contact-config.js` et `contact.js`. Une soumission valide
-lance immédiatement deux POST indépendants, vers **thibaut@orbytek.be** :
+Le formulaire « Orbytek — Contact » a été créé le 4 novembre 2026 dans le compte thibaut@orbytek.be et sa clé publique est renseignée. Une vérification réelle depuis le navigateur reste nécessaire après publication ; les tests locaux seuls ne vérifient pas la livraison.
 
-- FormSubmit.co : `https://formsubmit.co/ajax/thibaut@orbytek.be` (fetch AJAX).
-- FormSubmit.io : `https://formsubmit.io/f/4382ad7d-2454-4cc2-bf13-3991d13cc309`
-  (formulaire natif ciblant une iframe masquée).
+Une soumission valide envoie un seul POST JSON vers https://api.web3forms.com/submit. Dès que le service répond avec un statut HTTP positif et success: true, le navigateur ouvre directement merci.html sur le domaine courant. Aucun réglage de redirection dans le compte n'est nécessaire pour cette intégration AJAX.
 
-Le formulaire .io s'appelle « Orbytek — Contact », distinct du chauffagiste.
-Il est activé. Son retour « After submitting » dans le tableau de bord est :
-`https://orbytek.be/contact-receipt.html`.
+L'adresse du visiteur sert de Reply-To. Sujet : Orbytek — Nouvelle demande de contact. Les champs name, email, phone, company, project et message sont transmis avec une référence. Le destinataire dépend de la clé du formulaire.
 
-La première confirmation positive affiche l'écran existant `merci.html` en
-plein écran dans une iframe. La page qui lance les demandes reste active pour
-que le second envoi continue. Les liens de l'écran de remerciement permettent
-de quitter cette vue. Un simple HTTP 200 ou un chargement d'iframe ne confirme
-jamais une demande.
+Le piège website bloque les bots localement ; les protections du prestataire s'appliquent aussi. Un double clic ne provoque pas deux envois. Une erreur, un refus, une réponse non JSON ou une absence de confirmation sous 12 secondes conserve les champs et propose Réessayer l'envoi. Le timeout ne prouve pas que le prestataire n'a rien reçu ; la référence ne garantit pas de déduplication serveur.
 
-Pour .co, il faut une réponse HTTP positive avec `success: true` ou `"true"`.
-Pour .io, le service refuse la lecture AJAX depuis orbytek.be (CORS). Le POST
-natif suit son retour après succès jusqu'à `contact-receipt.html`. Le script
-`contact-receipt.js` envoie alors un signal à la fenêtre parente. Le contrôleur
-vérifie le type du signal, l'origine du reçu et la fenêtre iframe source avant
-d'afficher la confirmation. Aucun nom, e-mail ou message ne transite par postMessage.
+Les notifications sont demandées par soumission, sans récapitulatif programmé. L'acceptation du prestataire ne garantit pas la livraison ni le classement en boîte principale.
 
-Chaque prestataire dispose de 30 secondes. Si les deux échouent ou expirent,
-les champs sont conservés pour réessayer. Une même référence accompagne les
-deux copies et les nouvelles tentatives sans modification des champs. C'est
-une aide au rapprochement, pas une déduplication : les doubles notifications
-sont acceptées. Le double clic est bloqué pendant l'envoi.
+Publier ensemble index.html, contact-config.js, contact.js, merci.html et merci.js via develop, puis vérifier le déploiement et une demande de test dans la boîte OVH. Vérifier le Reply-To. Le forfait gratuit annonce 250 soumissions mensuelles. Les autres applications du dépôt restent indépendantes.
 
-Le champ piège `website` bloque les soumissions suspectes avant envoi. Chaque
-service reçoit aussi son propre champ piège vide. Les protections antispam des
-prestataires restent applicables. Aucun secret n'est publié dans le navigateur.
-La mention sous le formulaire indique la transmission aux deux prestataires.
+Tests locaux (réponses simulées, aucun mail envoyé) : node --test tests/contact-browser.test.mjs
 
-## Publication
-
-Publier ensemble les fichiers suivants :
-
-- `index.html`, `styles.css`, `contact.js`, `contact-config.js` ;
-- `contact-receipt.html`, `contact-receipt.js` ;
-- `merci.html`, `merci.js`, avec `merci.css` déjà présent.
-
-Le reçu doit être accessible à l'URL configurée sur .io. Avant cette publication,
-le retour ne peut pas confirmer le parcours navigateur complet. Si le domaine
-change, modifier à la fois `ioReceipt` dans la configuration et le retour .io.
-
-Faire ensuite un test identifiable depuis le site publié, vérifier les deux
-envois, l'écran de confirmation, la demande .io et les mails reçus.
-Une confirmation signifie l'acceptation par au moins un prestataire, pas une
-preuve de livraison dans la boîte mail. L'offre gratuite .io regroupe les
-notifications dans un récapitulatif différé. .co est utilisé pour la notification
-à chaque demande. Si seul .io accepte, l'écran s'affiche sans attendre le mail.
-
-## Vérification du 4 novembre 2026
-
-- Formulaire « Orbytek — Contact » affiché Live.
-- Test multipart JSON .io : HTTP 202, `received: true`, identifiant
-  `1e0dfa97-9434-4c40-bd8f-5d38752280d4`.
-- Lecture AJAX cross-origin refusée : pré-vérification OPTIONS HTTP 400,
-  « Disallowed CORS origin ». Le code utilise donc le POST natif.
-- Test natif .io : HTTP 303, Location `https://orbytek.be/contact-receipt.html`.
-- Dernier test réel .co : erreur Cloudflare 522.
-- Réception du mail et parcours complet sur le site publié non vérifiés.
-
-`node --test tests/contact-browser.test.mjs tests/contact.test.mjs` : 21 tests.
-Le contrôleur est vérifié avec DOM et réseau simulés : chaque service gagnant,
-second envoi encore en cours, pannes, champs conservés, nouvelle tentative,
-double clic, honeypot, messages de confirmation d'origine/source incorrectes,
-script du reçu et taille du corps keepalive .co. Ces tests n'envoient aucun mail.
-
-## Ancien backend Supabase / Resend
-
-Les fichiers `Facture/supabase/functions/orbytek-contact*`, la migration et les
-scripts Resend restent présents, mais le formulaire principal ne les appelle
-plus. Cette modification ne déploie, n'active ni ne supprime ces services.
-`tests/contact.test.mjs` couvre séparément ce code serveur conservé.
+Documentation : https://docs.web3forms.com/getting-started/installation
+Clé publique : https://docs.web3forms.com/getting-started/faq
+Tarifs : https://web3forms.com/pricing

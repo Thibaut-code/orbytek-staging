@@ -2,140 +2,47 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-
-const configSource=readFileSync(new URL('../contact-config.js',import.meta.url),'utf8');
 const source=readFileSync(new URL('../contact.js',import.meta.url),'utf8');
-const co='https://formsubmit.co/ajax/thibaut@orbytek.be';
-const io='https://formsubmit.io/f/4382ad7d-2454-4cc2-bf13-3991d13cc309';
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
-const okCo=()=>Response.json({success:'true'});
-const okIo=()=>Response.json({received:true,id:'received-test-id',processed:false},{status:202});
-function harness(pageUrl='https://orbytek.be/index.html'){
- const handlers={},calls=[],nodes=[],redirects=[],timers=new Map();let timerId=0;
- const fields={name:'Alice Test',email:'alice@example.com',phone:'',company:'',project:'Site web',message:'Demande de test locale.',website:''};
- const submit={disabled:true,textContent:''},status={textContent:'',setAttribute(){}};
- const form={querySelector:()=>submit,reportValidity:()=>true,addEventListener:(event,fn)=>{handlers.submit=fn;}};
- const dialog={querySelector:()=>form,addEventListener(){},showModal(){},close(){}};
- const elements={'contact-dialog':dialog,'contact-status':status,'open-contact-form':{addEventListener:(_,fn)=>{handlers.open=fn;}},'close-contact-form':{addEventListener(){}}};
- class TestFormData extends FormData {constructor(target){super();if(target)for(const [key,value]of Object.entries(fields))this.append(key,value);}}
- const window={location:{href:pageUrl,assign:url=>redirects.push(url)},addEventListener:(name,fn)=>{handlers[name]=fn;},removeEventListener:(name)=>{delete handlers[name];}};
- const document={getElementById:id=>elements[id],body:{append(){}},documentElement:{style:{}},createElement:tag=>{
-  const node={tag,children:[],contentWindow:{},append(...items){this.children.push(...items);},remove(){this.removed=true;},focus(){}};
-  node.submit=()=>{
-   const frame=nodes.find(n=>n.name===node.target),body=new FormData();
-   for(const input of node.children)body.append(input.name,input.value);
-   const timeout=()=>{for(const fn of [...timers.values()])fn();};
-   calls.push({url:node.action,options:{method:node.method,body},frame,relay:node,reject:timeout,
-    resolve:async response=>{let result;try{result=await response.json();}catch{return timeout();}
-     if(response.ok&&result.received===true)handlers.message?.({origin:'https://orbytek.be',source:frame.contentWindow,data:{type:'orbytek-contact-received'}});else timeout();
-    }});
-  };
-  nodes.push(node);return node;
- }};
- const context={window,document,URL,FormData:TestFormData,AbortSignal,crypto,
-  setTimeout:fn=>{timers.set(++timerId,fn);return timerId;},clearTimeout:id=>timers.delete(id),
-  fetch:(url,options)=>{const pending=deferred();calls.push({url,options,...pending});return pending.promise;}};
- vm.runInNewContext(configSource,context);vm.runInNewContext(source,context);handlers.open();
- return {fields,submit,status,calls,nodes,handlers,send:()=>handlers.submit({preventDefault(){}}),redirects:()=>redirects};
+function harness(url='https://test.orbytek.be/index.html',key='public-form-test-key'){
+ const handlers={},calls=[],redirects=[];
+ const fields={name:'Alice Test',email:'alice@example.com',phone:'',company:'',project:'Site web',message:'Test local uniquement.',website:''};
+ const submit={disabled:true,textContent:'',setAttribute(){}},status={textContent:'',setAttribute(){}};
+ const form={querySelector:()=>submit,reportValidity:()=>true,addEventListener:(event,fn)=>handlers[event]=fn};
+ const dialog={querySelector:()=>form,showModal(){},close(){},addEventListener(){}};
+ const elements={'contact-dialog':dialog,'contact-status':status,'open-contact-form':{addEventListener:(_,fn)=>handlers.open=fn},'close-contact-form':{addEventListener(){}}};
+ class TestFormData extends FormData{constructor(){super();for(const [k,v]of Object.entries(fields))this.append(k,v);}}
+ const window={ORBYTEK_CONTACT:{enabled:true,accessKey:key},location:{href:url,assign:target=>redirects.push(target)}};
+ vm.runInNewContext(source,{window,document:{getElementById:id=>elements[id]},URL,crypto,FormData:TestFormData,AbortSignal,fetch:(url,options)=>{const pending=deferred();calls.push({url,options,...pending});return pending.promise;}});
+ handlers.open();return {fields,submit,status,calls,redirects,send:()=>handlers.submit({preventDefault(){}})};
 }
-
-for(const winner of ['co','io'])test(`${winner} success navigates directly to merci while the other stays pending`,async()=>{
- const h=harness(),done=h.send();
- assert.deepEqual(h.calls.map(c=>c.url),[co,io]);assert.ok(h.submit.disabled);
- for(const c of h.calls)assert.equal(c.options.body.get('message'),h.fields.message);
- assert.equal(h.calls[0].options.keepalive,true);
- assert.equal(h.calls[0].options.body.get('reference'),h.calls[1].options.body.get('reference'));
- assert.equal(h.calls[0].options.body.get('_honey'),'');assert.equal(h.calls[1].options.body.get('_formsubmit_id'),'');
- const chosen=winner==='co'?0:1;await h.calls[chosen].resolve(chosen===0?okCo():okIo());await done;
- assert.equal(h.redirects().length,1);assert.equal(h.redirects()[0],'https://orbytek.be/merci.html');
- if(chosen===0)assert.ok(!h.calls[1].frame.removed);
- else assert.equal(h.calls[0].options.signal.aborted,false);
- await h.calls[1-chosen].resolve(chosen===0?okIo():okCo());await Promise.resolve();assert.equal(h.redirects().length,1);
+for(const url of ['https://test.orbytek.be/index.html','https://orbytek.be/','file:///C:/site/index.html'])test('one accepted Web3Forms request navigates directly to merci: '+url,async()=>{
+ const h=harness(url),done=h.send();assert.equal(h.calls.length,1);assert.equal(h.calls[0].url,'https://api.web3forms.com/submit');
+ const payload=JSON.parse(h.calls[0].options.body);assert.equal(payload.access_key,'public-form-test-key');assert.equal(payload.replyto,h.fields.email);assert.equal(payload.message,h.fields.message);assert.equal(payload.botcheck,'');
+ assert.deepEqual(h.redirects,[]);h.calls[0].resolve(Response.json({success:true}));await done;assert.deepEqual(h.redirects,[new URL('merci.html',url).href]);
 });
-
-test('first failure never masks a later success',async()=>{
- const h=harness(),done=h.send();h.calls[0].reject(new Error('522'));await Promise.resolve();assert.equal(h.redirects().length,0);
- await h.calls[1].resolve(okIo());await done;assert.equal(h.redirects().length,1);
+for(const scenario of ['network','timeout','http','invalid-json','false','string-false','missing-success'])test('no false confirmation and fields retained: '+scenario,async()=>{
+ const h=harness(),done=h.send(),call=h.calls[0];
+ if(scenario==='network'||scenario==='timeout')call.reject(Error(scenario));
+ else if(scenario==='http')call.resolve(Response.json({success:true},{status:429}));
+ else if(scenario==='invalid-json')call.resolve(new Response('<html>Error</html>'));
+ else call.resolve(Response.json(scenario==='false'?{success:false}:scenario==='string-false'?{success:'false'}:{}));
+ await done;assert.deepEqual(h.redirects,[]);assert.equal(h.fields.message,'Test local uniquement.');assert.equal(h.submit.disabled,false);assert.equal(h.submit.textContent,'Réessayer l’envoi →');
+ const retry=h.send();assert.equal(JSON.parse(h.calls[1].options.body).reference,JSON.parse(call.options.body).reference);h.calls[1].resolve(Response.json({success:true}));await retry;
 });
-
-for(const failure of ['network','timeout','http','json','unconfirmed'])test(`both ${failure} failures keep inputs and allow retry`,async()=>{
- const h=harness(),done=h.send();
- for(const c of h.calls){
-  if(failure==='network'||failure==='timeout')c.reject(new Error(failure));
-  else if(failure==='http')await c.resolve(Response.json({success:true,received:true,id:'x'},{status:503}));
-  else if(failure==='json')await c.resolve(new Response('<html>Cloudflare 522</html>'));
-  else await c.resolve(Response.json({success:false,received:false}));
- }
- await done;assert.equal(h.redirects().length,0);assert.equal(h.fields.message,'Demande de test locale.');
- assert.equal(h.status.textContent,'');assert.equal(h.submit.textContent,'Réessayer l’envoi →');assert.equal(h.submit.disabled,false);
- const retry=h.send();assert.equal(h.calls[2].options.body.get('reference'),h.calls[0].options.body.get('reference'));
- h.calls[2].resolve(okCo());await h.calls[3].resolve(okIo());await retry;
+test('double click creates only one provider request',async()=>{
+ const h=harness(),done=h.send();await h.send();assert.equal(h.calls.length,1);h.calls[0].resolve(Response.json({success:true}));await done;
 });
-
-test('double click cannot send four requests',async()=>{
- const h=harness(),done=h.send();await h.send();assert.equal(h.calls.length,2);
- h.calls[0].resolve(okCo());await h.calls[1].resolve(okIo());await done;
+test('missing key never sends and never navigates',async()=>{
+ const h=harness(undefined,'');assert.equal(h.submit.disabled,true);await h.send();assert.equal(h.calls.length,0);assert.deepEqual(h.redirects,[]);
 });
-
-test('honeypot and invalid form send nothing',async()=>{
- const h=harness();h.fields.website='spam';await h.send();assert.equal(h.calls.length,0);
- h.fields.website='';h.fields.name='   ';await h.send();assert.equal(h.calls.length,0);
+test('honeypot and missing mandatory fields send nothing',async()=>{
+ const h=harness();h.fields.website='bot';await h.send();h.fields.website='';h.fields.message=' ';await h.send();assert.equal(h.calls.length,0);
 });
-
-test('untrusted messages and ordinary iframe loads never confirm receipt',async()=>{
- const h=harness(),done=h.send(),frame=h.calls[1].frame;
- h.handlers.message({origin:'https://attacker.example',source:frame.contentWindow,data:{type:'orbytek-contact-received'}});
- h.handlers.message({origin:'https://orbytek.be',source:{},data:{type:'orbytek-contact-received'}});
- h.handlers.message({origin:'https://orbytek.be',source:frame.contentWindow,data:{type:'other'}});
- assert.equal(h.redirects().length,0);assert.ok(!frame.removed);
- h.calls[0].reject(new Error('522'));await h.calls[1].resolve(okIo());await done;assert.equal(h.redirects().length,1);
- assert.ok(frame.removed);
+test('changed contents after an unconfirmed attempt receive a new reference',async()=>{
+ const h=harness(),first=h.send();h.calls[0].reject(Error('timeout'));await first;h.fields.message='Changed';const second=h.send();assert.notEqual(JSON.parse(h.calls[0].options.body).reference,JSON.parse(h.calls[1].options.body).reference);h.calls[1].resolve(Response.json({success:true}));await second;
 });
-
-test('co request fits the 64 KiB keepalive quota at maximum input lengths',async()=>{
- const h=harness();Object.assign(h.fields,{name:'\uFFFF'.repeat(120),email:'a'.repeat(242)+'@example.com',phone:'\uFFFF'.repeat(80),company:'\uFFFF'.repeat(160),message:'\uFFFF'.repeat(5000)});
- const done=h.send(),call=h.calls[0];
- const length=(await new Request(call.url,{method:'POST',body:call.options.body}).arrayBuffer()).byteLength;
- assert.ok(length<65536,`request body: ${length}`);
- call.resolve(okCo());await h.calls[1].resolve(okIo());await done;
-});
-
-test('receipt bridge notifies the parent or redirects top-level visits to merci',()=>{
- const bridge=readFileSync(new URL('../contact-receipt.js',import.meta.url),'utf8'),sent=[];
- const parent={postMessage:(data,target)=>sent.push({data,target})};
- vm.runInNewContext(bridge,{window:{parent}});assert.equal(sent.length,1);assert.equal(sent[0].data.type,'orbytek-contact-received');
- const redirects=[];const top={location:{href:'https://test.orbytek.be/contact-receipt.html',replace:url=>redirects.push(url)},postMessage(){throw Error('not expected');}};top.parent=top;vm.runInNewContext(bridge,{window:top,URL});assert.deepEqual(redirects,['https://test.orbytek.be/merci.html']);
-});
-
-test('staging navigates directly to its merci page after confirmation',async()=>{
- const h=harness('https://test.orbytek.be/index.html'),done=h.send();
- const frame=h.calls[1].frame;
- h.handlers.message({origin:'https://orbytek.be',source:frame.contentWindow,data:{type:'orbytek-contact-received'}});
- assert.equal(h.redirects().length,0);
- h.handlers.message({origin:'https://test.orbytek.be',source:frame.contentWindow,data:{type:'orbytek-contact-received'}});
- await done;assert.equal(h.redirects()[0],'https://test.orbytek.be/merci.html');
- h.calls[0].resolve(okCo());
-});
-
-for(const pageUrl of [
- 'file:///C:/Users/FlowUP/OneDrive/Documents/Github/projet2/index.html',
- 'http://127.0.0.1:8080/index.html',
-])test(`local preview does not disable the form: ${pageUrl}`,async()=>{
- const h=harness(pageUrl);
- assert.equal(h.submit.disabled,false);assert.equal(h.status.textContent,'');
- const done=h.send();assert.equal(h.calls.length,2);
- h.handlers.message({origin:'https://test.orbytek.be',source:h.calls[1].frame.contentWindow,data:{type:'orbytek-contact-received'}});
- await done;
- assert.deepEqual(h.redirects(),[new URL('merci.html',pageUrl).href]);
- h.calls[0].resolve(okCo());
-});
-
-test('merci signals provider success when framed, without submitting another form',()=>{
- const script=readFileSync(new URL('../merci.js',import.meta.url),'utf8'),sent=[];
- const parent={postMessage:(data,target)=>sent.push({data,target})};
- const document={querySelectorAll:()=>[],getElementById:()=>({addEventListener(){}}),querySelector:()=>({})};
- vm.runInNewContext(script,{window:{parent},document});
- assert.equal(sent.length,1);assert.equal(sent[0].data.type,'orbytek-contact-received');
- const top={postMessage(){throw Error('no parent notification at top level');}};top.parent=top;
- vm.runInNewContext(script,{window:top,document});
+test('main form has no old provider transport or hidden confirmation frames',()=>{
+ const config=readFileSync(new URL('../contact-config.js',import.meta.url),'utf8');
+ assert.doesNotMatch(source+config,/formsubmit|Promise.any|iframe|postMessage/i);
 });

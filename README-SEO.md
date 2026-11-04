@@ -320,7 +320,7 @@ Les sites de démonstration dans les sous-dossiers n’ont pas été refondus. L
 - [ ] Inspection Google de l’accueil et des quatre services.
 - [ ] Validation avec [Schema.org](https://validator.schema.org/) et le [test Google](https://search.google.com/test/rich-results).
 - [ ] Mesure mobile avec PageSpeed Insights puis données réelles lorsque disponibles.
-- [ ] Réception réelle du formulaire FormSubmit, après activation côté destinataire.
+- [ ] Réception réelle du formulaire Web3Forms, après configuration de la clé du formulaire.
 
 Aucun score Lighthouse ou gain de chargement n’a été mesuré. Les seuils Google de référence sont LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 au 75e percentile. Ce ne sont pas des résultats d’Orbytek. [Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals).
 
